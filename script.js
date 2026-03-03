@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────
-   Animated particle / orb background + progress counter
+   Newspaper animated rule lines + progress counter
    ──────────────────────────────────────── */
 
 (function () {
@@ -7,86 +7,59 @@
   const canvas = document.getElementById('bg-canvas');
   const ctx = canvas.getContext('2d');
 
-  let W, H, orbs;
+  let W, H;
 
   function resize() {
-    W = canvas.width  = window.innerWidth;
+    W = canvas.width = window.innerWidth;
     H = canvas.height = window.innerHeight;
   }
 
-  // ── Floating orbs ─────────────────────
-  const ORB_COLORS = [
-    'rgba(124, 92, 252, VAL)',   // purple
-    'rgba(48, 213, 200,  VAL)',  // teal
-    'rgba(247, 107, 206, VAL)',  // pink
-  ];
+  // ── Horizontal rule lines ──────────────
+  const LINES = [];
+  const LINE_COUNT = 28;
 
-  function makeOrb(i) {
-    const color = ORB_COLORS[i % ORB_COLORS.length];
-    return {
-      x: Math.random() * W,
-      y: Math.random() * H,
-      r: Math.random() * 260 + 140,
-      dx: (Math.random() - 0.5) * 0.35,
-      dy: (Math.random() - 0.5) * 0.35,
-      color,
-      alpha: Math.random() * 0.12 + 0.06,
-    };
-  }
-
-  function initOrbs() {
-    orbs = Array.from({ length: 5 }, (_, i) => makeOrb(i));
-  }
-
-  function drawOrbs() {
-    ctx.clearRect(0, 0, W, H);
-    for (const o of orbs) {
-      const g = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, o.r);
-      const c = o.color.replace('VAL', o.alpha);
-      const c0 = o.color.replace('VAL', o.alpha);
-      const c1 = o.color.replace('VAL', 0);
-      g.addColorStop(0, c0);
-      g.addColorStop(1, c1);
-      ctx.beginPath();
-      ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
-      ctx.fillStyle = g;
-      ctx.fill();
-
-      o.x += o.dx;
-      o.y += o.dy;
-      if (o.x < -o.r) o.x = W + o.r;
-      if (o.x > W + o.r) o.x = -o.r;
-      if (o.y < -o.r) o.y = H + o.r;
-      if (o.y > H + o.r) o.y = -o.r;
+  function initLines() {
+    LINES.length = 0;
+    for (let i = 0; i < LINE_COUNT; i++) {
+      LINES.push({
+        y: (H / LINE_COUNT) * i + Math.random() * (H / LINE_COUNT),
+        speed: (Math.random() * 0.15 + 0.04) * (Math.random() < 0.5 ? 1 : -1),
+        width: Math.random() * 0.6 + 0.2,
+        alpha: Math.random() * 0.4 + 0.1,
+        length: Math.random() * W * 0.5 + W * 0.3,
+        x: Math.random() * W,
+      });
     }
-    requestAnimationFrame(drawOrbs);
+  }
+
+  function drawLines() {
+    ctx.clearRect(0, 0, W, H);
+    for (const l of LINES) {
+      ctx.beginPath();
+      ctx.moveTo(l.x, l.y);
+      ctx.lineTo(l.x + l.length, l.y);
+      ctx.strokeStyle = `rgba(10,10,10,${l.alpha})`;
+      ctx.lineWidth = l.width;
+      ctx.stroke();
+
+      l.x += l.speed;
+      if (l.x + l.length < 0) l.x = W;
+      if (l.x > W) l.x = -l.length;
+    }
+    requestAnimationFrame(drawLines);
   }
 
   // ── Init ──────────────────────────────
   resize();
-  initOrbs();
-  drawOrbs();
-  window.addEventListener('resize', () => { resize(); initOrbs(); });
+  initLines();
+  drawLines();
+  window.addEventListener('resize', () => { resize(); initLines(); });
 
   // ── Progress bar animation ─────────────
-  const TARGET = 42; // % — customize at will
-  const fill  = document.getElementById('progress-fill');
+  const TARGET = 42;
+  const fill = document.getElementById('progress-fill');
   const label = document.getElementById('progress-value');
 
-  let current = 0;
-  function tick() {
-    if (current >= TARGET) {
-      fill.style.width  = TARGET + '%';
-      label.textContent = TARGET + '%';
-      return;
-    }
-    current += 0.5;
-    fill.style.width  = current + '%';
-    label.textContent = Math.floor(current) + '%';
-    requestAnimationFrame(tick);
-  }
-
-  // Start after short delay so the page animation finishes first
   setTimeout(() => {
     fill.style.width = TARGET + '%';
     label.textContent = TARGET + '%';
