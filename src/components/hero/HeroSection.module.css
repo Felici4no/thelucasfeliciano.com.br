@@ -1,0 +1,121 @@
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 5vw;
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  z-index: 10;
+  max-width: 600px;
+  pointer-events: none; /* Let pointer events go to canvas if needed, or just let it overlay */
+}
+
+.name {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--fg-muted);
+  animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.headline {
+  font-family: var(--font-instrument), serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 1;
+  color: var(--fg);
+  animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.subheadline {
+  font-size: 1.25rem;
+  color: var(--concrete);
+  font-weight: 300;
+  animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.tagline {
+  font-size: 1rem;
+  color: var(--fg-muted);
+  max-width: 80%;
+  line-height: 1.6;
+  animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.tags {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.8s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.tag {
+  font-size: 0.875rem;
+  color: var(--fg-dim);
+  border: 1px solid var(--fg-dim);
+  padding: 0.25rem 0.75rem;
+  border-radius: 99px;
+}
+
+.modelColumn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  height: 100vh;
+  z-index: 1;
+  animation: fadeIn 2s ease forwards;
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    text-align: left;
+  }
+  
+  .modelColumn {
+    width: 100vw;
+    /* Make it subtle and behind text on mobile */
+    z-index: 0;
+  }
+  
+  .textColumn {
+    z-index: 10;
+  }
+}

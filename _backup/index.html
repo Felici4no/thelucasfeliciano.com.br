@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Lucas Feliciano</title>
+    <meta name="description" content="Portfólio de Lucas Feliciano — música, design e identidade autoral." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ══ BACKGROUND WAVES ══════════════════════════════════ -->
+    <canvas class="bg-wave-canvas" id="bgWaveCanvas" aria-hidden="true"></canvas>
+
+    <!-- ══ APP SHELL ══════════════════════════════════════════ -->
+    <div class="app" id="app">
+
+        <!-- ══ PAGE: HOME ══════════════════════════════════════ -->
+        <div class="page page--home" id="page-home" data-page="home">
+            <div class="home-inner">
+                <div class="home-photo-wrap">
+                    <img src="hero.png" alt="Lucas Feliciano" class="home-photo" id="homePhoto" />
+                    <div class="home-photo-overlay"></div>
+                </div>
+                <div class="home-content">
+                    <div class="home-identity">
+                        <h1 class="home-name">Lucas Feliciano</h1>
+                        <p class="home-tagline">Música como memória.</p>
+                    </div>
+                    <nav class="home-nav" aria-label="Menu principal">
+                        <button class="nav-btn" data-target="saber" id="btn-saber">
+                            <span class="nav-btn-label">Saber</span>
+                            <span class="nav-btn-arrow">↗</span>
+                        </button>
+                        <button class="nav-btn" data-target="musicas" id="btn-musicas">
+                            <span class="nav-btn-label">Músicas</span>
+                            <span class="nav-btn-arrow">↗</span>
+                        </button>
+                        <button class="nav-btn" data-target="links" id="btn-links">
+                            <span class="nav-btn-label">Links</span>
+                            <span class="nav-btn-arrow">↗</span>
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ PAGE: SABER ══════════════════════════════════════ -->
+        <div class="page page--inner" id="page-saber" data-page="saber" aria-hidden="true">
+            <div class="page-inner">
+                <button class="back-btn" data-target="home" aria-label="Voltar">
+                    <span class="back-arrow">←</span>
+                    <span>Voltar</span>
+                </button>
+                <div class="saber-content">
+                    <p class="page-kicker">Manifesto</p>
+                    <h2 class="page-title">Sobre o projeto</h2>
+
+                    <div class="saber-body">
+                        <p>Este espaço nasceu da convicção de que som e forma são inseparáveis. Cada faixa é um
+                            documento afetivo — uma decisão estética comprometida com honestidade e precisão.</p>
+                        <p>Não busco volume, mas profundidade. Não produto, mas presença. O trabalho existe para quem
+                            está disposto a ouvir com atenção o que muitas vezes não se diz em palavras.</p>
+                        <p>O exercício é contínuo. Cada lançamento é um registro de onde estou — não onde quero chegar.
+                            A obra não é um destino, é um diário.</p>
+                    </div>
+
+                    <div class="saber-principles">
+                        <p class="principles-label">Princípios</p>
+                        <ul class="principles-list">
+                            <li>
+                                <span class="principle-mark">—</span>
+                                <div>
+                                    <strong>Foco</strong>
+                                    <p>Menos, porém melhor. Cada escolha é uma renúncia consciente.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="principle-mark">—</span>
+                                <div>
+                                    <strong>Craft</strong>
+                                    <p>Compromisso com o processo tanto quanto com o resultado.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="principle-mark">—</span>
+                                <div>
+                                    <strong>Constância</strong>
+                                    <p>Presença regular, sem urgência. O tempo é parte da obra.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ PAGE: MÚSICAS ════════════════════════════════════ -->
+        <div class="page page--inner" id="page-musicas" data-page="musicas" aria-hidden="true">
+            <div class="page-inner">
+                <button class="back-btn" data-target="home" aria-label="Voltar">
+                    <span class="back-arrow">←</span>
+                    <span>Voltar</span>
+                </button>
+
+                <!-- PLAYER -->
+                <div class="player-wrap" id="playerWrap">
+                    <div class="player" id="player">
+                        <!-- Visualizer -->
+                        <div class="visualizer-block" id="visualizerBlock">
+                            <canvas class="viz-canvas" id="vizCanvas"></canvas>
+                        </div>
+                        <!-- Track info -->
+                        <div class="player-info">
+                            <span class="player-kicker">Reproduzindo</span>
+                            <h3 class="player-title" id="playerTitle">—</h3>
+                            <p class="player-sub" id="playerSub">Lucas Feliciano</p>
+                        </div>
+                        <!-- Progress -->
+                        <div class="player-progress">
+                            <div class="progress-bar" id="progressBar" role="slider" aria-label="Progresso">
+                                <div class="progress-fill" id="progressFill"></div>
+                                <div class="progress-thumb" id="progressThumb"></div>
+                            </div>
+                            <div class="progress-times">
+                                <span id="timeElapsed">0:00</span>
+                                <span id="timeDuration">2:00</span>
+                            </div>
+                        </div>
+                        <!-- Controls -->
+                        <div class="player-controls">
+                            <button class="ctrl-btn" id="prevBtn" aria-label="Anterior">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M19 5L5 12l14 7V5z" fill="currentColor" />
+                                    <rect x="5" y="5" width="2" height="14" rx="1" fill="currentColor" />
+                                </svg>
+                            </button>
+                            <button class="ctrl-play" id="playBtn" aria-label="Play/Pause">
+                                <svg class="icon-play" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 4l13 8-13 8V4z" fill="currentColor" />
+                                </svg>
+                                <svg class="icon-pause hidden" viewBox="0 0 24 24" fill="none">
+                                    <rect x="6" y="4" width="4" height="16" rx="1" fill="currentColor" />
+                                    <rect x="14" y="4" width="4" height="16" rx="1" fill="currentColor" />
+                                </svg>
+                            </button>
+                            <button class="ctrl-btn" id="nextBtn" aria-label="Próximo">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 5l14 7-14 7V5z" fill="currentColor" />
+                                    <rect x="17" y="5" width="2" height="14" rx="1" fill="currentColor" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LIBRARY -->
+                <div class="library" id="library">
+                    <p class="library-label">Biblioteca</p>
+                    <ul class="track-list" id="trackList" role="list">
+                        <!-- injected by JS -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ PAGE: LINKS ══════════════════════════════════════ -->
+        <div class="page page--inner" id="page-links" data-page="links" aria-hidden="true">
+            <div class="page-inner">
+                <button class="back-btn" data-target="home" aria-label="Voltar">
+                    <span class="back-arrow">←</span>
+                    <span>Voltar</span>
+                </button>
+                <div class="links-content">
+                    <p class="page-kicker">Contatos &amp; Projetos</p>
+                    <h2 class="page-title">Links</h2>
+
+                    <div class="links-group">
+                        <p class="links-group-label">Redes</p>
+                        <div class="link-list" id="socialList">
+                            <!-- injected by JS -->
+                        </div>
+                    </div>
+
+                    <div class="links-group">
+                        <p class="links-group-label">Projetos</p>
+                        <div class="link-list" id="projectList">
+                            <!-- injected by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /app -->
+
+    <audio id="audioEl" crossorigin="anonymous"></audio>
+    <script src="app.js"></script>
+</body>
+
+</html>

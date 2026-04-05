@@ -1,0 +1,27 @@
+:root {
+  --bg: #0a0a0a;
+  --fg: #e8e6e3;
+  --fg-muted: #6b6860;
+  --fg-dim: #3a3835;
+  --concrete: #b8b2a8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
