@@ -1,0 +1,153 @@
+.orbitSection {
+  position: relative;
+  width: 100vw;
+  height: 120vh; /* Plenty of negative space around it */
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sectionTitle {
+  position: absolute;
+  top: 10vh;
+  left: 5vw;
+  font-family: var(--font-instrument), serif;
+  color: var(--fg-muted);
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+  font-style: italic;
+  opacity: 0.6;
+}
+
+.scaleWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* Responsive scaling: defaults to full scale on desktop, scales down preserving aspect on mobile */
+  transform: scale(calc(clamp(0.4, 100vw / 1024, 1.0)));
+}
+
+.centerAnchor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Creates the 3D space */
+  transform-style: preserve-3d;
+  /* Tilts the entire universe to create the perspective ellipses */
+  transform: rotateX(65deg);
+}
+
+.coreWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+}
+
+.coreLabel {
+  font-family: var(--font-instrument), serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: var(--fg);
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  transition: all 0.4s ease;
+  cursor: default;
+}
+
+.coreWrapper:hover .coreLabel {
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  /* The incredibly thin, elegant editorial lines */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transform-style: preserve-3d;
+}
+
+/* Animations that spin the container forward and reverse */
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotateZ(0deg); }
+  100% { transform: translate(-50%, -50%) rotateZ(360deg); }
+}
+
+@keyframes spin-reverse {
+  0% { transform: rotateZ(0deg); }
+  100% { transform: rotateZ(-360deg); }
+}
+
+.spinContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  animation: spin linear infinite;
+  /* Will be overridden by inline styles */
+  animation-duration: 60s; 
+}
+
+.itemWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-style: preserve-3d;
+}
+
+.counterSpinContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-style: preserve-3d;
+  animation: spin-reverse linear infinite;
+}
+
+.antiTilt {
+  /* Undoes the 65deg tilt applied to the centerAnchor */
+  transform: rotateX(-65deg);
+  /* Perfect centering for the word */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Ensure it doesn't wrap off-center */
+  width: max-content;
+  margin-left: -50%;
+  margin-top: -50%;
+}
+
+.orbitLabel {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  padding: 0.75rem 1.5rem;
+  border-radius: 100px;
+  background: transparent;
+  /* Glassy interaction */
+  border: 1px solid transparent;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+/* Extremely subtle and elegant hover state */
+.orbitLabel:hover {
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  /* Slight scale for physicality */
+  transform: scale(1.05);
+}

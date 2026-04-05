@@ -104,18 +104,25 @@
 
 @media (max-width: 1024px) {
   .hero {
-    grid-template-columns: 1fr;
-    justify-content: center;
-    text-align: left;
-  }
-  
-  .modelColumn {
-    width: 100vw;
-    /* Make it subtle and behind text on mobile */
-    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+    min-height: 100vh;
+    padding-top: 15vh;
   }
   
   .textColumn {
     z-index: 10;
+    margin-bottom: 2rem;
+  }
+
+  .modelColumn {
+    position: relative;
+    width: 100vw;
+    height: 55vh;
+    margin-left: -5vw; /* Puxa para a borda ignorando o padding lateral do container */
+    z-index: 1;
+    opacity: 0.8; /* Leve redução de contraste global no mobile para não gritar mais que o texto */
   }
 }

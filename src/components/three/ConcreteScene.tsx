@@ -1,63 +1,86 @@
 "use client";
 
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useThree } from '@react-three/fiber';
 import { Environment, ContactShadows } from '@react-three/drei';
 import { Suspense } from 'react';
 import { ConcreteBlock } from './ConcreteBlock';
 import * as THREE from 'three';
+
+function SceneContent() {
+  const { viewport } = useThree();
+  
+  // Se o aspect ratio for menor que 1 (retrato), estamos em mobile.
+  const isMobile = viewport.aspect < 1.0;
+
+  // Desktop (1.4): Puxado forte para a direita para respirar oposto ao texto.
+  // Mobile (0.3): Levemente deslocado para manter o corte assimétrico editorial, mas sem sair da tela.
+  const xOffset = isMobile ? 0.3 : 1.4;
+  const yOffset = isMobile ? -0.2 : -0.6;
+  const scale = isMobile ? 0.8 : 1.0;
+
+  return (
+    <>
+      <group position={[xOffset, yOffset, 0]} scale={scale}>
+        <ConcreteBlock />
+        
+        {/* Grounded drop-shadow physically locked to the bottom face of the mesh */}
+        <ContactShadows 
+          position={[0, -0.95, 0]} 
+          opacity={0.9} 
+          scale={12} 
+          blur={2.8} 
+          far={5} 
+          color="#000000" 
+        />
+      </group>
+      
+      {/* Absolute minimal environment reflection purely for the PBR roughness specularity */}
+      <Environment preset="city" environmentIntensity={0.03} />
+    </>
+  );
+}
 
 export function ConcreteScene() {
   return (
     <Canvas
       gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 0.8 }}
       dpr={[1, 2]}
-      // Micro recuo para nao cortar (fov 32 -> z=5.5)
-      camera={{ position: [3.5, 2.8, 5.5], fov: 32 }}
+      camera={{ position: [5.0, 4.0, 7.8], fov: 26 }}
     >
       <color attach="background" args={['#0a0a0a']} />
       
-      {/* Luz ambiente quase morta (0.01) para forçar o breu absoluto dentro dos vazados do cimento */}
-      <ambientLight intensity={0.01} />
+      <ambientLight intensity={0.05} />
       
-      {/* Luz Principal projetando sombras ricas */}
+      {/* 1. KEY LIGHT */}
       <directionalLight 
-        position={[4, 6, 2]} 
-        intensity={5.0} 
+        position={[6, 8, 4]} 
+        intensity={6.5} 
         castShadow 
         shadow-bias={-0.0005}
         shadow-mapSize={[2048, 2048]}
       />
 
-      {/* Luz de Rim forte, MAS AGORA COM CAST SHADOW.
-          Isso evita que a luz perfore as paredes grossas e ilumine o interior dos vazados */}
+      {/* 2. FILL LIGHT */}
+      <directionalLight 
+        position={[-4, 0, 5]} 
+        intensity={0.25} 
+        color="#a4b4c4" 
+      />
+
+      {/* 3. RIM LIGHT */}
       <spotLight 
-        position={[-5, 5, -5]} 
-        intensity={15.0} 
-        angle={0.6} 
-        penumbra={0.7} 
-        color="#e8dcca" 
+        position={[-6, 6, -6]} 
+        intensity={28.0} 
+        angle={0.7} 
+        penumbra={0.6} 
+        color="#f4ebdb" 
         castShadow
         shadow-bias={-0.0005}
         shadow-mapSize={[1024, 1024]}
       />
 
       <Suspense fallback={null}>
-        {/* Recuo sutil do bloco para respeitar as margens de visualização */}
-        <group position={[0.2, -0.6, 0]}>
-          <ConcreteBlock />
-        </group>
-        
-        {/* Environment abaixado para 0.05 (só um reflexo fantasma minimalista) */}
-        <Environment preset="city" environmentIntensity={0.05} />
-        
-        <ContactShadows 
-          position={[0, -1.5, 0]} 
-          opacity={0.8} 
-          scale={10} 
-          blur={2.5} 
-          far={6} 
-          color="#000000" 
-        />
+        <SceneContent />
       </Suspense>
     </Canvas>
   );

@@ -61,12 +61,20 @@ export function ConcreteBlock() {
 
   useFrame((state) => {
     if (meshRef.current) {
-      // Added a strong aesthetic angle (-Math.PI / 6) to show dimensions clearly
-      const baseRotationY = state.clock.getElapsedTime() * 0.02 + rotation - Math.PI / 6;
+      // Asymmetrical angle to showcase the depth heavily while feeling solid
+      const baseRotationY = rotation - Math.PI / 7;
       
-      meshRef.current.rotation.y = baseRotationY + mouse.x * 0.15;
-      meshRef.current.rotation.z = -mouse.y * 0.05;
-      meshRef.current.rotation.x = mouse.y * 0.05;
+      // Removed fast continuous rotation. Replaced with extremely slow imperceptible drift.
+      const drift = state.clock.getElapsedTime() * 0.015;
+
+      const targetY = baseRotationY + drift + (mouse.x * 0.12);
+      const targetX = mouse.y * 0.04;
+      const targetZ = -mouse.y * 0.04;
+
+      // Heavy inertia (lerp 0.02) to create physical weight simulation
+      meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, targetY, 0.02);
+      meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, targetX, 0.02);
+      meshRef.current.rotation.z = THREE.MathUtils.lerp(meshRef.current.rotation.z, targetZ, 0.02);
     }
   });
 
