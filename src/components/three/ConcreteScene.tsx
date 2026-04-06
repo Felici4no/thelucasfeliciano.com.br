@@ -6,6 +6,16 @@ import { Suspense, useRef } from 'react';
 import { ConcreteBlock } from './ConcreteBlock';
 import * as THREE from 'three';
 
+/**
+ * Light awakening timeline:
+ * 
+ * 0.0s - 0.4s : Total darkness. Nothing visible.
+ * 0.4s - 1.0s : Ambient whisper (0 → 0.02). The faintest silhouette.
+ * 1.0s - 2.2s : Key light rises (0 → 6.5). The form is revealed.
+ * 1.4s - 2.8s : Rim light rises (0 → 28). Edges separate from void.
+ * 2.8s+       : Full studio state. Steady.
+ */
+
 interface SceneContentProps {
   scrollDecay: number;
 }
@@ -13,8 +23,10 @@ interface SceneContentProps {
 function SceneContent({ scrollDecay }: SceneContentProps) {
   const { viewport } = useThree();
   const keyLightRef = useRef<THREE.DirectionalLight>(null);
+  const fillLightRef = useRef<THREE.DirectionalLight>(null);
   const rimLightRef = useRef<THREE.SpotLight>(null);
   const ambientRef = useRef<THREE.AmbientLight>(null);
+  const startTimeRef = useRef(-1);
   
   const isMobile = viewport.aspect < 1.0;
 
@@ -22,53 +34,78 @@ function SceneContent({ scrollDecay }: SceneContentProps) {
   const yOffset = isMobile ? -0.2 : -0.6;
   const baseScale = isMobile ? 0.8 : 1.0;
 
-  // Animate lights falling off on every frame based on scroll
-  useFrame(() => {
-    // Invert: 1 at rest, 0 at full decay
+  useFrame((state) => {
+    const elapsed = state.clock.getElapsedTime();
+    
+    if (startTimeRef.current < 0) {
+      startTimeRef.current = elapsed;
+    }
+
+    const t = elapsed - startTimeRef.current;
+
+    // --- AWAKENING RAMP ---
+    // Each light has its own emergence curve (custom easing per element)
+    
+    // Ambient: whispers from darkness starting at 0.4s
+    const ambientAwaken = t < 0.4 ? 0 : Math.min(1, (t - 0.4) / 1.2);
+    const ambientTarget = 0.05 * smoothStep(ambientAwaken);
+
+    // Key light: the dramatic reveal starting at 1.0s
+    const keyAwaken = t < 1.0 ? 0 : Math.min(1, (t - 1.0) / 1.2);
+    const keyTarget = 6.5 * smoothStep(keyAwaken);
+
+    // Fill light: subtle and delayed
+    const fillAwaken = t < 1.2 ? 0 : Math.min(1, (t - 1.2) / 1.0);
+    const fillTarget = 0.25 * smoothStep(fillAwaken);
+
+    // Rim light: the final edge separation
+    const rimAwaken = t < 1.4 ? 0 : Math.min(1, (t - 1.4) / 1.4);
+    const rimTarget = 28.0 * smoothStep(rimAwaken);
+
+    // --- SCROLL DECAY (modulates final values) ---
     const life = Math.max(0, 1 - scrollDecay);
 
+    if (ambientRef.current) {
+      ambientRef.current.intensity = ambientTarget * life + 0.005;
+    }
     if (keyLightRef.current) {
-      keyLightRef.current.intensity = 6.5 * life;
+      keyLightRef.current.intensity = keyTarget * life;
+    }
+    if (fillLightRef.current) {
+      fillLightRef.current.intensity = fillTarget * life;
     }
     if (rimLightRef.current) {
-      rimLightRef.current.intensity = 28.0 * life;
-    }
-    if (ambientRef.current) {
-      // Ambient falls to near-zero but never fully dies (keeps silhouette)
-      ambientRef.current.intensity = 0.05 * life + 0.005;
+      rimLightRef.current.intensity = rimTarget * life;
     }
   });
 
-  // Scale reduction driven by scroll (block recedes)
   const groupScale = baseScale * (1 - scrollDecay * 0.12);
 
   return (
     <>
-      {/* Lights as refs so useFrame can mutate them without re-renders */}
-      <ambientLight ref={ambientRef} intensity={0.05} />
+      {/* All lights start at intensity 0 — awakening drives them up */}
+      <ambientLight ref={ambientRef} intensity={0} />
       
-      {/* 1. KEY LIGHT */}
       <directionalLight 
         ref={keyLightRef}
         position={[6, 8, 4]} 
-        intensity={6.5} 
+        intensity={0} 
         castShadow 
         shadow-bias={-0.0005}
         shadow-mapSize={[2048, 2048]}
       />
 
-      {/* 2. FILL LIGHT (stays constant — just prevents total black) */}
       <directionalLight 
+        ref={fillLightRef}
         position={[-4, 0, 5]} 
-        intensity={0.25} 
+        intensity={0} 
         color="#a4b4c4" 
       />
 
-      {/* 3. RIM LIGHT */}
       <spotLight 
         ref={rimLightRef}
         position={[-6, 6, -6]} 
-        intensity={28.0} 
+        intensity={0} 
         angle={0.7} 
         penumbra={0.6} 
         color="#f4ebdb" 
@@ -93,6 +130,14 @@ function SceneContent({ scrollDecay }: SceneContentProps) {
       <Environment preset="city" environmentIntensity={0.03 * (1 - scrollDecay)} />
     </>
   );
+}
+
+/**
+ * Attempt: attempt a smooth step  easing for natural light ramps
+ * (avoid linear or mechanical-looking transitions)
+ */
+function smoothStep(x: number): number {
+  return x * x * (3 - 2 * x);
 }
 
 interface ConcreteSceneProps {
