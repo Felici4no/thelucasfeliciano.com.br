@@ -35,9 +35,10 @@ function SceneContent({ scrollDecay }: SceneContentProps) {
   // Desktop: lateral, cinematic, asymmetric — the block accompanies the text
   useEffect(() => {
     if (isMobile) {
-      // More frontal angle, slightly above, closer
-      camera.position.set(3.5, 3.0, 6.5);
-      (camera as THREE.PerspectiveCamera).fov = 30;
+      // Nearly frontal: camera looks straight at the block, slightly above
+      // x=1.5 eliminates the lateral diagonal sightline
+      camera.position.set(1.5, 2.8, 6.0);
+      (camera as THREE.PerspectiveCamera).fov = 28;
     } else {
       // Telephoto, lateral, pulled back
       camera.position.set(5.0, 4.0, 7.8);

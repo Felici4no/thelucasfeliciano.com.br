@@ -106,9 +106,9 @@ export function ConcreteBlock({ isMobile = false }: ConcreteBlockProps) {
       aw.accumulatedRotation += IDLE_VELOCITY * delta;
     }
 
-    // Mobile: more frontal base angle to clearly show the cavities
+    // Mobile: nearly frontal to present the face clearly, just enough angle for depth
     // Desktop: asymmetric lateral angle for editorial depth
-    const baseAngle = isMobile ? -Math.PI / 12 : -Math.PI / 7;
+    const baseAngle = isMobile ? -Math.PI / 24 : -Math.PI / 7;
     const baseRotationY = baseAngle + aw.accumulatedRotation;
 
     // Mouse influence: reduced on mobile (touch doesn't track position the same way)
