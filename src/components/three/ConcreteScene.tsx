@@ -2,7 +2,7 @@
 
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { Environment, ContactShadows } from '@react-three/drei';
-import { Suspense, useRef, useEffect } from 'react';
+import { Suspense, useRef } from 'react';
 import { ConcreteBlock } from './ConcreteBlock';
 import * as THREE from 'three';
 
@@ -10,9 +10,9 @@ import * as THREE from 'three';
  * Light awakening timeline:
  * 
  * 0.0s - 0.4s : Total darkness.
- * 0.4s - 1.0s : Ambient whisper (0 → 0.02).
- * 1.0s - 2.2s : Key light rises (0 → 6.5).
- * 1.4s - 2.8s : Rim light rises (0 → 28).
+ * 0.4s - 1.0s : Ambient whisper.
+ * 1.0s - 2.2s : Key light rises.
+ * 1.4s - 2.8s : Rim light rises.
  * 2.8s+       : Full studio state.
  */
 
@@ -21,7 +21,7 @@ interface SceneContentProps {
 }
 
 function SceneContent({ scrollDecay }: SceneContentProps) {
-  const { viewport, camera } = useThree();
+  const { viewport } = useThree();
   const keyLightRef = useRef<THREE.DirectionalLight>(null);
   const fillLightRef = useRef<THREE.DirectionalLight>(null);
   const rimLightRef = useRef<THREE.SpotLight>(null);
@@ -29,29 +29,27 @@ function SceneContent({ scrollDecay }: SceneContentProps) {
   const startTimeRef = useRef(-1);
   
   const isMobile = viewport.aspect < 1.0;
+  const isTablet = viewport.aspect >= 1.0 && viewport.aspect < 1.4;
 
-  // ── MOBILE vs DESKTOP camera personality ──
-  // Mobile: more frontal, closer, centered — the block IS the content
-  // Desktop: lateral, cinematic, asymmetric — the block accompanies the text
-  useEffect(() => {
-    if (isMobile) {
-      // Nearly frontal: camera looks straight at the block, slightly above
-      // x=1.5 eliminates the lateral diagonal sightline
-      camera.position.set(1.5, 2.8, 6.0);
-      (camera as THREE.PerspectiveCamera).fov = 28;
-    } else {
-      // Telephoto, lateral, pulled back
-      camera.position.set(5.0, 4.0, 7.8);
-      (camera as THREE.PerspectiveCamera).fov = 26;
-    }
-    (camera as THREE.PerspectiveCamera).updateProjectionMatrix();
-  }, [isMobile, camera]);
+  // ── RESPONSIVE SCALE (the ONLY responsive control) ──
+  // The camera stays fixed. Only the block scales to fit the viewport.
+  let blockScale: number;
+  let xOffset: number;
+  let yOffset: number;
 
-  // Mobile: centered, scaled up for dominance
-  // Desktop: offset right for editorial composition
-  const xOffset = isMobile ? 0.0 : 1.4;
-  const yOffset = isMobile ? -0.3 : -0.6;
-  const baseScale = isMobile ? 1.15 : 1.0;
+  if (isMobile) {
+    blockScale = 0.65;   // Smaller to fit portrait safely
+    xOffset = 0.2;       // Barely offset — near center
+    yOffset = -0.8;      // Lower to sit below the text
+  } else if (isTablet) {
+    blockScale = 0.85;
+    xOffset = 0.8;
+    yOffset = -0.6;
+  } else {
+    blockScale = 1.0;    // Full size on desktop
+    xOffset = 1.4;       // Editorial offset right
+    yOffset = -0.6;
+  }
 
   useFrame((state) => {
     const elapsed = state.clock.getElapsedTime();
@@ -92,7 +90,7 @@ function SceneContent({ scrollDecay }: SceneContentProps) {
     }
   });
 
-  const groupScale = baseScale * (1 - scrollDecay * 0.12);
+  const groupScale = blockScale * (1 - scrollDecay * 0.12);
 
   return (
     <>
@@ -158,6 +156,7 @@ export function ConcreteScene({ scrollDecay = 0 }: ConcreteSceneProps) {
       gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 0.8 }}
       dpr={[1, 2]}
       camera={{ position: [5.0, 4.0, 7.8], fov: 26 }}
+      style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
     >
       <color attach="background" args={['#0a0a0a']} />
 

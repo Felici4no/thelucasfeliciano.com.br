@@ -5,19 +5,23 @@ import { ConcreteScene } from '@/components/three/ConcreteScene';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 
 export function HeroSection() {
-  // Transition starts after 30% vh of scroll, completes at 140% vh
   const scrollDecay = useScrollProgress(0.3, 1.4);
 
-  // Text fades out faster than the block (text is secondary during transition)
   const textOpacity = Math.max(0, 1 - scrollDecay * 2.5);
-  // Block fades more slowly, maintaining presence longer
   const blockOpacity = Math.max(0, 1 - scrollDecay * 1.2);
-  // Subtle scale reduction to simulate camera pulling back
-  const blockScale = 1 - scrollDecay * 0.15;
 
   return (
     <div className={styles.heroFixed}>
       <section className={styles.hero}>
+        {/* Canvas fills the entire viewport — no transforms on this container */}
+        <div 
+          className={styles.modelColumn}
+          style={{ opacity: blockOpacity }}
+        >
+          <ConcreteScene scrollDecay={scrollDecay} />
+        </div>
+
+        {/* Text floats above */}
         <div 
           className={styles.textColumn}
           style={{ opacity: textOpacity }}
@@ -35,16 +39,6 @@ export function HeroSection() {
             <span className={styles.tag}>Design</span>
             <span className={styles.tag}>Music</span>
           </div>
-        </div>
-        <div 
-          className={styles.modelColumn}
-          style={{ 
-            opacity: blockOpacity,
-            transform: `scale(${blockScale})`,
-            transformOrigin: 'center center',
-          }}
-        >
-          <ConcreteScene scrollDecay={scrollDecay} />
         </div>
       </section>
     </div>
