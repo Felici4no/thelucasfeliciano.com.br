@@ -2,18 +2,18 @@
 
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { Environment, ContactShadows } from '@react-three/drei';
-import { Suspense, useRef } from 'react';
+import { Suspense, useRef, useEffect } from 'react';
 import { ConcreteBlock } from './ConcreteBlock';
 import * as THREE from 'three';
 
 /**
  * Light awakening timeline:
  * 
- * 0.0s - 0.4s : Total darkness. Nothing visible.
- * 0.4s - 1.0s : Ambient whisper (0 → 0.02). The faintest silhouette.
- * 1.0s - 2.2s : Key light rises (0 → 6.5). The form is revealed.
- * 1.4s - 2.8s : Rim light rises (0 → 28). Edges separate from void.
- * 2.8s+       : Full studio state. Steady.
+ * 0.0s - 0.4s : Total darkness.
+ * 0.4s - 1.0s : Ambient whisper (0 → 0.02).
+ * 1.0s - 2.2s : Key light rises (0 → 6.5).
+ * 1.4s - 2.8s : Rim light rises (0 → 28).
+ * 2.8s+       : Full studio state.
  */
 
 interface SceneContentProps {
@@ -21,7 +21,7 @@ interface SceneContentProps {
 }
 
 function SceneContent({ scrollDecay }: SceneContentProps) {
-  const { viewport } = useThree();
+  const { viewport, camera } = useThree();
   const keyLightRef = useRef<THREE.DirectionalLight>(null);
   const fillLightRef = useRef<THREE.DirectionalLight>(null);
   const rimLightRef = useRef<THREE.SpotLight>(null);
@@ -30,9 +30,27 @@ function SceneContent({ scrollDecay }: SceneContentProps) {
   
   const isMobile = viewport.aspect < 1.0;
 
-  const xOffset = isMobile ? 0.3 : 1.4;
-  const yOffset = isMobile ? -0.2 : -0.6;
-  const baseScale = isMobile ? 0.8 : 1.0;
+  // ── MOBILE vs DESKTOP camera personality ──
+  // Mobile: more frontal, closer, centered — the block IS the content
+  // Desktop: lateral, cinematic, asymmetric — the block accompanies the text
+  useEffect(() => {
+    if (isMobile) {
+      // More frontal angle, slightly above, closer
+      camera.position.set(3.5, 3.0, 6.5);
+      (camera as THREE.PerspectiveCamera).fov = 30;
+    } else {
+      // Telephoto, lateral, pulled back
+      camera.position.set(5.0, 4.0, 7.8);
+      (camera as THREE.PerspectiveCamera).fov = 26;
+    }
+    (camera as THREE.PerspectiveCamera).updateProjectionMatrix();
+  }, [isMobile, camera]);
+
+  // Mobile: centered, scaled up for dominance
+  // Desktop: offset right for editorial composition
+  const xOffset = isMobile ? 0.0 : 1.4;
+  const yOffset = isMobile ? -0.3 : -0.6;
+  const baseScale = isMobile ? 1.15 : 1.0;
 
   useFrame((state) => {
     const elapsed = state.clock.getElapsedTime();
@@ -44,25 +62,19 @@ function SceneContent({ scrollDecay }: SceneContentProps) {
     const t = elapsed - startTimeRef.current;
 
     // --- AWAKENING RAMP ---
-    // Each light has its own emergence curve (custom easing per element)
-    
-    // Ambient: whispers from darkness starting at 0.4s
     const ambientAwaken = t < 0.4 ? 0 : Math.min(1, (t - 0.4) / 1.2);
     const ambientTarget = 0.05 * smoothStep(ambientAwaken);
 
-    // Key light: the dramatic reveal starting at 1.0s
     const keyAwaken = t < 1.0 ? 0 : Math.min(1, (t - 1.0) / 1.2);
     const keyTarget = 6.5 * smoothStep(keyAwaken);
 
-    // Fill light: subtle and delayed
     const fillAwaken = t < 1.2 ? 0 : Math.min(1, (t - 1.2) / 1.0);
     const fillTarget = 0.25 * smoothStep(fillAwaken);
 
-    // Rim light: the final edge separation
     const rimAwaken = t < 1.4 ? 0 : Math.min(1, (t - 1.4) / 1.4);
     const rimTarget = 28.0 * smoothStep(rimAwaken);
 
-    // --- SCROLL DECAY (modulates final values) ---
+    // --- SCROLL DECAY ---
     const life = Math.max(0, 1 - scrollDecay);
 
     if (ambientRef.current) {
@@ -83,7 +95,6 @@ function SceneContent({ scrollDecay }: SceneContentProps) {
 
   return (
     <>
-      {/* All lights start at intensity 0 — awakening drives them up */}
       <ambientLight ref={ambientRef} intensity={0} />
       
       <directionalLight 
@@ -115,7 +126,7 @@ function SceneContent({ scrollDecay }: SceneContentProps) {
       />
 
       <group position={[xOffset, yOffset, 0]} scale={groupScale}>
-        <ConcreteBlock />
+        <ConcreteBlock isMobile={isMobile} />
         
         <ContactShadows 
           position={[0, -0.95, 0]} 
@@ -132,10 +143,6 @@ function SceneContent({ scrollDecay }: SceneContentProps) {
   );
 }
 
-/**
- * Attempt: attempt a smooth step  easing for natural light ramps
- * (avoid linear or mechanical-looking transitions)
- */
 function smoothStep(x: number): number {
   return x * x * (3 - 2 * x);
 }

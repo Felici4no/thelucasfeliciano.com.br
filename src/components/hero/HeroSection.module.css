@@ -8,6 +8,7 @@
   z-index: 1;
 }
 
+/* ──── DESKTOP: Side-by-side editorial layout ──── */
 .hero {
   width: 100%;
   height: 100%;
@@ -32,12 +33,11 @@
  * TEXT REVEAL CHOREOGRAPHY
  * 
  * The text appears AFTER the block has gained presence (~2.5s).
- * Each line enters silently with pure opacity fade (no translateY motion — 
- * motion belongs to the block, text belongs to stillness).
+ * Each line enters silently with pure opacity fade.
  * 
  * Timeline:
  *   2.5s  name
- *   2.8s  headline (the star — I build things.)
+ *   2.8s  headline
  *   3.2s  subheadline
  *   3.6s  tagline
  *   4.0s  tags
@@ -99,11 +99,7 @@
   border-radius: 99px;
 }
 
-/* 
- * The model column enters with the scene — no CSS delay needed.
- * The Three.js lights handle the awakening internally.
- * We just ensure the canvas is visible immediately.
- */
+/* Desktop: block overlays the right half */
 .modelColumn {
   position: absolute;
   top: 0;
@@ -115,34 +111,90 @@
   will-change: transform, opacity;
 }
 
-/* Pure opacity — no motion. Text materializes like it was always there. */
 @keyframes textReveal {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
+/* ──── MOBILE: Vertical stack, block as protagonist ──── */
 @media (max-width: 1024px) {
   .hero {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: flex-start;
-    padding-top: 15vh;
+    padding: 8vh 6vw 0;
+    gap: 0;
   }
   
   .textColumn {
     z-index: 10;
-    margin-bottom: 2rem;
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 0;
+  }
+
+  .headline {
+    font-size: clamp(2.4rem, 10vw, 3.5rem);
+  }
+
+  .subheadline {
+    font-size: 1rem;
+  }
+
+  .tagline {
+    max-width: 100%;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .tags {
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  /*
+   * MOBILE MODEL: The block is the hero.
+   * - Centered horizontally
+   * - Takes 80% of viewport width
+   * - Given generous vertical space (50vh)
+   * - Positioned below text with breathing room
+   */
+  .modelColumn {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 80vw;
+    height: 50vh;
+    margin: 3vh auto 0;
+    z-index: 1;
+  }
+}
+
+/* Small phones: slightly tighter but still prominent */
+@media (max-width: 480px) {
+  .hero {
+    padding: 6vh 5vw 0;
+  }
+
+  .textColumn {
+    gap: 1rem;
+  }
+
+  .headline {
+    font-size: clamp(2rem, 11vw, 3rem);
   }
 
   .modelColumn {
-    position: relative;
-    width: 100vw;
-    height: 55vh;
-    margin-left: -5vw;
-    z-index: 1;
+    width: 90vw;
+    height: 45vh;
+    margin-top: 2vh;
   }
 }
