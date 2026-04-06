@@ -1,11 +1,21 @@
-.hero {
-  position: relative;
+/* Fixed container that keeps the hero pinned to viewport */
+.heroFixed {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
+  z-index: 1;
+}
+
+.hero {
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   padding: 0 5vw;
+  background: var(--bg);
 }
 
 .textColumn {
@@ -14,7 +24,8 @@
   gap: 2rem;
   z-index: 10;
   max-width: 600px;
-  pointer-events: none; /* Let pointer events go to canvas if needed, or just let it overlay */
+  pointer-events: none;
+  will-change: opacity;
 }
 
 .name {
@@ -24,7 +35,6 @@
   color: var(--fg-muted);
   animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   opacity: 0;
-  transform: translateY(20px);
 }
 
 .headline {
@@ -35,7 +45,6 @@
   animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: 0.2s;
   opacity: 0;
-  transform: translateY(20px);
 }
 
 .subheadline {
@@ -45,7 +54,6 @@
   animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: 0.4s;
   opacity: 0;
-  transform: translateY(20px);
 }
 
 .tagline {
@@ -56,7 +64,6 @@
   animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: 0.6s;
   opacity: 0;
-  transform: translateY(20px);
 }
 
 .tags {
@@ -66,7 +73,6 @@
   animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: 0.8s;
   opacity: 0;
-  transform: translateY(20px);
 }
 
 .tag {
@@ -87,12 +93,12 @@
   animation: fadeIn 2s ease forwards;
   animation-delay: 1s;
   opacity: 0;
+  will-change: transform, opacity;
 }
 
 @keyframes fadeUp {
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -107,8 +113,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: auto;
-    min-height: 100vh;
     padding-top: 15vh;
   }
   
@@ -121,8 +125,7 @@
     position: relative;
     width: 100vw;
     height: 55vh;
-    margin-left: -5vw; /* Puxa para a borda ignorando o padding lateral do container */
+    margin-left: -5vw;
     z-index: 1;
-    opacity: 0.8; /* Leve redução de contraste global no mobile para não gritar mais que o texto */
   }
 }

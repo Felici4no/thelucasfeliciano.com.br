@@ -1,13 +1,15 @@
 .orbitSection {
   position: relative;
   width: 100vw;
-  height: 120vh; /* Plenty of negative space around it */
+  min-height: 120vh;
+  /* Solid background so it covers the fixed hero cleanly once fully scrolled past */
   background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  /* Sits above the fixed hero (z-index: 1) */
+  z-index: 2;
 }
 
 .sectionTitle {
@@ -20,14 +22,14 @@
   letter-spacing: 0.05em;
   font-weight: 300;
   font-style: italic;
-  opacity: 0.6;
+  opacity: 0;
 }
 
 .scaleWrapper {
   position: relative;
   width: 100%;
   height: 100%;
-  /* Responsive scaling: defaults to full scale on desktop, scales down preserving aspect on mobile */
+  min-height: 120vh;
   transform: scale(calc(clamp(0.4, 100vw / 1024, 1.0)));
 }
 
@@ -35,9 +37,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  /* Creates the 3D space */
   transform-style: preserve-3d;
-  /* Tilts the entire universe to create the perspective ellipses */
   transform: rotateX(65deg);
 }
 
@@ -71,12 +71,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  /* The incredibly thin, elegant editorial lines */
   border: 1px solid rgba(255, 255, 255, 0.06);
   transform-style: preserve-3d;
 }
 
-/* Animations that spin the container forward and reverse */
 @keyframes spin {
   0% { transform: translate(-50%, -50%) rotateZ(0deg); }
   100% { transform: translate(-50%, -50%) rotateZ(360deg); }
@@ -95,7 +93,6 @@
   height: 0;
   transform-style: preserve-3d;
   animation: spin linear infinite;
-  /* Will be overridden by inline styles */
   animation-duration: 60s; 
 }
 
@@ -115,13 +112,10 @@
 }
 
 .antiTilt {
-  /* Undoes the 65deg tilt applied to the centerAnchor */
   transform: rotateX(-65deg);
-  /* Perfect centering for the word */
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Ensure it doesn't wrap off-center */
   width: max-content;
   margin-left: -50%;
   margin-top: -50%;
@@ -136,18 +130,15 @@
   padding: 0.75rem 1.5rem;
   border-radius: 100px;
   background: transparent;
-  /* Glassy interaction */
   border: 1px solid transparent;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
 }
 
-/* Extremely subtle and elegant hover state */
 .orbitLabel:hover {
   color: var(--fg);
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
-  /* Slight scale for physicality */
   transform: scale(1.05);
 }
