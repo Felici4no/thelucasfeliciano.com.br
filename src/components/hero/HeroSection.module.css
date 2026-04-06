@@ -30,13 +30,14 @@
   will-change: opacity;
 }
 
-/* No choreography — everything present from frame 0 */
-
 .name {
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--fg-muted);
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0s;
 }
 
 .headline {
@@ -44,12 +45,18 @@
   font-size: clamp(3rem, 7vw, 6rem);
   line-height: 1;
   color: var(--fg);
+  opacity: 0;
+  animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.1s;
 }
 
 .subheadline {
   font-size: 1.25rem;
   color: var(--concrete);
   font-weight: 300;
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.25s;
 }
 
 .tagline {
@@ -57,12 +64,29 @@
   color: var(--fg-muted);
   max-width: 80%;
   line-height: 1.6;
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.4s;
 }
 
 .tags {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.55s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .tag {
