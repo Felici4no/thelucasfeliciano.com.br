@@ -30,25 +30,13 @@
   will-change: opacity;
 }
 
-/*
- * TEXT REVEAL CHOREOGRAPHY
- * 
- * Timeline:
- *   2.5s  name
- *   2.8s  headline
- *   3.2s  subheadline
- *   3.6s  tagline
- *   4.0s  tags
- */
+/* No choreography — everything present from frame 0 */
 
 .name {
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--fg-muted);
-  animation: textReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: 2.5s;
-  opacity: 0;
 }
 
 .headline {
@@ -56,18 +44,12 @@
   font-size: clamp(3rem, 7vw, 6rem);
   line-height: 1;
   color: var(--fg);
-  animation: textReveal 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: 2.8s;
-  opacity: 0;
 }
 
 .subheadline {
   font-size: 1.25rem;
   color: var(--concrete);
   font-weight: 300;
-  animation: textReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: 3.2s;
-  opacity: 0;
 }
 
 .tagline {
@@ -75,18 +57,12 @@
   color: var(--fg-muted);
   max-width: 80%;
   line-height: 1.6;
-  animation: textReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: 3.6s;
-  opacity: 0;
 }
 
 .tags {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  animation: textReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: 4.0s;
-  opacity: 0;
 }
 
 .tag {
@@ -112,10 +88,7 @@
   will-change: transform, opacity;
 }
 
-@keyframes textReveal {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+
 
 /* ──── MOBILE ──── */
 @media (max-width: 1024px) {
