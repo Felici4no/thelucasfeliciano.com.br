@@ -25,15 +25,15 @@ function SceneContent({ scrollDecay }: SceneContentProps) {
   let yOffset: number;
 
   if (isMobile) {
-    restScale = 0.65;
+    restScale = 0.6;
     xOffset = 0.2;
     yOffset = -0.8;
   } else if (isTablet) {
-    restScale = 0.85;
+    restScale = 0.78;
     xOffset = 0.8;
     yOffset = -0.6;
   } else {
-    restScale = 1.0;
+    restScale = 0.92;
     xOffset = 1.4;
     yOffset = -0.6;
   }

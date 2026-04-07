@@ -14,7 +14,7 @@ export function HeroSection() {
     <div className={styles.heroFixed}>
       <section className={styles.hero}>
         {/* Canvas fills the entire viewport — no transforms on this container */}
-        <div 
+        <div
           className={styles.modelColumn}
           style={{ opacity: blockOpacity }}
         >
@@ -22,22 +22,24 @@ export function HeroSection() {
         </div>
 
         {/* Text floats above */}
-        <div 
+        <div
           className={styles.textColumn}
           style={{ opacity: textOpacity }}
         >
           <div className={styles.name}>Lucas Feliciano</div>
-          <h1 className={styles.headline}>I build things.</h1>
+          <div className={styles.titleGroup}>
+            <h1 className={styles.headline}>I build things.</h1>
+            <p className={styles.tagline}>
+              Nothing exists before it is built.
+            </p>
+          </div>
           <h2 className={styles.subheadline}>Not a freelancer. Not an agency. A builder.</h2>
-          <p className={styles.tagline}>
-            Systems, products, and culture — constructed from first principles.
-          </p>
           <div className={styles.tags}>
-            <span className={styles.tag}>Web3</span>
-            <span className={styles.tag}>Mobile</span>
-            <span className={styles.tag}>AI</span>
-            <span className={styles.tag}>Design</span>
-            <span className={styles.tag}>Music</span>
+            <span className={styles.tag}>Real Problems</span>
+            <span className={styles.tag}>Systems</span>
+            <span className={styles.tag}>Solutions</span>
+            <span className={styles.tag}>Cities</span>
+            <span className={styles.tag}>Impact</span>
           </div>
         </div>
       </section>
