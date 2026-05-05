@@ -1,11 +1,17 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styles from './Contact.module.css';
 import { Mail } from 'lucide-react';
 
 export function Contact() {
+  const [mounted, setMounted] = useState(false);
   const currentYear = new Date().getFullYear();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <footer className={styles.footer}>
@@ -40,7 +46,7 @@ export function Contact() {
             <span>SAO PAULO / BR</span>
           </div>
           <div className={styles.copyright}>
-            © {currentYear} LUCAS FELICIANO. ALL RIGHTS RESERVED.
+            © {mounted ? currentYear : '2024'} LUCAS FELICIANO. ALL RIGHTS RESERVED.
           </div>
         </div>
       </div>
