@@ -1,0 +1,88 @@
+.footer {
+  padding: 8rem 2rem 4rem;
+  background-color: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 5rem;
+}
+
+.number {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.linksGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 8rem;
+}
+
+@media (min-width: 768px) {
+  .linksGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  background-color: var(--fg);
+  color: var(--bg);
+}
+
+.linkText {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (min-width: 768px) {
+  .bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.coord {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: var(--fg-muted);
+}
+
+.copyright {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--fg-muted);
+}

@@ -1,0 +1,149 @@
+.section {
+  padding: 8rem 2rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.number {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+}
+
+.title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+}
+
+.desc {
+  max-width: 400px;
+  color: var(--fg-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s ease;
+  background-color: var(--bg);
+}
+
+.card:hover {
+  background-color: var(--fg);
+  color: var(--bg);
+}
+
+.card:hover .number,
+.card:hover .desc,
+.card:hover .year,
+.card:hover .status,
+.card:hover .projectType,
+.card:hover .projectDesc,
+.card:hover .stackItem {
+  color: var(--bg);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.cardHeader {
+  margin-bottom: 2rem;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.year, .status {
+  font-size: 0.65rem;
+  font-family: monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.projectName {
+  font-size: 2rem;
+  font-family: var(--font-serif);
+}
+
+.cardBody {
+  flex-grow: 1;
+  margin-bottom: 3rem;
+}
+
+.projectType {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  color: var(--fg-muted);
+}
+
+.projectDesc {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.stackItem {
+  font-size: 0.6rem;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.05em;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}

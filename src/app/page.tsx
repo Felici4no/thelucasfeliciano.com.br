@@ -1,9 +1,25 @@
+import { Header } from "@/components/layout/Header";
 import { HeroSection } from "@/components/hero/HeroSection";
+import { Manifesto } from "@/components/sections/Manifesto";
+import { SelectedWork } from "@/components/sections/SelectedWork";
+import { Method } from "@/components/sections/Method";
+import { Fields } from "@/components/sections/Fields";
+import { About } from "@/components/sections/About";
+import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <main>
-      <HeroSection />
-    </main>
+    <>
+      <Header />
+      <main>
+        <HeroSection />
+        <Manifesto />
+        <SelectedWork />
+        <Method />
+        <Fields />
+        <About />
+        <Contact />
+      </main>
+    </>
   );
 }

@@ -1,0 +1,61 @@
+.section {
+  padding: 8rem 2rem;
+  background-color: var(--fg);
+  color: var(--bg);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 4rem;
+}
+
+.number {
+  font-family: monospace;
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.index {
+  font-family: monospace;
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
+
+.fieldName {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-family: var(--font-serif);
+}
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .line {
+    display: block;
+  }
+}
