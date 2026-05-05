@@ -1,0 +1,128 @@
+.page {
+  background-color: var(--bg);
+  min-height: 100vh;
+  color: var(--fg);
+}
+
+.header {
+  padding: 2rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.backLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--fg-muted);
+}
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--border);
+  opacity: 0.1;
+}
+
+.main {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.metaRail {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.6rem;
+  font-family: monospace;
+  color: var(--fg-muted);
+  letter-spacing: 0.1em;
+}
+
+.value {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.title {
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-family: var(--font-serif);
+  line-height: 0.9;
+}
+
+.description {
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  line-height: 1.3;
+  max-width: 800px;
+}
+
+.diagramSection {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.stackGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.stackNode {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stackNode span {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.placeholderVisual {
+  opacity: 0.2;
+}
+
+.outcome {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 600px;
+}
+
+.visitButton {
+  display: inline-flex;
+  padding: 1rem 2rem;
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+}
+
+.visitButton:hover {
+  background-color: var(--fg);
+  color: var(--bg);
+}

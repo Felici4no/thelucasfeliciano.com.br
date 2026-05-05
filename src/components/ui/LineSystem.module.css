@@ -1,0 +1,96 @@
+.node {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--fg);
+  border-radius: 50%;
+}
+
+.ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--fg);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  margin-bottom: 4rem;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.number {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+}
+
+.title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.topLine {
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--border);
+  opacity: 0.2;
+}
+
+.content {
+  display: flex;
+  gap: 2rem;
+}
+
+.sideLine {
+  width: 1px;
+  background-color: var(--border);
+  opacity: 0.1;
+  margin-left: 5px;
+}
+
+.innerContent {
+  flex-grow: 1;
+}
+
+.bottomBar {
+  position: relative;
+  height: 20px;
+  margin-top: 1rem;
+}
+
+.bottomLine {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--border);
+  opacity: 0.1;
+}
+
+.cornerNode {
+  position: absolute;
+  top: 4px;
+  right: -6px;
+}
