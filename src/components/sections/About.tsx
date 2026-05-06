@@ -20,8 +20,9 @@ export function About() {
             className={styles.text}
           >
             Sou Lucas Feliciano. Estudo Engenharia de Software e Arquitetura, explorando 
-            modelos de conexão e organização para construir sistemas que funcionam na prática. 
-            Trabalho onde problemas complexos exigem pesquisa, estrutura e construção.
+            modelos de conexão, fluxos de dados e sistemas autônomos para construir estruturas 
+            que funcionam na prática. Trabalho onde problemas complexos exigem pesquisa, 
+            estrutura e construção — de interfaces a fluxos de agentes.
           </motion.p>
           <div className={styles.technicalInfo}>
             <div className={styles.infoBlock}>

@@ -6,8 +6,8 @@ import styles from './Signals.module.css';
 
 const signals = [
   { label: "TRAJECTORY", value: "Hackathon Winner" },
-  { label: "LOCATION", value: "São Paulo, Brazil" },
-  { label: "RESEARCH", value: "Systems & Logic" },
+  { label: "RESEARCH", value: "Agentic Workflows" },
+  { label: "STRUCTURES", value: "Decentralized Systems" },
   { label: "INTERSECTION", value: "Software / Architecture / Culture" },
   { label: "IMPACT", value: "Education, Hunger Relief & Logistics" }
 ];

@@ -26,15 +26,15 @@ export function Manifesto() {
             className={styles.content}
           >
             <p className={styles.text}>
-              Transformando questões persistentes em sistemas, interfaces e movimentos. 
+              Transformando questões persistentes em sistemas, interfaces e protocolos de coordenação. 
               O ponto não é apenas a resolução técnica, mas o uso de software, arquitetura e cultura 
-              como ferramentas para estruturas que saem da ideia e entram no uso.
+              como ferramentas para estruturas que saem da ideia e entram no uso — de fluxos de dados 
+              a sistemas descentralizados.
             </p>
             <div className={styles.decorativeLine} />
             <p className={styles.subtext}>
-              I build systems where logic meets physical and digital structures. 
-              From academic logistics to food security infrastructure, the objective remains constant: 
-              turning problems that require research into systems and organization.
+              I build interfaces, data flows and coordination structures — sometimes with agents, 
+              sometimes with wallets, always from problems that need form.
             </p>
           </motion.div>
         </div>

@@ -72,8 +72,8 @@ export function HeroSection() {
             transition={{ delay: 0.6 }}
             className={styles.manifestoMini}
           >
-            <p>Turning persistent questions into systems, interfaces and movements.</p>
-            <p>Software, architecture and culture as tools for structures that can be tested, used and improved.</p>
+            <p>Turning persistent questions into systems, interfaces and coordination protocols.</p>
+            <p>Software, architecture and culture as tools for structures that can be tested, used and improved — from interfaces and data flows to agentic workflows and decentralized systems.</p>
           </motion.div>
         </div>
 

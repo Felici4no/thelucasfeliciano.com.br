@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Lucas Feliciano",
   title: "Lucas Feliciano / Software / Architecture / Systems / Culture",
-  description: "Working where persistent questions become systems. Software, architecture and culture as tools for structures that can be tested, used and improved.",
+  description: "Working where persistent questions become systems. Software, architecture and culture as tools for structures that can be tested, used and improved — from interfaces to agentic workflows.",
   url: "https://thelucasfeliciano.com.br",
   ogImage: "https://thelucasfeliciano.com.br/og-image.png",
   links: {
