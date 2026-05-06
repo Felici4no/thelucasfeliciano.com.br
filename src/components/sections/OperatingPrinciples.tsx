@@ -30,7 +30,7 @@ const principles = [
 export function OperatingPrinciples() {
   return (
     <section className={styles.section}>
-      <SectionFrame title="OPERATING PRINCIPLES" number="05.">
+      <SectionFrame title="OPERATING PRINCIPLES" number="04.">
         <div className={styles.container}>
           <div className={styles.grid}>
             {principles.map((principle, index) => (

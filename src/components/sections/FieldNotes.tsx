@@ -30,7 +30,7 @@ const notes = [
 export function FieldNotes() {
   return (
     <section className={styles.section}>
-      <SectionFrame title="FIELD NOTES" number="04.">
+      <SectionFrame title="FIELD NOTES" number="03.">
         <div className={styles.grid}>
           {notes.map((note, index) => (
             <motion.article
