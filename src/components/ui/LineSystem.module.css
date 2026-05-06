@@ -94,3 +94,30 @@
   top: 4px;
   right: -6px;
 }
+.frame.dark {
+  color: #FFFFFF;
+}
+
+.frame.dark .number {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.frame.dark .title {
+  color: #FFFFFF;
+}
+
+.frame.dark .topLine,
+.frame.dark .sideLine,
+.frame.dark .bottomLine {
+  background-color: #FFFFFF;
+  opacity: 0.15;
+}
+
+.frame.dark .cornerNode .dot {
+  background-color: #FFFFFF;
+}
+
+.frame.dark .cornerNode .ring {
+  border-color: #FFFFFF;
+  opacity: 0.3;
+}

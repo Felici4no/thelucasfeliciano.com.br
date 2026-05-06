@@ -1,5 +1,11 @@
 .section {
-  padding: 4rem 2rem;
+  padding: 8rem 0;
+  background-color: #050505;
+  color: #FFFFFF;
+}
+
+.container {
+  padding: 0 2rem;
   max-width: 1440px;
   margin: 0 auto;
 }
@@ -10,7 +16,7 @@
 
 .desc {
   max-width: 600px;
-  color: var(--fg-muted);
+  color: rgba(255, 255, 255, 0.6);
   font-size: clamp(1.1rem, 1.5vw, 1.5rem);
   line-height: 1.3;
 }
@@ -63,14 +69,14 @@
 .label {
   font-size: 0.6rem;
   font-family: monospace;
-  color: var(--fg-muted);
+  color: rgba(255, 255, 255, 0.4);
   letter-spacing: 0.15em;
 }
 
 .value {
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--fg);
+  color: #FFFFFF;
 }
 
 .mainInfo {
@@ -89,18 +95,19 @@
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   line-height: 0.95;
   font-family: var(--font-serif);
+  color: #FFFFFF;
 }
 
 .projectSubtitle {
   font-size: 1.1rem;
-  color: var(--fg-muted);
+  color: rgba(255, 255, 255, 0.5);
   font-weight: 300;
 }
 
 .projectDesc {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: var(--fg-muted);
+  color: rgba(255, 255, 255, 0.6);
   max-width: 600px;
 }
 
@@ -121,14 +128,13 @@
   font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.1em;
-  color: var(--fg-muted);
-  opacity: 0.6;
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .detailText {
   font-size: 0.95rem;
   line-height: 1.5;
-  color: var(--fg);
+  color: #FFFFFF;
 }
 
 .actions {
@@ -142,26 +148,27 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   padding: 0.8rem 1.5rem;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
   gap: 0.75rem;
   transition: all 0.3s ease;
+  color: #FFFFFF;
 }
 
 .caseStudyLink:hover {
-  background-color: var(--fg);
-  color: var(--bg);
+  background-color: #FFFFFF;
+  color: #000000;
 }
 
 .externalLinks {
   display: flex;
   gap: 1.5rem;
-  color: var(--fg-muted);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .externalLinks a:hover {
-  color: var(--fg);
+  color: #FFFFFF;
 }
 
 .visualAnchor {
@@ -180,14 +187,15 @@
 .stackItem {
   font-size: 0.6rem;
   padding: 0.2rem 0.5rem;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   opacity: 0.4;
+  color: #FFFFFF;
 }
 
 .connectorLine {
   flex-grow: 1;
   width: 1px;
-  background-color: var(--border);
+  background-color: #FFFFFF;
   opacity: 0.1;
   margin-top: 1rem;
 }
@@ -196,6 +204,14 @@
   position: absolute;
   bottom: -6px;
   left: -6px;
+}
+
+.connectorNode :global(.dot) {
+  background-color: #FFFFFF;
+}
+
+.connectorNode :global(.ring) {
+  border-color: #FFFFFF;
 }
 
 .alternate .connectorNode {

@@ -11,9 +11,19 @@ export function LineNode({ className = "" }: { className?: string }) {
   );
 }
 
-export function SectionFrame({ children, title, number }: { children: React.ReactNode, title?: string, number?: string }) {
+export function SectionFrame({ 
+  children, 
+  title, 
+  number,
+  theme = 'light'
+}: { 
+  children: React.ReactNode, 
+  title?: string, 
+  number?: string,
+  theme?: 'light' | 'dark'
+}) {
   return (
-    <div className={styles.frame}>
+    <div className={`${styles.frame} ${styles[theme]}`}>
       <div className={styles.topBar}>
         {number && <span className={styles.number}>{number}</span>}
         {title && <h2 className={styles.title}>{title}</h2>}

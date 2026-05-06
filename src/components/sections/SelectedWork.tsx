@@ -14,97 +14,99 @@ const GithubIcon = () => (
 export function SelectedWork() {
   return (
     <section className={styles.section} id="projects">
-      <SectionFrame title="PROJECT ARCHIVE" number="02.">
-        <div className={styles.header}>
-          <p className={styles.desc}>
-            Selected works from 2023–2024. A collection of systems, products, and movements 
-            organized through technical research and editorial structure.
-          </p>
-        </div>
+      <div className={styles.container}>
+        <SectionFrame title="PROJECT ARCHIVE" number="02." theme="dark">
+          <div className={styles.header}>
+            <p className={styles.desc}>
+              Selected works from 2023–2024. A collection of systems, products, and movements 
+              organized through technical research and editorial structure.
+            </p>
+          </div>
 
-        <div className={styles.archive}>
-          {projects.map((project, index) => (
-            <motion.div 
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className={`${styles.dossier} ${index % 2 === 1 ? styles.alternate : ''}`}
-            >
-              <div className={styles.metaRail}>
-                <div className={styles.metaGroup}>
-                  <span className={styles.label}>YEAR</span>
-                  <span className={styles.value}>{project.year}</span>
-                </div>
-                <div className={styles.metaGroup}>
-                  <span className={styles.label}>ROLE</span>
-                  <span className={styles.value}>{project.role}</span>
-                </div>
-                <div className={styles.metaGroup}>
-                  <span className={styles.label}>STATUS</span>
-                  <span className={styles.value}>{project.status}</span>
-                </div>
-              </div>
-
-              <div className={styles.mainInfo}>
-                <div className={styles.titleArea}>
-                  <h3 className={styles.projectName}>{project.name}</h3>
-                  <p className={styles.projectSubtitle}>{project.subtitle}</p>
-                </div>
-                
-                <p className={styles.projectDesc}>
-                  {project.description}
-                </p>
-
-                <div className={styles.details}>
-                  {project.problem && (
-                    <div className={styles.detailBlock}>
-                      <span className={styles.detailLabel}>PROBLEM</span>
-                      <p className={styles.detailText}>{project.problem}</p>
-                    </div>
-                  )}
-                  {project.whatIBuilt && (
-                    <div className={styles.detailBlock}>
-                      <span className={styles.detailLabel}>IMPLEMENTATION</span>
-                      <p className={styles.detailText}>{project.whatIBuilt}</p>
-                    </div>
-                  )}
-                </div>
-
-                <div className={styles.actions}>
-                  <Link href={project.link} className={styles.caseStudyLink}>
-                    EXPLORE DOSSIER <ArrowUpRight size={14} />
-                  </Link>
-                  
-                  <div className={styles.externalLinks}>
-                    {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" title="View Source">
-                        <GithubIcon />
-                      </a>
-                    )}
-                    {project.demo && (
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer" title="Live Demo">
-                        <ExternalLink size={18} />
-                      </a>
-                    )}
+          <div className={styles.archive}>
+            {projects.map((project, index) => (
+              <motion.div 
+                key={project.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`${styles.dossier} ${index % 2 === 1 ? styles.alternate : ''}`}
+              >
+                <div className={styles.metaRail}>
+                  <div className={styles.metaGroup}>
+                    <span className={styles.label}>YEAR</span>
+                    <span className={styles.value}>{project.year}</span>
+                  </div>
+                  <div className={styles.metaGroup}>
+                    <span className={styles.label}>ROLE</span>
+                    <span className={styles.value}>{project.role}</span>
+                  </div>
+                  <div className={styles.metaGroup}>
+                    <span className={styles.label}>STATUS</span>
+                    <span className={styles.value}>{project.status}</span>
                   </div>
                 </div>
-              </div>
 
-              <div className={styles.visualAnchor}>
-                <div className={styles.stack}>
-                  {project.stack.map(s => (
-                    <span key={s} className={styles.stackItem}>{s}</span>
-                  ))}
+                <div className={styles.mainInfo}>
+                  <div className={styles.titleArea}>
+                    <h3 className={styles.projectName}>{project.name}</h3>
+                    <p className={styles.projectSubtitle}>{project.subtitle}</p>
+                  </div>
+                  
+                  <p className={styles.projectDesc}>
+                    {project.description}
+                  </p>
+
+                  <div className={styles.details}>
+                    {project.problem && (
+                      <div className={styles.detailBlock}>
+                        <span className={styles.detailLabel}>PROBLEM</span>
+                        <p className={styles.detailText}>{project.problem}</p>
+                      </div>
+                    )}
+                    {project.whatIBuilt && (
+                      <div className={styles.detailBlock}>
+                        <span className={styles.detailLabel}>IMPLEMENTATION</span>
+                        <p className={styles.detailText}>{project.whatIBuilt}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className={styles.actions}>
+                    <Link href={project.link} className={styles.caseStudyLink}>
+                      EXPLORE DOSSIER <ArrowUpRight size={14} />
+                    </Link>
+                    
+                    <div className={styles.externalLinks}>
+                      {project.github && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" title="View Source">
+                          <GithubIcon />
+                        </a>
+                      )}
+                      {project.demo && (
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer" title="Live Demo">
+                          <ExternalLink size={18} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <div className={styles.connectorLine} />
-                <LineNode className={styles.connectorNode} />
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </SectionFrame>
+
+                <div className={styles.visualAnchor}>
+                  <div className={styles.stack}>
+                    {project.stack.map(s => (
+                      <span key={s} className={styles.stackItem}>{s}</span>
+                    ))}
+                  </div>
+                  <div className={styles.connectorLine} />
+                  <LineNode className={styles.connectorNode} />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </SectionFrame>
+      </div>
     </section>
   );
 }
