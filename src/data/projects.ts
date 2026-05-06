@@ -18,49 +18,55 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "ecosimulator",
+    name: "EcoSimulator 1.0",
+    subtitle: "Formula E telemetry, dashboard and CO₂ comparison.",
+    type: "Data / Mobility / Sustainability",
+    year: "2024",
+    status: "Awarded / Exhibited",
+    role: "Developer / Data & Interface",
+    description:
+      "A Formula E cockpit experiment designed to capture real-time game data, display telemetry in an interactive dashboard and compare electric mobility with combustion vehicle CO₂ emissions.",
+    problem:
+      "Sustainable mobility can feel abstract when it is explained only through reports, numbers or institutional language. The project explored how real-time interaction could make the difference between electric and combustion vehicles more visible.",
+    whatIBuilt:
+      "A telemetry-based simulation system with a dashboard for reading game data, organizing performance indicators and translating them into environmental comparisons. The project won the challenge proposed by Tech Mahindra and was later exhibited at Latam Mobility 2025.",
+    stack: ["Telemetry", "Data Visualization", "Dashboard", "Mobility", "Sustainability"],
+    link: "/projects/ecosimulator"
+  },
+  {
+    id: "voculos",
+    name: "VOCULOS",
+    subtitle: "Smart glasses prototype translating Libras into voice.",
+    type: "AI / Accessibility / Hackathon",
+    year: "2025",
+    status: "1st Place / Prototype",
+    role: "Builder / Integration",
+    description:
+      "A smart glasses prototype built during the ElevenLabs Worldwide Hackathon São Paulo to transform Libras signs into human voice in real time.",
+    problem:
+      "Communication between deaf and hearing people is often limited by the lack of accessible, immediate translation tools in everyday interactions.",
+    whatIBuilt:
+      "A working prototype assembled in three hours using low-cost glasses, a disassembled webcam and integrations with ElevenLabs, Bolt, Stripe and n8n. The system acted as a conversational agent capable of converting signs into spoken output during the live presentation.",
+    stack: ["ElevenLabs", "Bolt", "n8n", "AI Agents", "Accessibility", "Prototype"],
+    link: "/projects/voculos"
+  },
+  {
     id: "talent-hack",
     name: "Talent Hack",
-    subtitle: "Connecting public school talent with the tech market.",
-    type: "Movement / Hackathon",
-    year: "2024",
-    status: "Active",
-    role: "Lead Systems Architect",
-    description: "A movement designed to identify talent in public schools through structured hackathons and mentorship sessions.",
-    problem: "The gap between public education talent and the technology market, often due to a lack of clear pathways and visibility.",
-    whatIBuilt: "A coordination model for large-scale events, including systems for registration, mentorship follow-up, and partnership organization.",
-    stack: ["Strategy", "Coordination Protocols", "Systems Design", "Product"],
+    subtitle: "A movement to reveal public school talent through technology.",
+    type: "Education / Hackathon / Movement",
+    year: "2026",
+    status: "In development",
+    role: "Founder / Strategy / Product",
+    description:
+      "A project designed to connect students from public technical schools with mentors, companies and real technology challenges.",
+    problem:
+      "Many students in public technical schools have practical talent, but lack visibility, access to networks and structured pathways into the technology market.",
+    whatIBuilt:
+      "A model for distributed hackathons, school partnerships, mentor coordination and project-based talent discovery.",
+    stack: ["Strategy", "Coordination Protocols", "Community", "Systems Design", "Education"],
     link: "/projects/talent-hack",
-    github: "https://github.com/Felici4no/talent-hack",
     demo: "https://talenthack.com.br"
-  },
-  {
-    id: "escola-itinerante",
-    name: "Escola Itinerante",
-    subtitle: "Management system for itinerant education.",
-    type: "Management System",
-    year: "2023",
-    status: "Production",
-    role: "Full Stack Developer",
-    description: "A custom ERP designed to organize logistics, student data, and academic groups for itinerant schools.",
-    problem: "The operational challenge of managing mobile educational units that move across different regions and hosting locations.",
-    whatIBuilt: "A system for logistics and academic management that handles hosting locations, group scheduling, and mobility data.",
-    stack: ["Architecture", "Software Engineering", "Data Flows"],
-    link: "/projects/escola-itinerante",
-    github: "https://github.com/Felici4no/escola-itinerante"
-  },
-  {
-    id: "portfolio",
-    name: "Portfolio v2",
-    subtitle: "An experiment in line-based editorial design.",
-    type: "Identity / Research",
-    year: "2024",
-    status: "Production",
-    role: "Designer & Developer",
-    description: "A research into layout systems, exploring the intersection of technical documentation and visual structures.",
-    problem: "How to communicate the structural and systemic nature of software architecture through an editorial interface.",
-    whatIBuilt: "A modular editorial system built with SVG and Framer Motion, focused on clarity and technical documentation standards.",
-    stack: ["Design", "Visual Systems", "Software"],
-    link: "/projects/portfolio",
-    github: "https://github.com/Felici4no/portfolio-v2"
   }
 ];
