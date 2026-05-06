@@ -17,7 +17,7 @@ export function Contact() {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <span className={styles.number}>07.</span>
+          <span className={styles.number}>08.</span>
           <h2 className={styles.title}>CONTACT / CONNECT</h2>
         </div>
         
