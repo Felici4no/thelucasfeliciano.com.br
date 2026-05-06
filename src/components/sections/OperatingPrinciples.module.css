@@ -1,5 +1,5 @@
 .section {
-  padding: 8rem 0;
+  padding: 10rem 0;
   background-color: #050505;
   color: #FFFFFF;
 }
@@ -50,7 +50,7 @@
   font-family: var(--font-inter);
   font-size: 1.25rem;
   font-weight: 800;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .title {
@@ -67,7 +67,7 @@
   font-family: var(--font-inter);
   font-size: 1.1rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
   max-width: 500px;
 }
 

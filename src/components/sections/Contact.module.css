@@ -1,5 +1,5 @@
 .footer {
-  padding: 8rem 2rem 4rem;
+  padding: 10rem 2rem 4rem;
   background-color: #050505;
   color: #FFFFFF;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -17,7 +17,7 @@
 .number {
   font-family: monospace;
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .title {
