@@ -18,7 +18,7 @@ export function SelectedWork() {
         <div className={styles.header}>
           <p className={styles.desc}>
             Selected works from 2023–2024. A collection of systems, products, and movements 
-            constructed with technical precision and editorial depth.
+            organized through technical research and editorial structure.
           </p>
         </div>
 
@@ -56,6 +56,21 @@ export function SelectedWork() {
                 <p className={styles.projectDesc}>
                   {project.description}
                 </p>
+
+                <div className={styles.details}>
+                  {project.problem && (
+                    <div className={styles.detailBlock}>
+                      <span className={styles.detailLabel}>PROBLEM</span>
+                      <p className={styles.detailText}>{project.problem}</p>
+                    </div>
+                  )}
+                  {project.whatIBuilt && (
+                    <div className={styles.detailBlock}>
+                      <span className={styles.detailLabel}>IMPLEMENTATION</span>
+                      <p className={styles.detailText}>{project.whatIBuilt}</p>
+                    </div>
+                  )}
+                </div>
 
                 <div className={styles.actions}>
                   <Link href={project.link} className={styles.caseStudyLink}>

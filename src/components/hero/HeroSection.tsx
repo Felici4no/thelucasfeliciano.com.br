@@ -63,7 +63,7 @@ export function HeroSection() {
             transition={{ delay: 0.4 }}
             className={styles.subheadline}
           >
-            Everything begins with a line.
+            Working where questions become systems.
           </motion.p>
           
           <motion.div 
@@ -72,8 +72,8 @@ export function HeroSection() {
             transition={{ delay: 0.6 }}
             className={styles.manifestoMini}
           >
-            <p>I build systems for real problems.</p>
-            <p>Not a freelancer. Not an agency. A builder designing software, spaces and movements.</p>
+            <p>Turning persistent questions into systems, interfaces and movements.</p>
+            <p>Software, architecture and culture as tools for structures that can be tested, used and improved.</p>
           </motion.div>
         </div>
 

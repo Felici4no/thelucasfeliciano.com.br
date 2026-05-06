@@ -104,6 +104,33 @@
   max-width: 600px;
 }
 
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 600px;
+}
+
+.detailBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detailLabel {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--fg-muted);
+  opacity: 0.6;
+}
+
+.detailText {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--fg);
+}
+
 .actions {
   display: flex;
   align-items: center;

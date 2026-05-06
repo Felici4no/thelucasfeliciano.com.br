@@ -7,10 +7,13 @@ export interface Project {
   status: string;
   role: string;
   description: string;
+  problem?: string;
+  whatIBuilt?: string;
   stack: string[];
   link: string;
   github?: string;
   demo?: string;
+  image?: string;
 }
 
 export const projects: Project[] = [
@@ -22,25 +25,13 @@ export const projects: Project[] = [
     year: "2024",
     status: "Active",
     role: "Lead Systems Architect",
-    description: "A comprehensive movement designed to reveal hidden talents in public schools. We built a platform that handles large-scale hackathon coordination, mentorship matching, and corporate partnership tracking.",
+    description: "A movement designed to identify talent in public schools through structured hackathons and mentorship sessions.",
+    problem: "The gap between public education talent and the technology market, often due to a lack of clear pathways and visibility.",
+    whatIBuilt: "A coordination model for large-scale events, including systems for registration, mentorship follow-up, and partnership organization.",
     stack: ["Strategy", "Community", "Systems Design", "Product"],
     link: "/projects/talent-hack",
-    github: "https://github.com/lucasfeliciano/talent-hack",
+    github: "https://github.com/Felici4no/talent-hack",
     demo: "https://talenthack.com.br"
-  },
-  {
-    id: "mealfy",
-    name: "Mealfy",
-    subtitle: "A digital infrastructure to combat child hunger.",
-    type: "Social Impact App",
-    year: "2024",
-    status: "In Development",
-    role: "Product Engineer",
-    description: "Mealfy is a transparent ecosystem connecting donors, local entities, and beneficiaries. The system focuses on traceability and real-time impact reporting to ensure resources reach those in need.",
-    stack: ["Product Design", "Software Engineering", "Architecture"],
-    link: "/projects/mealfy",
-    github: "https://github.com/lucasfeliciano/mealfy",
-    demo: "https://mealfy.org"
   },
   {
     id: "escola-itinerante",
@@ -50,22 +41,26 @@ export const projects: Project[] = [
     year: "2023",
     status: "Production",
     role: "Full Stack Developer",
-    description: "A custom-built ERP for the Itinerant School movement. It manages complex logistics, student data, hosting locations, and academic groups across multiple regions in Brazil.",
+    description: "A custom ERP designed to organize logistics, student data, and academic groups for itinerant schools.",
+    problem: "The operational challenge of managing mobile educational units that move across different regions and hosting locations.",
+    whatIBuilt: "A system for logistics and academic management that handles hosting locations, group scheduling, and mobility data.",
     stack: ["Architecture", "Software Engineering", "Systems"],
     link: "/projects/escola-itinerante",
-    github: "https://github.com/lucasfeliciano/escola-itinerante"
+    github: "https://github.com/Felici4no/escola-itinerante"
   },
   {
     id: "portfolio",
     name: "Portfolio v2",
     subtitle: "An experiment in line-based editorial design.",
-    type: "Identity / Experiment",
+    type: "Identity / Research",
     year: "2024",
     status: "Production",
     role: "Designer & Developer",
-    description: "A deep dive into 'living lines' and editorial layout systems. This portfolio explores the intersection of technical documentation and artistic sensitivity through SVG generative lines.",
+    description: "A research into layout systems, exploring the intersection of technical documentation and visual structures.",
+    problem: "How to communicate the structural and systemic nature of software architecture through an editorial interface.",
+    whatIBuilt: "A modular editorial system built with SVG and Framer Motion, focused on clarity and technical documentation standards.",
     stack: ["Design", "Visual Systems", "Software"],
     link: "/projects/portfolio",
-    github: "https://github.com/lucasfeliciano/portfolio-v2"
+    github: "https://github.com/Felici4no/portfolio-v2"
   }
 ];

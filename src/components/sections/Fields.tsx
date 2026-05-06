@@ -5,10 +5,10 @@ import styles from './Fields.module.css';
 
 const fields = [
   "Software Engineering",
+  "Systems Architecture",
+  "AI & Agentic Workflows",
+  "Web3 & Wallet-Based Systems",
   "Product Design",
-  "Architecture & Urban Systems",
-  "AI & Automation",
-  "Culture & Community",
   "Visual Systems"
 ];
 

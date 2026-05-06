@@ -19,8 +19,9 @@ export function About() {
             viewport={{ once: true }}
             className={styles.text}
           >
-            Sou Lucas Feliciano. Estudo Engenharia de Software e Arquitetura, e uso tecnologia 
-            como ferramenta para construir produtos, sistemas e movimentos com impacto real.
+            Sou Lucas Feliciano. Estudo Engenharia de Software e Arquitetura, explorando 
+            modelos de conexão e organização para construir sistemas que funcionam na prática. 
+            Trabalho onde problemas complexos exigem pesquisa, estrutura e construção.
           </motion.p>
           <div className={styles.technicalInfo}>
             <div className={styles.infoBlock}>
@@ -28,12 +29,12 @@ export function About() {
               <span className={styles.value}>São Paulo, Brazil</span>
             </div>
             <div className={styles.infoBlock}>
-              <span className={styles.label}>FOCUS</span>
-              <span className={styles.value}>Systems Architecture</span>
+              <span className={styles.label}>TRACK</span>
+              <span className={styles.value}>Hackathon Winner / Systems Research</span>
             </div>
             <div className={styles.infoBlock}>
-              <span className={styles.label}>STATUS</span>
-              <span className={styles.value}>Building for the future</span>
+              <span className={styles.label}>FOCUS</span>
+              <span className={styles.value}>Software / Architecture / Culture</span>
             </div>
           </div>
         </div>

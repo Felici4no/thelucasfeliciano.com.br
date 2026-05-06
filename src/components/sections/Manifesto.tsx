@@ -26,14 +26,15 @@ export function Manifesto() {
             className={styles.content}
           >
             <p className={styles.text}>
-              Eu construo interfaces, sistemas, narrativas e estruturas. 
-              O ponto não é fazer telas bonitas. É transformar problemas reais em produtos, 
-              movimentos e experiências.
+              Transformando questões persistentes em sistemas, interfaces e movimentos. 
+              O ponto não é apenas a resolução técnica, mas o uso de software, arquitetura e cultura 
+              como ferramentas para estruturas que saem da ideia e entram no uso.
             </p>
             <div className={styles.decorativeLine} />
             <p className={styles.subtext}>
-              I build systems for the real world. From architectural spaces to scalable software, 
-              the objective remains constant: solve the problem with precision and impact.
+              I build systems where logic meets physical and digital structures. 
+              From academic logistics to food security infrastructure, the objective remains constant: 
+              turning problems that require research into systems and organization.
             </p>
           </motion.div>
         </div>

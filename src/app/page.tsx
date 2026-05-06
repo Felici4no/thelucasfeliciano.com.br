@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/Header";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { Manifesto } from "@/components/sections/Manifesto";
+import { Signals } from "@/components/sections/Signals";
 import { SelectedWork } from "@/components/sections/SelectedWork";
 import { Method } from "@/components/sections/Method";
 import { Fields } from "@/components/sections/Fields";
@@ -14,6 +15,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <Manifesto />
+        <Signals />
         <SelectedWork />
         <Method />
         <Fields />

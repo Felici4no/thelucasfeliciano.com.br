@@ -1,13 +1,12 @@
 export const siteConfig = {
   name: "Lucas Feliciano",
-  title: "Lucas Feliciano | Software Architect & Builder",
-  description: "I build systems for real problems. Exploring the intersection of software, architecture, and culture through a technical editorial lens.",
+  title: "Lucas Feliciano / Software / Architecture / Systems / Culture",
+  description: "Working where persistent questions become systems. Software, architecture and culture as tools for structures that can be tested, used and improved.",
   url: "https://thelucasfeliciano.com.br",
   ogImage: "https://thelucasfeliciano.com.br/og-image.png",
   links: {
-    github: "https://github.com/lucasfeliciano",
-    linkedin: "https://linkedin.com/in/lucasfeliciano",
-    instagram: "https://instagram.com/lucasfeliciano",
+    github: "https://github.com/Felici4no",
+    instagram: "https://www.instagram.com/thelucasfeliciano/",
   },
   keywords: [
     "Lucas Feliciano",
@@ -29,7 +28,6 @@ export const jsonLdPerson = {
   "jobTitle": "Software Architect",
   "sameAs": [
     siteConfig.links.github,
-    siteConfig.links.linkedin,
     siteConfig.links.instagram,
   ],
   "description": siteConfig.description,
