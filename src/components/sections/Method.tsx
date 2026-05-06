@@ -16,7 +16,7 @@ export function Method() {
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <span className={styles.number}>03.</span>
+        <span className={styles.number}>04.</span>
         <h2 className={styles.title}>METHOD / HOW I BUILD</h2>
       </div>
 

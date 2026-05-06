@@ -8,7 +8,7 @@ export function About() {
     <section className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <span className={styles.number}>05.</span>
+          <span className={styles.number}>06.</span>
           <h2 className={styles.title}>ABOUT</h2>
         </div>
         

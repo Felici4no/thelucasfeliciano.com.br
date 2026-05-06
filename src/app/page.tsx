@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/hero/HeroSection";
 import { Manifesto } from "@/components/sections/Manifesto";
 import { Signals } from "@/components/sections/Signals";
 import { SelectedWork } from "@/components/sections/SelectedWork";
+import { FieldNotes } from "@/components/sections/FieldNotes";
 import { Method } from "@/components/sections/Method";
 import { Fields } from "@/components/sections/Fields";
 import { About } from "@/components/sections/About";
@@ -17,6 +18,7 @@ export default function Home() {
         <Manifesto />
         <Signals />
         <SelectedWork />
+        <FieldNotes />
         <Method />
         <Fields />
         <About />
