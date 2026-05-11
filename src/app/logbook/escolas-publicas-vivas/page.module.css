@@ -1,0 +1,128 @@
+.main {
+  min-height: 100vh;
+  padding-top: 120px;
+  padding-bottom: 8rem;
+}
+
+.articleContainer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+}
+
+.tags {
+  display: flex;
+  gap: 1rem;
+}
+
+.tag {
+  color: var(--fg);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.langToggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.langBtn {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--fg-muted);
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.langBtn:hover {
+  color: var(--fg);
+}
+
+.langBtn.active {
+  color: var(--fg);
+  border-color: var(--border);
+}
+
+.content {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--fg);
+}
+
+/* Base formatting for the article content */
+.content :global(h1) {
+  font-size: 2.5rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.content :global(h2) {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.content :global(h3) {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.content :global(p) {
+  margin-bottom: 1.5rem;
+}
+
+.content :global(ul), .content :global(ol) {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.content :global(li) {
+  margin-bottom: 0.5rem;
+}
+
+.content :global(hr) {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 3rem 0;
+}
+
+.content :global(a) {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.content :global(a:hover) {
+  text-decoration-color: var(--fg);
+}
+
+.content :global(strong) {
+  font-weight: 600;
+}

@@ -16,12 +16,7 @@
   margin: 0 auto;
 }
 
-.name {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
+
 
 .nav {
   display: flex;
@@ -52,4 +47,30 @@
   height: 1px;
   background-color: var(--border);
   width: 100%;
+}
+
+.name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--fg);
+}
+
+.logbookLink {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.logbookLink:hover {
+  background-color: var(--fg);
+  color: var(--bg);
 }
