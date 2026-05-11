@@ -16,12 +16,12 @@ export default function LogbookPage() {
             A collection of manifestos, notes, and technical essays.
           </p>
         </header>
-        
+
         <div className={styles.entries}>
           <Link href="/logbook/escolas-publicas-vivas" className={styles.entryLink} style={{ textDecoration: 'none' }}>
             <article className={styles.entry}>
               <div className={styles.entryMeta}>
-                <span className={styles.entryDate}>2024-05-10</span>
+                <span className={styles.entryDate}>2026-05-10</span>
                 <span className={styles.entryTag}>MANIFESTO</span>
               </div>
               <h2 className={styles.entryTitle}>Escolas Públicas Vivas</h2>
