@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background-color: var(--background);
+  background-color: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,19 +12,50 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 320px;
+  padding: 0 1rem;
 }
 
-.svg {
-  width: 120px;
-  height: 120px;
-  color: var(--foreground);
+.lineWrapper {
+  width: 100%;
+  height: 1px;
+  overflow: hidden;
 }
 
-.text {
-  font-family: var(--font-inter);
+.horizontalLine {
+  width: 100%;
+  height: 100%;
+  background-color: var(--border);
+  opacity: 0.15;
+  transform-origin: center;
+}
+
+.name {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  text-align: center;
+  user-select: none;
+  /* Emboss effect */
+  text-shadow: 1px 1px 0px #ffffff, -1px -1px 0px rgba(0, 0, 0, 0.07);
+}
+
+.microcopyContainer {
+  height: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.microcopy {
+  font-family: var(--font-sans);
   font-size: 0.65rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
-  color: var(--foreground);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
 }

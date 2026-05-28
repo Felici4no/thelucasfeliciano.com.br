@@ -9,6 +9,9 @@ export function Header() {
         <nav className={styles.nav}>
           <span className={styles.coord}>23.5505° S, 46.6333° W</span>
           <span className={styles.label}>BUILDER / ARCHITECT / DEV</span>
+          <Link href="/portfolio" className={styles.logbookLink}>
+            PORTFOLIO
+          </Link>
           <Link href="/logbook" className={styles.logbookLink}>
             LOGBOOK
           </Link>

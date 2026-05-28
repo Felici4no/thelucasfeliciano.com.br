@@ -63,7 +63,7 @@ export function HeroSection() {
             transition={{ delay: 0.4 }}
             className={styles.subheadline}
           >
-            Working where questions become systems.
+            I build products, systems and digital structures where software, culture and architecture intersect.
           </motion.p>
           
           <motion.div 

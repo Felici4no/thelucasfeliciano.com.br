@@ -16,7 +16,7 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
       const timer = setTimeout(() => {
         setIsLoading(false);
         sessionStorage.setItem('has-visited', 'true');
-      }, 2000);
+      }, 2500);
       return () => clearTimeout(timer);
     }
   }, []);
