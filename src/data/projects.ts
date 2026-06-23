@@ -94,6 +94,16 @@ export const projects: Project[] = [
         caption: "Telemetry dashboard, live demo",
       },
       {
+        src: "/projects/ecosimulator/latam-booth.jpg",
+        alt: "EcoSimulator rig at the Latam Mobility 2025 exhibition booth",
+        caption: "Exhibited at Latam Mobility 2025",
+      },
+      {
+        src: "/projects/ecosimulator/latam-visit.jpg",
+        alt: "Visitors trying the telemetry rig at the Latam Mobility booth",
+        caption: "Visitors at the Latam Mobility booth",
+      },
+      {
         src: "/projects/ecosimulator/award.jpg",
         alt: "Award and recognition moment at the Tech Mahindra challenge",
         caption: "Award · Tech Mahindra challenge",
@@ -119,6 +129,18 @@ export const projects: Project[] = [
     tier: "selected",
     link: "/projects/talent-hack",
     demo: "https://talenthack.com.br",
+    image: {
+      src: "/projects/talent-hack/cover.jpg",
+      alt: "Group photo of the public-school cohort at the pre-TCC project judging",
+      caption: "Public-school cohort · pre-TCC project judging",
+    },
+    gallery: [
+      {
+        src: "/projects/talent-hack/judging.jpg",
+        alt: "Students presenting a tech project during the judging session",
+        caption: "Judging student tech projects",
+      },
+    ],
   },
   {
     id: "dolarizando-se",
@@ -159,6 +181,23 @@ export const projects: Project[] = [
     tier: "selected",
     link: "/projects/gerar-contrato",
     demo: "https://gerarcontrato.com.br/",
+    image: {
+      src: "/projects/gerar-contrato/cover.jpg",
+      alt: "GerarContrato landing page — free contract generator",
+      caption: "GerarContrato · free, legally-valid contracts",
+    },
+    gallery: [
+      {
+        src: "/projects/gerar-contrato/app.jpg",
+        alt: "GerarContrato interface showing contract templates by category",
+        caption: "17+ contract templates by category",
+      },
+      {
+        src: "/projects/gerar-contrato/code.jpg",
+        alt: "GerarContrato source code with client-side routing",
+        caption: "Client-side PDF generation",
+      },
+    ],
   },
   {
     id: "puro-suco-indie",
@@ -179,6 +218,61 @@ export const projects: Project[] = [
     tier: "selected",
     link: "/projects/puro-suco-indie",
     demo: "https://www.purosucoindie.com.br/",
+  },
+  {
+    id: "alimapa",
+    name: "Alimapa",
+    subtitle: "AI agents for municipal management of farmer requisitions.",
+    type: "AI / Agentic / GovTech",
+    year: "2025",
+    status: "Prototype / Hackathon",
+    role: "Builder",
+    description:
+      "A platform for municipal teams to manage farmer requisitions through configurable AI agents, built during the Devs de Impacto Rio hackathon.",
+    problem:
+      "Municipal teams handle farmer requisitions and document validation manually and inconsistently.",
+    whatIBuilt:
+      "A platform with configurable AI agents — negotiators (proposals and chats) and validators (proofs and documents) — over a territorial panel for farmers, requisitions and audit.",
+    result: "Prototype built at the Devs de Impacto Rio hackathon.",
+    stack: ["AI Agents", "Next.js", "GovTech", "Prototype"],
+    tier: "other",
+    link: "/projects/alimapa",
+    image: {
+      src: "/projects/alimapa/cover.jpg",
+      alt: "Alimapa dashboard — AI agents management for municipal farmer requisitions",
+      caption: "Alimapa · AI agents management panel",
+    },
+    gallery: [
+      {
+        src: "/projects/alimapa/event.jpg",
+        alt: "Devs de Impacto Rio hackathon cohort",
+        caption: "Devs de Impacto Rio · hackathon",
+      },
+    ],
+  },
+  {
+    id: "abias",
+    name: "ABIAS",
+    subtitle: "Reputation infrastructure that turns delivery work into credit access.",
+    type: "FinTech / Reputation / Hackathon",
+    year: "2026",
+    status: "3rd place / Prototype",
+    role: "Builder",
+    description:
+      "A prototype reputation infrastructure for app delivery workers, built with a team at the AfroCapital Hack (Feira Preta) to widen credit access for the Black population.",
+    problem:
+      "Around 68% of delivery workers in Brazil are Black or mixed-race; a single bike repair can mean lost income, and credit access stays out of reach.",
+    whatIBuilt:
+      "A prototype turning consistency, ratings and activity recurrence into an ethical reputation score — converting work into credit access for app delivery workers.",
+    result: "3rd place at AfroCapital Hack — Feira Preta.",
+    stack: ["FinTech", "Reputation Scoring", "Prototype"],
+    tier: "other",
+    link: "/projects/abias",
+    image: {
+      src: "/projects/abias/cover.jpg",
+      alt: "ABIAS team at the AfroCapital Hack, Feira Preta",
+      caption: "AfroCapital Hack — Feira Preta, SP 2026",
+    },
   },
   {
     id: "apf-fonoaudiologia",
