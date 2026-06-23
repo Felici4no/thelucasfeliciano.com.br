@@ -1,76 +1,37 @@
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 100%;
   z-index: 100;
-  background-color: var(--bg);
-}
-
-.container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-
-
-.nav {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-
-.coord {
-  font-size: 0.65rem;
-  font-family: monospace;
-  color: var(--fg-muted);
-}
-
-.label {
-  font-size: 0.65rem;
-  letter-spacing: 0.05em;
-  color: var(--fg-muted);
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .label {
-    display: block;
-  }
-}
-
-.line {
-  height: 1px;
-  background-color: var(--border);
-  width: 100%;
+  padding: 14px var(--gutter);
+  background-color: var(--paper);
+  border-bottom: 1px solid var(--hairline);
 }
 
 .name {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  text-decoration: none;
-  color: var(--fg);
+  color: var(--ink);
 }
 
-.logbookLink {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--fg);
-  text-decoration: none;
-  border: 1px solid var(--border);
-  padding: 0.25rem 0.75rem;
-  transition: all 0.2s ease;
+.nav {
+  display: flex;
+  gap: 22px;
 }
 
-.logbookLink:hover {
-  background-color: var(--fg);
-  color: var(--bg);
+.link {
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--ink);
 }

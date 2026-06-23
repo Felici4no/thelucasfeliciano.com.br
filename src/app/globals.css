@@ -1,33 +1,38 @@
 :root {
-  --bg: #F7F5EF;
-  --fg: #0A0A0A;
-  --fg-muted: #666666;
-  --border: #111111;
-  --accent: #D9D2C3;
-  --grid-line: rgba(0, 0, 0, 0.1);
-  
+  /* Editorial black-on-white palette */
+  --paper: #F7F5EF;       /* warm light background */
+  --paper-2: #ECE8DE;     /* subtle surface (image loading bg) */
+  --ink: #0A0A0A;         /* primary text / single black block */
+  --ink-2: #444444;       /* strong secondary */
+  --ink-muted: #6B6B6B;   /* secondary text */
+  --ink-faint: #9A9A9A;   /* metadata */
+  --numeral: #C9C2B3;     /* faded serif index numerals */
+  --hairline: rgba(10, 10, 10, 0.16);
+  --hairline-soft: rgba(10, 10, 10, 0.10);
+
+  /* Legacy aliases kept so untouched pages (/portfolio, /logbook) don't break */
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --fg-muted: var(--ink-muted);
+  --border: var(--ink);
+  --accent: var(--paper-2);
+  --grid-line: var(--hairline-soft);
+
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-serif: var(--font-instrument), "Georgia", serif;
+  --font-mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas, monospace;
 
-  /* Neo-neumorphism Shadows */
-  --shadow-pressed: inset 0 2px 4px rgba(0,0,0,0.06), 
-                    inset 0 1px 0 rgba(0,0,0,0.04);
+  /* Fluid type scale */
+  --t-display: clamp(2.75rem, 9vw, 6rem);
+  --t-title: clamp(2rem, 6vw, 3.25rem);
+  --t-index: clamp(1.4rem, 3.2vw, 2rem);
+  --t-meta: 0.6875rem;
 
-  --shadow-elevated: 0 2px 4px rgba(0,0,0,0.04),
-                     0 4px 8px rgba(0,0,0,0.02),
-                     inset 0 1px 0 rgba(255,255,255,0.6);
-
-  --shadow-plate: 0 1px 2px rgba(0,0,0,0.04),
-                  inset 0 -1px 0 rgba(0,0,0,0.02);
-
-  /* Neo-neumorphism Hover */
-  --shadow-elevated-hover: 0 4px 8px rgba(0,0,0,0.06),
-                           0 8px 16px rgba(0,0,0,0.03),
-                           inset 0 1px 0 rgba(255,255,255,0.8);
-
-  /* Borders */
-  --border-subtle: 1px solid rgba(0,0,0,0.05);
-  --border-medium: 1px solid rgba(0,0,0,0.08);
+  /* Rhythm */
+  --maxw: 1100px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --space-section: clamp(72px, 12vw, 168px);
+  --radius: 0;
 }
 
 * {
@@ -37,8 +42,8 @@
 }
 
 html, body {
-  background-color: var(--bg);
-  color: var(--fg);
+  background-color: var(--paper);
+  color: var(--ink);
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -51,14 +56,14 @@ a {
   text-decoration: none;
 }
 
-ul {
+ul, ol {
   list-style: none;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-serif);
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.05;
 }
 
 button {

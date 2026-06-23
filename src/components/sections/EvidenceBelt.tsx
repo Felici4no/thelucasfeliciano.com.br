@@ -4,47 +4,32 @@ import { motion } from 'framer-motion';
 import styles from './EvidenceBelt.module.css';
 
 const evidences = [
-  {
-    role: "1st Place",
-    event: "ElevenLabs Worldwide Hackathon SP",
-    detail: "AI & voice accessibility"
-  },
-  {
-    role: "Winner",
-    event: "Tech Mahindra Challenge",
-    detail: "Telemetry systems"
-  },
-  {
-    role: "Exhibited",
-    event: "Latam Mobility 2025",
-    detail: "Urban systems"
-  },
-  {
-    role: "Founder",
-    event: "Talent Hack",
-    detail: "Social impact education"
-  }
+  { role: "1st place", event: "ElevenLabs Worldwide Hackathon SP" },
+  { role: "Winner", event: "Tech Mahindra Challenge" },
+  { role: "Exhibited", event: "Latam Mobility 2025" },
+  { role: "Founder", event: "Talent Hack" },
 ];
 
 export function EvidenceBelt() {
   return (
     <section className={styles.section}>
-      <div className={styles.container}>
-        <div className={styles.belt}>
-          {evidences.map((item, index) => (
-            <motion.div 
+      <div className={styles.inner}>
+        <span className={styles.label}>Evidence</span>
+        <div className={styles.grid}>
+          {evidences.map((item, i) => (
+            <motion.div
               key={item.event}
-              initial={{ opacity: 0, y: 15 }}
+              className={styles.item}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={styles.card}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
             >
-              <div className={styles.header}>
-                <span className={styles.roleBadge}>{item.role}</span>
+              <span className={styles.num}>{String(i + 1).padStart(2, '0')}</span>
+              <div className={styles.body}>
+                <span className={styles.role}>{item.role}</span>
+                <span className={styles.event}>{item.event}</span>
               </div>
-              <h3 className={styles.event}>{item.event}</h3>
-              <p className={styles.detail}>{item.detail}</p>
             </motion.div>
           ))}
         </div>

@@ -1,83 +1,61 @@
 .section {
-  width: 100%;
-  padding: 2.5rem 0;
-  background-color: var(--bg);
-  border-top: 1px solid rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  padding: var(--space-section) var(--gutter);
+  border-top: 1px solid var(--hairline);
 }
 
-.container {
-  max-width: 1440px;
+.inner {
+  max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
-.belt {
+.label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 28px;
+}
+
+.grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  column-gap: 56px;
 }
 
 @media (min-width: 640px) {
-  .belt {
-    grid-template-columns: repeat(2, 1fr);
+  .grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (min-width: 1024px) {
-  .belt {
-    grid-template-columns: repeat(4, 1fr);
-  }
+.item {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--hairline-soft);
 }
 
-.card {
-  background-color: var(--bg);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
-  padding: 1.25rem 1.5rem;
+.num {
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  color: var(--numeral);
+}
+
+.body {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  box-shadow: var(--shadow-elevated);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  gap: 2px;
 }
 
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-elevated-hover);
-}
-
-.header {
-  display: flex;
-  align-items: center;
-}
-
-.roleBadge {
-  font-family: var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--fg);
-  padding: 0.25rem 0.5rem;
-  border-radius: 2px;
-  background-color: var(--bg);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: var(--shadow-plate);
+.role {
+  font-size: 0.9375rem;
+  color: var(--ink);
 }
 
 .event {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  color: var(--fg);
-  font-weight: 400;
-  line-height: 1.2;
-}
-
-.detail {
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  color: var(--fg-muted);
-  line-height: 1.4;
-  margin-top: auto;
+  font-size: 0.8125rem;
+  color: var(--ink-muted);
 }

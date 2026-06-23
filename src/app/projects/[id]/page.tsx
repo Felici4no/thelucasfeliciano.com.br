@@ -1,11 +1,22 @@
+import type { Metadata } from 'next';
 import { projects } from '@/data/projects';
-import { ProjectTemplate } from '@/components/templates/ProjectTemplate';
+import { ProjectDossier } from '@/components/project/ProjectDossier';
 import { notFound } from 'next/navigation';
 
 export function generateStaticParams() {
-  return projects.map((project) => ({
-    id: project.id,
-  }));
+  return projects.map((project) => ({ id: project.id }));
+}
+
+export async function generateMetadata(
+  { params }: { params: Promise<{ id: string }> }
+): Promise<Metadata> {
+  const { id } = await params;
+  const project = projects.find((p) => p.id === id);
+  if (!project) return {};
+  return {
+    title: project.name,
+    description: project.subtitle,
+  };
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ id: string }> }) {
@@ -16,5 +27,5 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
     notFound();
   }
 
-  return <ProjectTemplate project={project} />;
+  return <ProjectDossier project={project} />;
 }
