@@ -1,4 +1,5 @@
 import { Header } from "@/components/layout/Header";
+import { SectionNav } from "@/components/layout/SectionNav";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { EvidenceBelt } from "@/components/sections/EvidenceBelt";
 import { SelectedSystems } from "@/components/sections/SelectedSystems";
@@ -9,6 +10,7 @@ export default function Home() {
   return (
     <>
       <Header />
+      <SectionNav />
       <main>
         <HeroSection />
         <EvidenceBelt />

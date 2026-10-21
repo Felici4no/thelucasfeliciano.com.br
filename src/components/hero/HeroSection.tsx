@@ -5,7 +5,7 @@ import styles from './HeroSection.module.css';
 
 export function HeroSection() {
   return (
-    <section className={styles.hero}>
+    <section id="intro" className={styles.hero}>
       <motion.div
         className={styles.inner}
         initial={{ opacity: 0, y: 8 }}

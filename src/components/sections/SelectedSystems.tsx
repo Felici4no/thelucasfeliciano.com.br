@@ -19,7 +19,7 @@ export function SelectedSystems() {
 
       <ol className={styles.list}>
         {selected.map((p, i) => (
-          <li key={p.id}>
+          <li key={p.id} id={`sel-${p.id}`}>
             <Link href={p.link} className={styles.row}>
               <span className={styles.num} data-lead={i === 0 ? 'true' : undefined}>
                 {String(i + 1).padStart(2, '0')}
@@ -37,7 +37,7 @@ export function SelectedSystems() {
         ))}
       </ol>
 
-      <div className={styles.other}>
+      <div id="other-works" className={styles.other}>
         <span className={styles.otherLabel}>Other Works</span>
         <div className={styles.otherList}>
           {other.map((p, i) => (

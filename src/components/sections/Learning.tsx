@@ -40,7 +40,7 @@ function Column({ label, items }: { label: string; items: Entry[] }) {
 
 export function Learning() {
   return (
-    <section className={styles.section}>
+    <section id="learning" className={styles.section}>
       <div className={styles.inner}>
         <Column label="Events" items={events} />
         <Column label="Certifications" items={certifications} />

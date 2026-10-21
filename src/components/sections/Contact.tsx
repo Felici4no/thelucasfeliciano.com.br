@@ -14,7 +14,7 @@ export function Contact() {
   }, []);
 
   return (
-    <footer className={styles.footer}>
+    <footer id="contact" className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.header}>
           <span className={styles.number}>07.</span>

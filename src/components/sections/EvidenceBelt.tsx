@@ -16,7 +16,7 @@ const evidences = [
 
 export function EvidenceBelt() {
   return (
-    <section className={styles.section}>
+    <section id="evidence" className={styles.section}>
       <div className={styles.inner}>
         <span className={styles.label}>Evidence</span>
         <div className={styles.grid}>

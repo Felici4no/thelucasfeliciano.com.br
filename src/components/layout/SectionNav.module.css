@@ -1,0 +1,192 @@
+/* Floating section map. Hidden on small screens; a dot rail on mid screens that
+   expands to labels on hover/focus; full labels on wide screens. */
+.nav {
+  --nav-accent: #ff1493;
+  display: none;
+  position: fixed;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  padding: 12px 6px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  box-shadow: 0 10px 32px rgba(10, 10, 10, 0.06);
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 1180px) {
+  .nav {
+    display: block;
+  }
+}
+
+.list,
+.groupInner {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 7px 10px 7px 8px;
+  border-radius: 10px;
+  font-size: 0.8125rem;
+  line-height: 1.2;
+  color: var(--ink-faint);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.top {
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.child {
+  padding-left: 22px;
+}
+
+.row:hover,
+.row:focus-visible {
+  background: var(--paper-2);
+  color: var(--ink);
+  outline: none;
+}
+
+.row[data-active='true'] {
+  color: var(--ink);
+  background: var(--paper-2);
+}
+
+/* the vertical line runs behind the dots */
+.row::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 11px;
+  width: 1px;
+  background: var(--hairline);
+}
+
+.child::before {
+  left: 25px;
+}
+
+.row[data-first='true']::before {
+  top: 50%;
+}
+
+.row[data-last='true']::before {
+  bottom: 50%;
+}
+
+/* the segment leading into the active row picks up the accent */
+.row[data-active='true']::before {
+  background: linear-gradient(to bottom, var(--hairline), var(--nav-accent) 50%, var(--hairline) 50%);
+}
+
+.dot {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.top .dot {
+  background: var(--ink-2);
+}
+
+.row[data-active='true'] .dot {
+  background: var(--nav-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--nav-accent) 22%, transparent);
+}
+
+.label {
+  max-width: 0;
+  margin-left: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-width 0.28s ease, margin-left 0.28s ease, opacity 0.2s ease;
+}
+
+.nav:hover .label,
+.nav:focus-within .label {
+  max-width: 220px;
+  margin-left: 10px;
+  opacity: 1;
+}
+
+@media (min-width: 1560px) {
+  .label {
+    max-width: 220px;
+    margin-left: 10px;
+    opacity: 1;
+  }
+}
+
+/* groups collapse unless they hold the active row, or are hovered/focused */
+.group {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.group > .groupInner {
+  min-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: visibility 0s linear 0.3s;
+}
+
+.group[data-open='true'],
+.item:hover > .group,
+.item:focus-within > .group {
+  grid-template-rows: 1fr;
+}
+
+.group[data-open='true'] > .groupInner,
+.item:hover > .group > .groupInner,
+.item:focus-within > .group > .groupInner {
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.bend {
+  height: 18px;
+  padding-left: 11px;
+  color: var(--hairline);
+  line-height: 0;
+}
+
+.bend svg {
+  display: block;
+  stroke: var(--hairline);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group,
+  .label,
+  .row,
+  .dot {
+    transition: none;
+  }
+}
