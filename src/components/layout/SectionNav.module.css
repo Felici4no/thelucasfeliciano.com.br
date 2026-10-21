@@ -62,14 +62,12 @@
 
 .row:hover,
 .row:focus-visible {
-  background: var(--paper-2);
   color: var(--ink);
   outline: none;
 }
 
 .row[data-active='true'] {
   color: var(--ink);
-  background: var(--paper-2);
 }
 
 /* the vertical line runs behind the dots */
@@ -117,7 +115,25 @@
 
 .row[data-active='true'] .dot {
   background: var(--nav-accent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--nav-accent) 22%, transparent);
+}
+
+/* soft round blur behind the active dot */
+.dot::after {
+  content: '';
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--nav-accent) 55%, transparent) 0%, transparent 70%);
+  filter: blur(4px);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.row[data-active='true'] .dot::after {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .label {
@@ -182,7 +198,91 @@
   stroke: var(--hairline);
 }
 
+/* mobile: glass bar pinned to the bottom */
+.bar {
+  --nav-accent: #ff1493;
+  position: fixed;
+  left: 50%;
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  z-index: 40;
+  width: min(calc(100vw - 24px), 420px);
+  padding: 6px;
+  background: color-mix(in srgb, var(--paper) 68%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  backdrop-filter: blur(18px) saturate(170%);
+  border: 1px solid color-mix(in srgb, #fff 55%, transparent);
+  border-radius: 999px;
+  box-shadow: 0 8px 28px rgba(10, 10, 10, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+@media (min-width: 1180px) {
+  .bar {
+    display: none;
+  }
+}
+
+@media (max-width: 1179px) {
+  :global(body) {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+.barList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.barItem {
+  flex: 1;
+  min-width: 0;
+}
+
+.barLink {
+  position: relative;
+  display: block;
+  padding: 10px 2px;
+  text-align: center;
+  font-size: 0.6875rem;
+  line-height: 1;
+  color: var(--ink-2);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.barLink > span {
+  position: relative;
+  z-index: 1;
+}
+
+.barLink::before {
+  content: '';
+  position: absolute;
+  inset: -6px calc(50% - 22px);
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--nav-accent) 55%, transparent) 0%, transparent 70%);
+  filter: blur(5px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.barLink[data-active='true'] {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.barLink[data-active='true']::before {
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .barLink::before,
+  .dot::after,
   .group,
   .label,
   .row,

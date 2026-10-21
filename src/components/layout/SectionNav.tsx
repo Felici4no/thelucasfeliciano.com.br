@@ -99,7 +99,33 @@ export function SectionNav() {
     </a>
   );
 
+  const barLabels: Record<string, string> = { selected: 'Systems' };
+
   return (
+    <>
+    <nav className={styles.bar} aria-label="Page sections (mobile)">
+      <ul className={styles.barList}>
+        {items.map((item) => {
+          const on = active === item.id || !!item.children?.some((c) => c.id === active);
+          return (
+            <li key={item.id} className={styles.barItem}>
+              <a
+                href={`#${item.id}`}
+                className={styles.barLink}
+                data-active={on ? 'true' : undefined}
+                aria-current={on ? 'location' : undefined}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToId(item.id);
+                }}
+              >
+                <span>{barLabels[item.id] ?? item.label}</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
     <nav className={styles.nav} aria-label="Page sections">
       <ol className={styles.list}>
         {items.map((item, i) => {
@@ -128,5 +154,6 @@ export function SectionNav() {
         })}
       </ol>
     </nav>
+    </>
   );
 }
