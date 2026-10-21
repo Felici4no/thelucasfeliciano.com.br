@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Lucas Feliciano",
   title: "Lucas Feliciano — Software Engineer / Systems Builder",
   description:
-    "Software engineer and systems builder based in São Paulo. Interfaces, digital products, AI prototypes and coordination systems.",
+    "Software engineer and systems builder based in São Paulo. Interfaces, digital products, AI agents and MCP, Solana prototypes and coordination systems. Hackathon winner.",
   url: "https://thelucasfeliciano.com.br",
   ogImage: "https://thelucasfeliciano.com.br/og-image.png",
   links: {
@@ -16,6 +16,10 @@ export const siteConfig = {
     "Systems Builder",
     "Digital Products",
     "AI Prototypes",
+    "AI Agents",
+    "MCP",
+    "Solana",
+    "Hackathon Winner",
     "Builder",
     "Tech Portfolio",
     "São Paulo Developer",

@@ -5,9 +5,13 @@ import styles from './EvidenceBelt.module.css';
 
 const evidences = [
   { role: "1st place", event: "ElevenLabs Worldwide Hackathon SP" },
+  { role: "1st place", event: "Devs de Impacto Rio" },
+  { role: "3rd place", event: "AfroCapital Hack · Feira Preta" },
   { role: "Winner", event: "Tech Mahindra Challenge" },
   { role: "Exhibited", event: "Latam Mobility 2025" },
+  { role: "Competing", event: "Colosseum Crypto World's Fair" },
   { role: "Founder", event: "Talent Hack" },
+  { role: "Participant", event: "NASA Space Apps · Ideias Raras" },
 ];
 
 export function EvidenceBelt() {

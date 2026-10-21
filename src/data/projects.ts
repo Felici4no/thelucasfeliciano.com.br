@@ -29,6 +29,64 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "upay3food",
+    name: "UPAY3FOOD",
+    subtitle: "Unit pricing for food delivery: the food, the fees and the difference to the cheapest option.",
+    type: "Price Transparency / AI Agents / Solana",
+    year: "2026",
+    status: "Awaiting results / Live",
+    role: "Founder / Builder",
+    description:
+      "A browser extension, a public MCP server and on-chain calculation rules that bring supermarket-style unit prices (per 100 g, per litre, per person) to iFood menus. Built for the Colosseum Crypto World's Fair hackathon. Independent project, not affiliated with iFood.",
+    problem:
+      "Supermarkets in the EU and Australia must show the price per kilo or litre. Delivery apps sell the same food without it, so fees, sizes and coupons make menu prices impossible to compare. In one real São Paulo shop the dearest item costs 94% more per litre than the cheapest.",
+    whatIBuilt:
+      "A Chrome/Edge/Brave extension that reads the page the user already sees and outlines the item worth buying; a public MCP server (9 tools, no login, stores nothing) so any AI agent can do the same math; and a methodology hashed with SHA-256 and anchored on Solana mainnet, with USDC funding shielded through Cloak.",
+    result:
+      "Submitted to the Colosseum Crypto World's Fair 2026; results pending. Open source (MIT), live at upay3food.com. Paying the order's Pix with USDC is intentionally off until a licensed off-ramp partner exists.",
+    stack: ["TypeScript", "Next.js", "Chrome MV3", "MCP", "Solana", "USDC / Cloak"],
+    tier: "selected",
+    link: "/projects/upay3food",
+    demo: "https://upay3food.com",
+    github: "https://github.com/Felici4no/Nape3-UPAY3FOOD",
+    image: {
+      src: "/projects/upay3food/cover.png",
+      alt: "UPAY3FOOD outlining the best item per litre and the recommended item on an iFood menu",
+      caption: "On-page highlight · best item per litre vs. recommended item",
+    },
+    gallery: [
+      {
+        src: "/projects/upay3food/xray.png",
+        alt: "UPAY3FOOD popup showing the three layers of what the user pays and the Price X-ray",
+        caption: "“You pay 3 times” and the Price X-ray",
+      },
+      {
+        src: "/projects/upay3food/size.png",
+        alt: "UPAY3FOOD showing the best size to buy: 34.7% cheaper per 100 ml than the worst",
+        caption: "The size worth buying · 34.7% cheaper per 100 ml",
+      },
+    ],
+  },
+  {
+    id: "agente-na-sua",
+    name: "Agente na Sua",
+    subtitle: "Finding the rare patient in the SUS by recognizing when a health journey stopped looking common.",
+    type: "HealthTech / AI / Hackathon",
+    year: "2026",
+    status: "Hackathon / Prototype",
+    role: "Builder",
+    description:
+      "A proposal built at the Ideias Raras hackathon (Aug 7–8, 2026) with a team of medicine, biology and technology, supported by QuaTiRare, to turn scattered patient-journey information into structured data and flag trajectories worth investigating.",
+    problem:
+      "Rare patients rarely arrive with an extraordinary sign. Repeated exams, different specialties, changing diagnoses and multi-organ manifestations look common one by one; together they tell another story.",
+    whatIBuilt:
+      "A prototype approach that structures dispersed journey information, relates the evidence between events and supports the health professional's decision. It does not replace the professional and does not diagnose by AI.",
+    result: "Built over two days at the Ideias Raras hackathon: Finding the Rare Patient in the SUS.",
+    stack: ["Health Data", "Patient Journey", "AI", "Structured Data", "Prototype"],
+    tier: "selected",
+    link: "/projects/agente-na-sua",
+  },
+  {
     id: "voculos",
     name: "VOCULOS",
     subtitle: "Smart glasses prototype translating Libras into voice.",
@@ -225,15 +283,15 @@ export const projects: Project[] = [
     subtitle: "AI agents for municipal management of farmer requisitions.",
     type: "AI / Agentic / GovTech",
     year: "2025",
-    status: "Prototype / Hackathon",
+    status: "1st place / Prototype",
     role: "Builder",
     description:
-      "A platform for municipal teams to manage farmer requisitions through configurable AI agents, built during the Devs de Impacto Rio hackathon.",
+      "A platform for municipal teams to manage farmer requisitions through configurable AI agents, built in about 36 hours at the Devs de Impacto Rio hackathon, which the team won.",
     problem:
       "Municipal teams handle farmer requisitions and document validation manually and inconsistently.",
     whatIBuilt:
       "A platform with configurable AI agents — negotiators (proposals and chats) and validators (proofs and documents) — over a territorial panel for farmers, requisitions and audit.",
-    result: "Prototype built at the Devs de Impacto Rio hackathon.",
+    result: "Won the Devs de Impacto Rio hackathon (Dec 2025).",
     stack: ["AI Agents", "Next.js", "GovTech", "Prototype"],
     tier: "other",
     link: "/projects/alimapa",
@@ -333,5 +391,24 @@ export const projects: Project[] = [
     tier: "other",
     link: "/projects/snake-battle",
     demo: "https://snakeon.vercel.app/",
+  },
+  {
+    id: "orbita",
+    name: "Projeto Órbita",
+    subtitle: "Exoplanet data analysis and habitability simulation for the NASA Space Apps Challenge.",
+    type: "Data / Science / Hackathon",
+    year: "2025",
+    status: "Hackathon / Prototype",
+    role: "Team Member / Builder",
+    description:
+      "An intelligent platform built by Team Yulu for the NASA Space Apps Challenge to process and analyze large volumes of exoplanet data, turning NASA's Kepler data into fast, scalable and accessible insights.",
+    problem:
+      "The volume of Kepler data is huge, and turning it into insights quickly enough to be useful is hard for most people.",
+    whatIBuilt:
+      "Machine learning, spectroscopic analysis and orbital modeling behind predictive models, 3D visualizations and real-time habitability simulations, with the goal of democratizing access to science.",
+    result: "Built and delivered with Team Yulu at the NASA Space Apps Challenge 2025.",
+    stack: ["Machine Learning", "Data Analysis", "3D Visualization", "Prototype"],
+    tier: "other",
+    link: "/projects/orbita",
   }
 ];
