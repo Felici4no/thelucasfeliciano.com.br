@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { SectionHead } from '@/components/ui/SectionHead';
 import styles from './Contact.module.css';
 import { Mail } from 'lucide-react';
 
@@ -14,13 +15,10 @@ export function Contact() {
   }, []);
 
   return (
-    <footer id="contact" className={styles.footer}>
+    <footer id="contact" className={styles.footer} data-snap>
       <div className={styles.container}>
-        <div className={styles.header}>
-          <span className={styles.number}>07.</span>
-          <h2 className={styles.title}>CONTACT / CONNECT</h2>
-        </div>
-        
+        <SectionHead index="05" title="Let's build" invert aside="Contact / Connect" />
+
         <div className={styles.linksGrid}>
           <a href="https://github.com/Felici4no" className={styles.link} target="_blank" rel="noopener noreferrer">
             <span className={styles.linkText}>GITHUB</span>

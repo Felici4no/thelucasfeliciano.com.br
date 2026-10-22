@@ -1,52 +1,44 @@
 import Link from 'next/link';
 import { projects } from '@/data/projects';
+import { SectionHead } from '@/components/ui/SectionHead';
+import { ProjectCard } from '@/components/project/ProjectCard';
 import styles from './SelectedSystems.module.css';
-
-function firstSegment(value: string) {
-  return value.split('/')[0].trim();
-}
 
 export function SelectedSystems() {
   const selected = projects.filter((p) => p.tier === 'selected');
   const other = projects.filter((p) => p.tier === 'other');
 
   return (
-    <section id="selected" className={styles.section}>
-      <div className={styles.bar}>
-        <h2 className={styles.barTitle}>Selected Systems</h2>
-        <Link href="/portfolio" className={styles.barMeta}>Full index →</Link>
-      </div>
-
-      <ol className={styles.list}>
-        {selected.map((p, i) => (
-          <li key={p.id} id={`sel-${p.id}`}>
-            <Link href={p.link} className={styles.row}>
-              <span className={styles.num} data-lead={i === 0 ? 'true' : undefined}>
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <span className={styles.main}>
-                <span className={styles.name}>{p.name}</span>
-                <span className={styles.subtitle}>{p.subtitle}</span>
-              </span>
-              <span className={styles.meta}>
-                <span className={styles.metaType}>{p.year} / {firstSegment(p.type)}</span>
-                <span className={styles.metaStatus}>{firstSegment(p.status)}</span>
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ol>
-
-      <div id="other-works" className={styles.other}>
-        <span className={styles.otherLabel}>Other Works</span>
-        <div className={styles.otherList}>
-          {other.map((p, i) => (
-            <Link key={p.id} href={p.link} className={styles.otherItem}>
-              {String(selected.length + i + 1).padStart(2, '0')} — {p.name}
-            </Link>
-          ))}
+    <>
+      <section id="selected" className={styles.section} data-snap>
+        <div className={styles.inner}>
+          <SectionHead
+            index="02"
+            title="Selected Systems"
+            aside={<Link href="/portfolio" className={styles.more}>Full index →</Link>}
+          />
+          <ol className={styles.grid}>
+            {selected.map((p, i) => (
+              <li key={p.id}>
+                <ProjectCard project={p} number={String(i + 1).padStart(2, '0')} anchorId={`sel-${p.id}`} />
+              </li>
+            ))}
+          </ol>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section id="other-works" className={styles.section} data-tint="true" data-snap>
+        <div className={styles.inner}>
+          <SectionHead index="03" title="Other Works" aside={`${other.length} more`} />
+          <ol className={styles.grid}>
+            {other.map((p, i) => (
+              <li key={p.id}>
+                <ProjectCard project={p} number={String(selected.length + i + 1).padStart(2, '0')} />
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+    </>
   );
 }

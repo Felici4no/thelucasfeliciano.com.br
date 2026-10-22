@@ -1,3 +1,4 @@
+import { SectionHead } from '@/components/ui/SectionHead';
 import styles from './Learning.module.css';
 
 const events = [
@@ -21,7 +22,7 @@ type Entry = { when: string; title: string; detail: string };
 
 function Column({ label, items }: { label: string; items: Entry[] }) {
   return (
-    <div>
+    <div className={styles.panel}>
       <span className={styles.label}>{label}</span>
       <ul className={styles.list}>
         {items.map((item) => (
@@ -40,10 +41,13 @@ function Column({ label, items }: { label: string; items: Entry[] }) {
 
 export function Learning() {
   return (
-    <section id="learning" className={styles.section}>
+    <section id="learning" className={styles.section} data-snap>
       <div className={styles.inner}>
-        <Column label="Events" items={events} />
-        <Column label="Certifications" items={certifications} />
+        <SectionHead index="04" title="Learning" aside={`${events.length + certifications.length} entries`} />
+        <div className={styles.columns}>
+          <Column label="Events" items={events} />
+          <Column label="Certifications" items={certifications} />
+        </div>
       </div>
     </section>
   );

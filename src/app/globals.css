@@ -33,6 +33,30 @@
   --gutter: clamp(20px, 5vw, 64px);
   --space-section: clamp(72px, 12vw, 168px);
   --radius: 0;
+
+  /* Neo-brutalist system (home) */
+  --pink: #ff1493;
+  --yellow: #ffe94a;
+  --white: #ffffff;
+  --bw: 3px;                              /* border weight */
+  --nb-border: var(--bw) solid var(--ink);
+  --nb-shadow: 6px 6px 0 var(--ink);
+  --nb-shadow-lg: 10px 10px 0 var(--ink);
+  --font-display: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --header-h: 52px;
+  --screen: calc(100svh - var(--header-h));  /* one full viewport under the sticky header */
+  --nav-reserve: 0px;                        /* room kept for the floating section map */
+  --pad-l: calc(var(--gutter) + var(--nav-reserve));
+  --pad-r: var(--gutter);
+}
+
+@media (min-width: 1180px) {
+  :root { --nav-reserve: 64px; }
+}
+
+@media (min-width: 1560px) {
+  :root { --nav-reserve: 188px; }
 }
 
 * {
@@ -49,6 +73,19 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+}
+
+html {
+  scroll-padding-top: var(--header-h);
+}
+
+/* the home opts in to gentle full-screen snapping */
+html:has([data-snap]) {
+  scroll-snap-type: y proximity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; scroll-snap-type: none !important; }
 }
 
 a {
