@@ -16,7 +16,7 @@ export function Infobox() {
 
       <div className={styles.figure}>
         {hasPhoto ? (
-          <Image src={`/${PHOTO}`} alt="Portrait of Lucas Feliciano" width={300} height={375} className={styles.photo} />
+          <Image src={`/${PHOTO}`} alt="Lucas Feliciano at an event" width={300} height={400} className={styles.photo} />
         ) : (
           <span className={styles.initials} aria-hidden="true">LF</span>
         )}
