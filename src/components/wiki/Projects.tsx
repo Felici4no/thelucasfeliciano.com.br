@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { projects, type Project } from '@/data/projects';
 import { firstSegment, firstSentence } from '@/lib/text';
+import { WikiSection } from './WikiSection';
+import { Gallery } from './Gallery';
 import w from './wiki.module.css';
 
 function ProjectTable({ items, start }: { items: Project[]; start: number }) {
@@ -22,7 +24,7 @@ function ProjectTable({ items, start }: { items: Project[]; start: number }) {
             <tr key={p.id} id={`sel-${p.id}`}>
               <td>{start + i}</td>
               <td>
-                <Link href={p.link}>
+                <Link href={p.link} title={p.subtitle}>
                   <b>{p.name}</b>
                 </Link>
                 <span className={w.note}>{p.subtitle}</span>
@@ -44,9 +46,8 @@ export function Projects() {
   const other = projects.filter((p) => p.tier === 'other');
 
   return (
-    <section id="projects">
-      <h2 className={w.h2}>Projects</h2>
-      <p className={w.intro}>
+    <WikiSection id="projects" title="Projects">
+      <p>
         Systems built for hackathons, clients and personal initiatives. Each name links to a project page with the
         problem, what was built and the result. See also the <Link href="/portfolio">full index</Link>.
       </p>
@@ -56,6 +57,9 @@ export function Projects() {
 
       <h3 id="other-works" className={w.h3}>Other works</h3>
       <ProjectTable items={other} start={selected.length + 1} />
-    </section>
+
+      <h3 className={w.h3}>Gallery</h3>
+      <Gallery />
+    </WikiSection>
   );
 }

@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { projects } from '@/data/projects';
+import { WikiSection } from './WikiSection';
 import w from './wiki.module.css';
 
 const rows = [
@@ -12,9 +14,8 @@ const rows = [
 
 export function Recognition() {
   return (
-    <section id="recognition">
-      <h2 className={w.h2}>Recognition</h2>
-      <p className={w.intro}>Results from hackathons and challenges, each linked to the project it came from.</p>
+    <WikiSection id="recognition" title="Recognition">
+      <p>Results from hackathons and challenges, each linked to the project it came from.</p>
       <div className={w.tableWrap}>
         <table className={w.table}>
           <thead>
@@ -30,13 +31,15 @@ export function Recognition() {
                 <th scope="row">{r.result}</th>
                 <td>{r.event}</td>
                 <td>
-                  <Link href={`/projects/${r.id}`}>{r.project}</Link>
+                  <Link href={`/projects/${r.id}`} title={projects.find((p) => p.id === r.id)?.subtitle}>
+                    {r.project}
+                  </Link>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-    </section>
+    </WikiSection>
   );
 }

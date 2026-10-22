@@ -3,8 +3,28 @@
   line-height: 1.35;
 }
 
-.title {
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
   margin-bottom: 8px;
+}
+
+.toggle {
+  padding: 0;
+  font-size: 0.75rem;
+  color: #3366cc;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  text-decoration: underline;
+}
+
+.title {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: 0.875rem;
   font-weight: 700;

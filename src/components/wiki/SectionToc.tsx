@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from 'react';
 import { tocItems } from '@/lib/sections';
 import { scrollToId, useActiveSection } from '@/hooks/useActiveSection';
 import styles from './SectionToc.module.css';
 
 export function SectionToc() {
   const active = useActiveSection();
+  const [hidden, setHidden] = useState(false);
 
   const link = (id: string, label: string, num?: string) => (
     <a
@@ -23,8 +25,19 @@ export function SectionToc() {
 
   return (
     <nav className={styles.toc} aria-label="Contents">
-      <h2 className={styles.title}>Contents</h2>
-      <ol className={styles.list}>
+      <div className={styles.head}>
+        <h2 className={styles.title}>Contents</h2>
+        <button
+          type="button"
+          className={styles.toggle}
+          aria-expanded={!hidden}
+          aria-controls="toc-list"
+          onClick={() => setHidden((v) => !v)}
+        >
+          [{hidden ? 'show' : 'hide'}]
+        </button>
+      </div>
+      <ol id="toc-list" className={styles.list} hidden={hidden}>
         {tocItems.map((item, i) => {
           // "(Top)" is unnumbered, like on Wikipedia; sections count from 1
           const n = i;

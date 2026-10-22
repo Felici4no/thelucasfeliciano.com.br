@@ -1,3 +1,4 @@
+import { WikiSection } from './WikiSection';
 import w from './wiki.module.css';
 
 const steps = [
@@ -9,16 +10,15 @@ const steps = [
 
 export function Method() {
   return (
-    <section id="method">
-      <h2 className={w.h2}>How I work</h2>
-      <p className={w.intro}>Projects follow four steps:</p>
-      <ol className={`${w.numbered} ${w.center}`}>
+    <WikiSection id="method" title="Working method">
+      <p>Projects follow four steps:</p>
+      <ol className={w.numbered}>
         {steps.map((s) => (
           <li key={s.title}>
             <b>{s.title}.</b> {s.text}
           </li>
         ))}
       </ol>
-    </section>
+    </WikiSection>
   );
 }

@@ -14,6 +14,8 @@ Built with Next.js (App Router), React, TypeScript and Framer Motion.
 | Title, notice, infobox and lead | `src/components/wiki/ArticleTop.tsx`, `Infobox.tsx` (portrait goes in `public/about/lucas.jpg`) |
 | Recognition, What I do, How I work, Background | `src/components/wiki/Recognition.tsx`, `Services.tsx`, `Method.tsx`, `Background.tsx` |
 | Projects tables (rows come from `projects.ts`) | `src/components/wiki/Projects.tsx` |
+| Wikipedia-style header with search (filters sections and projects) | `src/components/layout/Header.tsx`, `HeaderSearch.tsx` |
+| Thumbnails, gallery, See also, categories and footer | `src/components/wiki/Thumb.tsx`, `Gallery.tsx`, `SeeAlso.tsx`, `References.tsx` |
 | Contents sidebar, mobile bar and section list | `src/components/wiki/SectionToc.tsx`, `SectionBar.tsx`, `src/lib/sections.ts` |
 | Learning (events and certifications) | `src/data/learning.ts` |
 | Logbook essays | `src/data/logbook/` |

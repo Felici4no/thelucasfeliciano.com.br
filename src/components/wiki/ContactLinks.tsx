@@ -1,7 +1,7 @@
 import { CtaLink } from '@/components/ui/CtaLink';
 import { primaryContactHref, primaryContactLabel, mailtoHref } from '@/lib/contact';
 import { siteConfig } from '@/lib/seo';
-import w from './wiki.module.css';
+import { WikiSection } from './WikiSection';
 
 const channels = [
   siteConfig.links.booking && { id: 'booking', label: 'Book a call', href: siteConfig.links.booking },
@@ -14,16 +14,15 @@ const channels = [
 
 export function ContactLinks() {
   return (
-    <section id="contact">
-      <h2 className={w.h2}>Contact</h2>
-      <p className={w.intro}>
-        {siteConfig.availability ? `${siteConfig.availability}. ` : ''}Tell me what you are trying to do and I will reply
-        with how I would approach it.{' '}
+    <WikiSection id="contact" title="Contact">
+      <p>
+        {siteConfig.availability ? `${siteConfig.availability}. ` : ''}Messages that describe the problem get a reply
+        with a proposed approach.{' '}
         <CtaLink id="contact-primary" href={primaryContactHref}>
           {primaryContactLabel} →
         </CtaLink>
       </p>
-      <ul className={w.plain}>
+      <ul>
         {channels.map((c) => (
           <li key={c.id}>
             <CtaLink id={`contact-${c.id}`} href={c.href} external={c.id !== 'email'}>
@@ -32,6 +31,6 @@ export function ContactLinks() {
           </li>
         ))}
       </ul>
-    </section>
+    </WikiSection>
   );
 }

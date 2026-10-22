@@ -8,7 +8,7 @@ export interface TocItem {
 export const tocItems: TocItem[] = [
   { id: 'lead', label: '(Top)' },
   { id: 'recognition', label: 'Recognition' },
-  { id: 'services', label: 'What I do' },
+  { id: 'services', label: 'Services' },
   {
     id: 'projects',
     label: 'Projects',
@@ -17,9 +17,11 @@ export const tocItems: TocItem[] = [
       { id: 'other-works', label: 'Other works' },
     ],
   },
-  { id: 'method', label: 'How I work' },
+  { id: 'method', label: 'Working method' },
   { id: 'background', label: 'Background' },
   { id: 'contact', label: 'Contact' },
+  { id: 'see-also', label: 'See also' },
+  { id: 'references', label: 'References' },
 ];
 
 /** Compact mobile bar: each slot lights up for any of its section ids. */
@@ -28,7 +30,7 @@ export const barItems = [
   { label: 'Services', target: 'services', ids: ['recognition', 'services'] },
   { label: 'Projects', target: 'projects', ids: ['projects', 'selected', 'other-works'] },
   { label: 'About', target: 'background', ids: ['method', 'background'] },
-  { label: 'Contact', target: 'contact', ids: ['contact'] },
+  { label: 'Contact', target: 'contact', ids: ['contact', 'see-also', 'references'] },
 ];
 
 /** Every scroll target in document order, used to decide which one is active. */

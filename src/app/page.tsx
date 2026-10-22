@@ -10,6 +10,7 @@ import { Projects } from "@/components/wiki/Projects";
 import { Method } from "@/components/wiki/Method";
 import { Background } from "@/components/wiki/Background";
 import { ContactLinks } from "@/components/wiki/ContactLinks";
+import { SeeAlso } from "@/components/wiki/SeeAlso";
 import { References } from "@/components/wiki/References";
 import w from "@/components/wiki/wiki.module.css";
 
@@ -33,6 +34,7 @@ export default function Home() {
               <Method />
               <Background />
               <ContactLinks />
+              <SeeAlso />
               <References />
             </article>
           </div>

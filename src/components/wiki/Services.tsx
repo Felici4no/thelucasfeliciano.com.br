@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import { CtaLink } from '@/components/ui/CtaLink';
 import { mailtoHref } from '@/lib/contact';
+import { WikiSection } from './WikiSection';
+import { Thumb } from './Thumb';
 import w from './wiki.module.css';
 
 const services = [
   {
     id: 'agents',
+    thumb: 'upay3food',
     title: 'AI agents and automation',
     pitch: 'Agents, MCP servers and voice assistants that do real work instead of demoing well.',
     deliverables: ['a working prototype and its repository', 'tool and API integrations', 'hand-off notes'],
@@ -17,6 +20,7 @@ const services = [
   },
   {
     id: 'web',
+    thumb: 'gerar-contrato',
     title: 'Web products and MVPs',
     pitch: 'Next.js and React products taken from idea to live, with payments and real users included.',
     deliverables: ['a deployed product', 'payments and authentication when needed', 'source code you own'],
@@ -28,6 +32,7 @@ const services = [
   },
   {
     id: 'systems',
+    thumb: 'ecosimulator',
     title: 'Data and coordination systems',
     pitch: 'Dashboards, telemetry and coordination protocols that make something complex easy to read and act on.',
     deliverables: ['a dashboard or internal tool', 'the data model and flows', 'documentation'],
@@ -41,15 +46,15 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services">
-      <h2 className={w.h2}>What I do</h2>
-      <p className={w.intro}>Three ways to work together.</p>
+    <WikiSection id="services" title="Services">
+      <p>Three ways to work together.</p>
 
       {services.map((s) => (
         <div key={s.id}>
           <h3 className={w.h3}>{s.title}</h3>
-          <p className={w.intro}>{s.pitch}</p>
-          <ul className={w.plain}>
+          <Thumb project={s.thumb} />
+          <p>{s.pitch}</p>
+          <ul>
             <li>
               <b>Deliverables:</b> {s.deliverables.join(', ')}.
             </li>
@@ -64,7 +69,7 @@ export function Services() {
               .
             </li>
           </ul>
-          <p className={`${w.bracket} ${w.centered}`}>
+          <p className={w.bracket}>
             [
             <CtaLink
               id={`service-${s.id}`}
@@ -79,6 +84,6 @@ export function Services() {
           </p>
         </div>
       ))}
-    </section>
+    </WikiSection>
   );
 }
