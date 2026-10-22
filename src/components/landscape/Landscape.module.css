@@ -1,0 +1,88 @@
+/* One tall track; the stage inside it stays pinned while the layers slide. */
+.track {
+  position: relative;
+  height: 200vh;
+  background: #6c9fdc;
+}
+
+.track[data-static='true'] {
+  height: 100svh;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  background: #6c9fdc;
+  color: #343a41;
+}
+
+.defs {
+  position: absolute;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* ---- text ---- */
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding: clamp(24px, 6vh, 56px) clamp(20px, 5.2vw, 62px) 0;
+}
+
+.legal {
+  position: absolute;
+  z-index: 2;
+  right: clamp(20px, 7vw, 90px);
+  top: 68%;
+  display: flex;
+  gap: clamp(20px, 3vw, 42px);
+}
+
+.copy {
+  position: absolute;
+  z-index: 2;
+  left: clamp(20px, 11.7vw, 140px);
+  bottom: 5%;
+}
+
+@media (max-width: 719px) {
+  .content {
+    flex-direction: column;
+    gap: 28px;
+  }
+  .legal {
+    top: 58%;
+    right: 20px;
+  }
+  .copy {
+    left: 20px;
+    bottom: 4%;
+  }
+}

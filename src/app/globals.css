@@ -71,7 +71,7 @@ html, body {
   background-color: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans);
-  overflow-x: hidden;
+  overflow-x: clip; /* clip, not hidden: hidden would break position: sticky */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;

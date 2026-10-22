@@ -26,7 +26,7 @@ export const tocItems: TocItem[] = [
 
 /** Compact mobile bar: each slot lights up for any of its section ids. */
 export const barItems = [
-  { label: 'Top', target: 'intro', ids: ['intro', 'lead'] },
+  { label: 'Top', target: 'lead', ids: ['lead'] },
   { label: 'Services', target: 'services', ids: ['recognition', 'services'] },
   { label: 'Projects', target: 'projects', ids: ['projects', 'selected', 'other-works'] },
   { label: 'About', target: 'background', ids: ['method', 'background'] },
@@ -34,7 +34,4 @@ export const barItems = [
 ];
 
 /** Every scroll target in document order, used to decide which one is active. */
-export const orderedIds = [
-  'intro',
-  ...tocItems.flatMap((item) => [item.id, ...(item.children?.map((c) => c.id) ?? [])]),
-];
+export const orderedIds = tocItems.flatMap((item) => [item.id, ...(item.children?.map((c) => c.id) ?? [])]);
