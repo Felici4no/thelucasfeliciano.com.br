@@ -51,49 +51,35 @@
   color: #171414;
 }
 
-.nav {
-  display: flex;
-  justify-content: center;
-  gap: clamp(28px, 4vw, 56px);
-  padding: 18px clamp(22px, 3vw, 40px);
+.card {
+  max-width: 460px;
+  padding: 20px clamp(22px, 3vw, 34px);
   text-align: center;
   border: 3px solid #171414;
   border-radius: 3px 8px 4px 9px;
   background: #f6efe0;
   transform: rotate(1deg);
   box-shadow: 5px 5px 0 #f3c63c;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #171414;
 }
 
-.col h2 {
-  margin-bottom: 14px;
+.card p + p {
+  margin-top: 10px;
+}
+
+.cardLink {
   font-family: var(--font-marker), 'Marker Felt', 'Comic Sans MS', cursive;
-  font-size: 1.25rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  line-height: 1.2;
-  color: #2c3138;
-}
-
-.col ul {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.link {
-  display: inline-block;
-  padding: 3px 0;
-  font-size: 0.875rem;
-  color: #343a41;
-  transition: color 0.2s ease;
-}
-
-.link:hover,
-.link:focus-visible {
-  color: #000;
   text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: #e4543a;
   text-underline-offset: 3px;
+}
+
+.cardLink:hover,
+.cardLink:focus-visible {
+  background: #f3c63c;
   outline: none;
 }
 
@@ -111,19 +97,12 @@
 }
 
 .copyText {
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: rgba(246, 239, 224, 0.94);
   font-size: 0.8125rem;
   color: #3d4435;
+  pointer-events: auto;
+  text-align: center;
 }
 
-@media (max-width: 719px) {
-  .nav {
-    gap: 18px;
-    padding: 14px 18px;
-  }
-  .col h2 {
-    font-size: 0.9375rem;
-  }
-  .link {
-    font-size: 0.8125rem;
-  }
-}

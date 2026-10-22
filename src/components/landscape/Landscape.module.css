@@ -190,14 +190,16 @@
   gap: clamp(20px, 3vw, 42px);
 }
 
+/* centred along the bottom: a full-width row, so the scroll transform never fights the centring */
 .copy {
   position: absolute;
   z-index: 2;
-  padding: 6px 12px;
-  border-radius: 6px;
-  background: rgba(253, 251, 246, 0.92);
-  left: clamp(20px, 11.7vw, 168px);
+  left: 0;
+  right: 0;
   bottom: 5%;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
 }
 
 @media (max-width: 719px) {
@@ -233,7 +235,6 @@
     width: 150px;
   }
   .copy {
-    left: 20px;
     bottom: 4%;
   }
   .treeFar {
