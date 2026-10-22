@@ -1,0 +1,44 @@
+.toc {
+  font-size: 0.8125rem;
+  line-height: 1.35;
+}
+
+.title {
+  margin-bottom: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #202122;
+}
+
+.list,
+.sub {
+  list-style: none;
+}
+
+.sub {
+  padding-left: 14px;
+}
+
+.toc a {
+  display: block;
+  padding: 5px 0 5px 10px;
+  border-left: 2px solid transparent;
+  color: #3366cc;
+}
+
+.toc a:hover {
+  text-decoration: underline;
+}
+
+.toc li[data-active='true'] > a {
+  border-left-color: #202122;
+  color: #202122;
+  font-weight: 700;
+}
+
+.num {
+  margin-right: 6px;
+  color: #54595d;
+  font-weight: 400;
+}

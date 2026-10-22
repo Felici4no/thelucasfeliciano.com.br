@@ -1,27 +1,42 @@
 import { Header } from "@/components/layout/Header";
-import { SectionNav } from "@/components/layout/SectionNav";
 import { HeroSection } from "@/components/hero/HeroSection";
-import { EvidenceBelt } from "@/components/sections/EvidenceBelt";
-import { Services } from "@/components/sections/Services";
-import { SelectedSystems } from "@/components/sections/SelectedSystems";
-import { Process } from "@/components/sections/Process";
-import { AboutMe } from "@/components/sections/AboutMe";
-import { Contact } from "@/components/sections/Contact";
+import { SectionToc } from "@/components/wiki/SectionToc";
+import { SectionBar } from "@/components/wiki/SectionBar";
+import { ArticleTop } from "@/components/wiki/ArticleTop";
+import { Recognition } from "@/components/wiki/Recognition";
+import { Services } from "@/components/wiki/Services";
+import { Projects } from "@/components/wiki/Projects";
+import { Method } from "@/components/wiki/Method";
+import { Background } from "@/components/wiki/Background";
+import { ContactLinks } from "@/components/wiki/ContactLinks";
+import { References } from "@/components/wiki/References";
+import w from "@/components/wiki/wiki.module.css";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <SectionNav />
+      <SectionBar />
       <main>
         <HeroSection />
-        <EvidenceBelt />
-        <Services />
-        <SelectedSystems />
-        <Process />
-        <AboutMe />
+        <div className={w.page}>
+          <div className={w.layout}>
+            <aside className={w.side}>
+              <SectionToc />
+            </aside>
+            <article className={w.article}>
+              <ArticleTop />
+              <Recognition />
+              <Services />
+              <Projects />
+              <Method />
+              <Background />
+              <ContactLinks />
+              <References />
+            </article>
+          </div>
+        </div>
       </main>
-      <Contact />
     </>
   );
 }

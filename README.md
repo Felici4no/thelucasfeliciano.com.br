@@ -10,9 +10,11 @@ Built with Next.js (App Router), React, TypeScript and Framer Motion.
 |---|---|
 | Projects (home list, `/portfolio` index and `/projects/[id]` dossiers) | `src/data/projects.ts` |
 | Hero | `src/components/hero/HeroSection.tsx` |
-| Evidence (awards, each linked to its project) | `src/components/sections/EvidenceBelt.tsx` |
-| What I do (services) and How I work (process) | `src/components/sections/Services.tsx`, `Process.tsx` |
-| About me (bio, facts; portrait goes in `public/about/lucas.jpg`) | `src/components/sections/AboutMe.tsx` |
+| Article layout (Wikipedia-style), shared typography | `src/components/wiki/wiki.module.css`, `src/app/page.tsx` |
+| Title, notice, infobox and lead | `src/components/wiki/ArticleTop.tsx`, `Infobox.tsx` (portrait goes in `public/about/lucas.jpg`) |
+| Recognition, What I do, How I work, Background | `src/components/wiki/Recognition.tsx`, `Services.tsx`, `Method.tsx`, `Background.tsx` |
+| Projects tables (rows come from `projects.ts`) | `src/components/wiki/Projects.tsx` |
+| Contents sidebar, mobile bar and section list | `src/components/wiki/SectionToc.tsx`, `SectionBar.tsx`, `src/lib/sections.ts` |
 | Learning (events and certifications) | `src/data/learning.ts` |
 | Logbook essays | `src/data/logbook/` |
 | SEO, links and structured data | `src/lib/seo.ts` |

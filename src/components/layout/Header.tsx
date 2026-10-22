@@ -9,7 +9,7 @@ export function Header() {
       <Link href="/" className={styles.name}>Lucas Feliciano</Link>
       <nav className={styles.nav} aria-label="Main">
         <Link href="/#selected" className={`${styles.link} ${styles.hideSmall}`}>Projects</Link>
-        <Link href="/#about" className={`${styles.link} ${styles.hideSmall}`}>About</Link>
+        <Link href="/#background" className={`${styles.link} ${styles.hideSmall}`}>About</Link>
         <Link href="/logbook" className={`${styles.link} ${styles.hideSmall}`}>Logbook</Link>
         <CtaLink id="header" href={primaryContactHref} className={styles.cta}>
           {primaryContactLabel}

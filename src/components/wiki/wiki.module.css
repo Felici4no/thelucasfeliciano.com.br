@@ -1,0 +1,226 @@
+/* Shared article typography, modelled on a Wikipedia page. */
+.page {
+  --link: #3366cc;
+  --wiki-text: #202122;
+  --wiki-muted: #54595d;
+  --wiki-line: #a2a9b1;
+  --wiki-panel: #f8f9fa;
+  --wiki-head: #eaecf0;
+
+  background: #fff;
+  border-top: 1px solid var(--line);
+  color: var(--wiki-text);
+}
+
+.layout {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  column-gap: clamp(32px, 4vw, 64px);
+}
+
+.side {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .side {
+    display: block;
+    position: sticky;
+    top: calc(var(--header-h) + 24px);
+    align-self: start;
+    max-height: calc(100svh - var(--header-h) - 48px);
+    overflow-y: auto;
+    padding-top: 32px;
+    scrollbar-width: thin;
+  }
+}
+
+@media (max-width: 1023px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.article {
+  max-width: 860px;
+  padding: 36px 0 72px;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+.article a {
+  color: var(--link);
+}
+
+.article a:hover,
+.article a:focus-visible {
+  text-decoration: underline;
+}
+
+.article p {
+  margin: 0.55em 0;
+}
+
+.articleTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #000;
+  border-bottom: 1px solid var(--wiki-line);
+  padding-bottom: 0.15em;
+}
+
+.tagline {
+  margin: 4px 0 14px;
+  font-size: 0.8125rem;
+  color: var(--wiki-muted);
+}
+
+.hatnote {
+  margin: 0.5em 0 0.9em 1.6em;
+  font-style: italic;
+  font-size: 0.875rem;
+}
+
+.h2 {
+  margin: 1.7em 0 0.6em;
+  padding-bottom: 0.15em;
+  border-bottom: 1px solid var(--wiki-line);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 1.85rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #000;
+  scroll-margin-top: calc(var(--header-h) + 12px);
+}
+
+.h3 {
+  margin: 1.3em 0 0.3em;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #000;
+  scroll-margin-top: calc(var(--header-h) + 12px);
+}
+
+.article ul {
+  margin: 0.4em 0 0.6em 1.4em;
+  list-style: disc;
+}
+
+.article ol.numbered {
+  margin: 0.4em 0 0.6em 1.6em;
+  list-style: decimal;
+}
+
+.article li {
+  margin: 0.25em 0;
+}
+
+.muted {
+  color: var(--wiki-muted);
+}
+
+.small {
+  font-size: 0.8125rem;
+}
+
+.bracket {
+  font-size: 0.8125rem;
+}
+
+sup.ref {
+  font-size: 0.75em;
+  line-height: 0;
+}
+
+/* notice box, like Wikipedia's message boxes */
+.ambox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 16px;
+  padding: 10px 14px;
+  border: 1px solid var(--wiki-line);
+  border-left: 8px solid var(--link);
+  background: #fbfbfb;
+  font-size: 0.875rem;
+}
+
+.amboxIcon {
+  flex: none;
+  color: var(--link);
+}
+
+/* tables */
+.tableWrap {
+  margin: 0.8em 0 1.2em;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--wiki-line);
+  background: var(--wiki-panel);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.table th,
+.table td {
+  padding: 6px 10px;
+  border: 1px solid var(--wiki-line);
+  vertical-align: top;
+  text-align: left;
+}
+
+.table th {
+  background: var(--wiki-head);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.table td {
+  background: #fff;
+}
+
+.table td.nowrap {
+  white-space: nowrap;
+}
+
+.note {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.8125rem;
+  color: var(--wiki-muted);
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0 32px;
+}
+
+@media (min-width: 700px) {
+  .cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.refs {
+  font-size: 0.8125rem;
+}
+
+.pageFoot {
+  margin-top: 2.5em;
+  padding-top: 1em;
+  border-top: 1px solid var(--wiki-line);
+  font-size: 0.75rem;
+  color: var(--wiki-muted);
+}
