@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { events, certifications, type LearningEntry } from '@/data/learning';
 import { WikiSection } from './WikiSection';
 import { Thumb } from './Thumb';
@@ -24,6 +25,10 @@ export function Background() {
         Feliciano works in small teams, usually under tight deadlines. Four hackathon podiums (two of them first
         places) shaped an approach to product work: validate the idea quickly with a prototype, then keep improving the
         ones that prove useful until they are live. Several of those projects are now in production.
+      </p>
+      <p>
+        Professionally, Feliciano worked as a software engineer on the platform of{' '}
+        <Link href="/projects/bvm12">BVM12</Link>, using Java, Docker, SQL, JavaScript and TypeScript.
       </p>
 
       <h3 className={w.h3}>Training and events</h3>

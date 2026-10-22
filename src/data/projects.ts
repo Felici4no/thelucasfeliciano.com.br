@@ -221,6 +221,21 @@ export const projects: Project[] = [
     demo: "https://www.dolarizandose.com.br/",
   },
   {
+    id: "bvm12",
+    name: "BVM12",
+    subtitle: "Platform of a Rio de Janeiro fintech startup that connects impact companies and investors.",
+    type: "FinTech / Platform / Impact Investing",
+    year: "—",
+    status: "Professional work",
+    role: "Software Engineer",
+    description:
+      "Software engineering work on the platform of BVM12, a financial services startup based in Rio de Janeiro that links socially impactful companies with purpose-driven investors.",
+    result: "Worked as a software engineer on the company platform.",
+    stack: ["Java", "Docker", "SQL", "JavaScript", "TypeScript"],
+    tier: "selected",
+    link: "/projects/bvm12",
+  },
+  {
     id: "gerar-contrato",
     name: "GerarContrato",
     subtitle: "Free, legally-valid contract generator for MEIs and freelancers.",
