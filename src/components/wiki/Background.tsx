@@ -17,6 +17,8 @@ function Entries({ items }: { items: LearningEntry[] }) {
   );
 }
 
+const issuers = Array.from(new Set(certifications.flatMap((c) => c.detail.split(' and '))));
+
 export function Background() {
   return (
     <WikiSection id="background" title="Background">
@@ -31,20 +33,33 @@ export function Background() {
         <Link href="/projects/bvm12">BVM12</Link>, using Java, Docker, SQL, JavaScript and TypeScript.
       </p>
 
-      <h3 className={w.h3}>Training and events</h3>
-      <div className={w.cols}>
-        <div>
-          <p className={w.small}>
-            <b>Events</b>
-          </p>
-          <Entries items={events} />
-        </div>
-        <div>
-          <p className={w.small}>
-            <b>Courses and certifications</b>
-          </p>
-          <Entries items={certifications} />
-        </div>
+      <h3 className={w.h3}>Events</h3>
+      <Entries items={events} />
+
+      <h3 className={w.h3}>Courses and certifications</h3>
+      <p>
+        {certifications.length} certificates issued by {issuers.slice(0, -1).join(', ')} and{' '}
+        {issuers[issuers.length - 1]}, newest first.
+      </p>
+      <div className={w.tableWrap}>
+        <table className={w.table}>
+          <thead>
+            <tr>
+              <th scope="col">Issued</th>
+              <th scope="col">Course</th>
+              <th scope="col">Issuer</th>
+            </tr>
+          </thead>
+          <tbody>
+            {certifications.map((c) => (
+              <tr key={`${c.when}-${c.title}`}>
+                <td>{c.when}</td>
+                <td>{c.title}</td>
+                <td>{c.detail}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </WikiSection>
   );
