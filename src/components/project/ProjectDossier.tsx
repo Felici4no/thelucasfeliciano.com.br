@@ -21,7 +21,7 @@ export function ProjectDossier({ project }: { project: Project }) {
     "name": project.name,
     "description": project.description,
     "creator": { "@type": "Person", "name": "Lucas Feliciano" },
-    "datePublished": project.year,
+    ...(project.year ? { "datePublished": project.year } : {}),
   };
 
   return (
@@ -45,7 +45,9 @@ export function ProjectDossier({ project }: { project: Project }) {
         <h1 className={styles.title}>{project.name}</h1>
         <p className={styles.subtitle}>{project.subtitle}</p>
         <div className={styles.metaRow}>
-          <span><span className={styles.metaKey}>Year</span> <span className={styles.metaVal}>{project.year}</span></span>
+          {project.year && (
+            <span><span className={styles.metaKey}>Year</span> <span className={styles.metaVal}>{project.year}</span></span>
+          )}
           <span><span className={styles.metaKey}>Role</span> <span className={styles.metaVal}>{project.role}</span></span>
           <span><span className={styles.metaKey}>Status</span> <span className={styles.metaVal}>{project.status}</span></span>
         </div>

@@ -9,7 +9,8 @@ export interface Project {
   name: string;
   subtitle: string;
   type: string;
-  year: string;
+  /** Left out when the period is not known yet. */
+  year?: string;
   status: string;
   role: string;
   description: string;
@@ -225,7 +226,6 @@ export const projects: Project[] = [
     name: "BVM12",
     subtitle: "Market data, news and indices of the green economy, from Manaus.",
     type: "Market Data / Media / Green Economy",
-    year: "—",
     status: "Professional work / Live",
     role: "Software Engineer",
     description:

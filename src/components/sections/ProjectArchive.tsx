@@ -42,7 +42,7 @@ export function ProjectArchive() {
                       <span className={styles.projectName}>{project.name}</span>
                       <span className={styles.projectSubtitle}>{project.subtitle}</span>
                     </td>
-                    <td className={styles.tdYear}>{project.year}</td>
+                    <td className={styles.tdYear}>{project.year ?? ""}</td>
                     <td className={styles.tdRole}>{project.role}</td>
                     <td className={styles.tdStatus}>
                       <span className={styles.statusBadge}>{project.status}</span>

@@ -12,7 +12,7 @@ const entries: SearchEntry[] = [
     ...(t.children ?? []).map((c) => ({ label: c.label, hint: 'Section', id: c.id })),
   ]),
   { label: 'Contact email', hint: 'Section', id: 'contact' },
-  ...projects.map((p) => ({ label: p.name, hint: `Project · ${p.year}`, id: `sel-${p.id}` })),
+  ...projects.map((p) => ({ label: p.name, hint: p.year ? `Project · ${p.year}` : 'Project', id: `sel-${p.id}` })),
 ];
 
 export function Header() {

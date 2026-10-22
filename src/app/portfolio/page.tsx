@@ -44,7 +44,7 @@ export default function PortfolioPage() {
                 <span className={styles.index}>
                   [{(index + 1).toString().padStart(2, '0')}]
                 </span>
-                <span className={styles.year}>{project.year}</span>
+                <span className={styles.year}>{project.year ?? ""}</span>
                 <span className={styles.status}>{project.status}</span>
               </div>
 

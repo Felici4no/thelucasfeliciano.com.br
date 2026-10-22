@@ -25,7 +25,7 @@ export function ProjectTemplate({ project }: { project: Project }) {
       "@type": "Person",
       "name": "Lucas Feliciano"
     },
-    "datePublished": project.year,
+    ...(project.year ? { "datePublished": project.year } : {}),
   };
 
   return (
@@ -46,10 +46,12 @@ export function ProjectTemplate({ project }: { project: Project }) {
         <SectionFrame title="PROJECT OVERVIEW" number="01.">
           <div className={styles.hero}>
             <div className={styles.metaRail}>
-              <div className={styles.metaItem}>
-                <span className={styles.label}>YEAR</span>
-                <span className={styles.value}>{project.year}</span>
-              </div>
+              {project.year && (
+                <div className={styles.metaItem}>
+                  <span className={styles.label}>YEAR</span>
+                  <span className={styles.value}>{project.year}</span>
+                </div>
+              )}
               <div className={styles.metaItem}>
                 <span className={styles.label}>ROLE</span>
                 <span className={styles.value}>{project.role}</span>
