@@ -18,7 +18,7 @@ export function Background() {
   return (
     <section id="background">
       <h2 className={w.h2}>Background</h2>
-      <p>
+      <p className={w.intro}>
         Lucas works in small teams, usually under tight deadlines. Four hackathon podiums (two of them first places)
         shaped how he approaches product work: validate the idea quickly with a prototype, then keep improving the
         ones that prove useful until they are live. Several of those projects are now in production.

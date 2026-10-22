@@ -46,7 +46,7 @@ export function Projects() {
   return (
     <section id="projects">
       <h2 className={w.h2}>Projects</h2>
-      <p>
+      <p className={w.intro}>
         Systems built for hackathons, clients and personal initiatives. Each name links to a project page with the
         problem, what was built and the result. See also the <Link href="/portfolio">full index</Link>.
       </p>

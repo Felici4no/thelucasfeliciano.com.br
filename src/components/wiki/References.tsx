@@ -5,7 +5,7 @@ export function References() {
   return (
     <section id="references" className={w.refs}>
       <h2 className={w.h2}>References</h2>
-      <ol className={w.numbered}>
+      <ol className={`${w.numbered} ${w.center}`}>
         <li>
           <a href={siteConfig.dolarizandoInstagram} target="_blank" rel="noopener noreferrer">
             Dolarizando-se on Instagram
@@ -13,7 +13,7 @@ export function References() {
           . Audience of 15,000 followers, 100% organic.
         </li>
       </ol>
-      <p className={w.muted}>Other claims are documented on the linked project pages.</p>
+      <p className={`${w.muted} ${w.centered}`}>Other claims are documented on the linked project pages.</p>
       <p className={w.pageFoot}>
         © {new Date().getFullYear()} Lucas Feliciano · São Paulo, Brazil
       </p>

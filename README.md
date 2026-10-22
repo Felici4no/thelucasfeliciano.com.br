@@ -9,7 +9,7 @@ Built with Next.js (App Router), React, TypeScript and Framer Motion.
 | What | File |
 |---|---|
 | Projects (home list, `/portfolio` index and `/projects/[id]` dossiers) | `src/data/projects.ts` |
-| Hero | `src/components/hero/HeroSection.tsx` |
+| Hero (optional Renaissance cover with parallax: drop `public/hero/cover.jpg` and edit the credit in `src/lib/hero.ts`) | `src/components/hero/HeroSection.tsx`, `HeroCover.tsx` |
 | Article layout (Wikipedia-style), shared typography | `src/components/wiki/wiki.module.css`, `src/app/page.tsx` |
 | Title, notice, infobox and lead | `src/components/wiki/ArticleTop.tsx`, `Infobox.tsx` (portrait goes in `public/about/lucas.jpg`) |
 | Recognition, What I do, How I work, Background | `src/components/wiki/Recognition.tsx`, `Services.tsx`, `Method.tsx`, `Background.tsx` |

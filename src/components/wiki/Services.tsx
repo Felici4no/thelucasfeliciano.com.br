@@ -43,13 +43,13 @@ export function Services() {
   return (
     <section id="services">
       <h2 className={w.h2}>What I do</h2>
-      <p>Three ways to work together.</p>
+      <p className={w.intro}>Three ways to work together.</p>
 
       {services.map((s) => (
         <div key={s.id}>
           <h3 className={w.h3}>{s.title}</h3>
-          <p>{s.pitch}</p>
-          <ul>
+          <p className={w.intro}>{s.pitch}</p>
+          <ul className={w.plain}>
             <li>
               <b>Deliverables:</b> {s.deliverables.join(', ')}.
             </li>
@@ -64,7 +64,7 @@ export function Services() {
               .
             </li>
           </ul>
-          <p className={w.bracket}>
+          <p className={`${w.bracket} ${w.centered}`}>
             [
             <CtaLink
               id={`service-${s.id}`}

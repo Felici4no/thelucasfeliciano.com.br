@@ -14,7 +14,7 @@ export function Recognition() {
   return (
     <section id="recognition">
       <h2 className={w.h2}>Recognition</h2>
-      <p>Results from hackathons and challenges, each linked to the project it came from.</p>
+      <p className={w.intro}>Results from hackathons and challenges, each linked to the project it came from.</p>
       <div className={w.tableWrap}>
         <table className={w.table}>
           <thead>

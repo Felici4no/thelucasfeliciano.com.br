@@ -11,8 +11,8 @@ export function Method() {
   return (
     <section id="method">
       <h2 className={w.h2}>How I work</h2>
-      <p>Projects follow four steps:</p>
-      <ol className={w.numbered}>
+      <p className={w.intro}>Projects follow four steps:</p>
+      <ol className={`${w.numbered} ${w.center}`}>
         {steps.map((s) => (
           <li key={s.title}>
             <b>{s.title}.</b> {s.text}

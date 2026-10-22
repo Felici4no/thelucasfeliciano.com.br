@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/Header";
 import { HeroSection } from "@/components/hero/HeroSection";
+import { HeroCover } from "@/components/hero/HeroCover";
 import { SectionToc } from "@/components/wiki/SectionToc";
 import { SectionBar } from "@/components/wiki/SectionBar";
 import { ArticleTop } from "@/components/wiki/ArticleTop";
@@ -18,7 +19,7 @@ export default function Home() {
       <Header />
       <SectionBar />
       <main>
-        <HeroSection />
+        <HeroSection cover={<HeroCover />} />
         <div className={w.page}>
           <div className={w.layout}>
             <aside className={w.side}>

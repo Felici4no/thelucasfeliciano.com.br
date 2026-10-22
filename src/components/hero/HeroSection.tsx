@@ -1,6 +1,8 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import type { ReactNode } from 'react';
+import { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { CtaLink } from '@/components/ui/CtaLink';
 import { primaryContactHref, primaryContactLabel } from '@/lib/contact';
 import { siteConfig } from '@/lib/seo';
@@ -8,9 +10,18 @@ import styles from './HeroSection.module.css';
 
 const ticker = ['AI agents', 'Web products', 'MCP servers', 'Systems design', 'Prototypes'];
 
-export function HeroSection() {
+export function HeroSection({ cover }: { cover?: ReactNode }) {
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
+  // the text drifts up faster than the page and fades as the hero leaves
+  const y = useTransform(scrollYProgress, [0, 1], [0, -90]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
-    <section id="intro" className={styles.hero}>
+    <section id="intro" ref={ref} className={styles.hero}>
+      {cover}
+      <motion.div className={styles.drift} style={reduce ? undefined : { y, opacity }}>
       <motion.div
         className={styles.inner}
         initial={{ opacity: 0, y: 12 }}
@@ -50,6 +61,7 @@ export function HeroSection() {
             </a>
           </span>
         </div>
+      </motion.div>
       </motion.div>
 
       <div className={styles.ticker} aria-hidden="true">

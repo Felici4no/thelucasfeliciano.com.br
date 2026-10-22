@@ -16,14 +16,14 @@ export function ContactLinks() {
   return (
     <section id="contact">
       <h2 className={w.h2}>Contact</h2>
-      <p>
+      <p className={w.intro}>
         {siteConfig.availability ? `${siteConfig.availability}. ` : ''}Tell me what you are trying to do and I will reply
         with how I would approach it.{' '}
         <CtaLink id="contact-primary" href={primaryContactHref}>
           {primaryContactLabel} →
         </CtaLink>
       </p>
-      <ul>
+      <ul className={w.plain}>
         {channels.map((c) => (
           <li key={c.id}>
             <CtaLink id={`contact-${c.id}`} href={c.href} external={c.id !== 'email'}>
