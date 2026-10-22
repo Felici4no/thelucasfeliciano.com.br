@@ -242,6 +242,20 @@ export const projects: Project[] = [
     },
   },
   {
+    id: "escola-da-cidade",
+    name: "Escola da Cidade Education System",
+    subtitle: "Educational system of Escola da Cidade, built by its development team.",
+    type: "Education / Platform",
+    status: "Professional work / Active",
+    role: "Development team member",
+    description:
+      "Member of the development team of the educational system of Escola da Cidade, in São Paulo.",
+    result: "Part of the team that develops the school's educational system.",
+    stack: [],
+    tier: "selected",
+    link: "/projects/escola-da-cidade",
+  },
+  {
     id: "gerar-contrato",
     name: "GerarContrato",
     subtitle: "Free, legally-valid contract generator for MEIs and freelancers.",

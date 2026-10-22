@@ -90,10 +90,12 @@ export function ProjectDossier({ project }: { project: Project }) {
           <span className={styles.key}>Result</span>
           <p className={styles.val}>{result}</p>
         </div>
-        <div className={styles.block}>
-          <span className={styles.key}>Stack</span>
-          <p className={styles.stack}>{project.stack.join(' · ')}</p>
-        </div>
+        {project.stack.length > 0 && (
+          <div className={styles.block}>
+            <span className={styles.key}>Stack</span>
+            <p className={styles.stack}>{project.stack.join(' · ')}</p>
+          </div>
+        )}
       </div>
 
       {project.gallery && project.gallery.length > 0 && (
