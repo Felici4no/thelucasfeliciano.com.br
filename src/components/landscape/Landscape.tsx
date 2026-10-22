@@ -12,6 +12,7 @@ import {
   type MotionValue,
 } from 'framer-motion';
 import { CityOverlay } from './CityOverlay';
+import { Clouds } from './Clouds';
 import { SceneProvider } from './SceneContext';
 import styles from './Landscape.module.css';
 
@@ -93,15 +94,9 @@ export function Landscape({ top, copyright }: LandscapeProps) {
             <Image src="/scene/moon.svg" alt="" width={400} height={400} priority className={styles.moon} />
           </Layer>
 
-          {/* clouds drift sideways at their own paces */}
-          <Layer rise={4} sway={6} slide={-9} {...common}>
-            <Image src="/scene/cloud.svg" alt="" width={420} height={240} className={styles.cloudRight} />
-          </Layer>
-          <Layer rise={6} sway={10} slide={7} {...common}>
-            <Image src="/scene/cloud.svg" alt="" width={420} height={240} className={styles.cloudLeft} />
-          </Layer>
-          <Layer rise={8} sway={12} slide={11} {...common}>
-            <Image src="/scene/cloud.svg" alt="" width={420} height={240} className={styles.cloudSmall} />
+          {/* the sky: three clouds that merge into a rain cloud and part again */}
+          <Layer rise={5} sway={8} {...common}>
+            <Clouds />
           </Layer>
 
           {/* a distant district, slow and faint, so the city has depth behind it */}

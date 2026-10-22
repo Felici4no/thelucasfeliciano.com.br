@@ -1,0 +1,118 @@
+.sky {
+  position: absolute;
+  left: 0;
+  top: -1%;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1000 / 170;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.fill {
+  fill: #f6efe0;
+  animation: tint 28s ease-in-out infinite;
+}
+
+.line {
+  fill: none;
+  stroke: #171414;
+  stroke-width: 9;
+  stroke-linecap: round;
+}
+
+.base {
+  animation: base-fade 28s ease-in-out infinite;
+  fill: none;
+  stroke: #171414;
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+/* the flat underline of each cloud disappears once they have merged into one mass */
+@keyframes base-fade {
+  0%, 30%, 70%, 100% { opacity: 1; }
+  46%, 56% { opacity: 0; }
+}
+
+/* each lobe swells and shrinks on its own beat: the outline is never the same shape twice */
+.lobe {
+  transform-box: fill-box;
+  transform-origin: 50% 60%;
+  animation: swell 6s ease-in-out infinite alternate;
+}
+
+@keyframes swell {
+  0% { transform: scale(0.84) translateY(5px); }
+  100% { transform: scale(1.16) translateY(-6px); }
+}
+
+/* the cloud goes grey as it merges, then clears */
+@keyframes tint {
+  0%, 18%, 82%, 100% { fill: #f6efe0; }
+  50% { fill: #bfc7d6; }
+}
+
+/* the three drift toward the middle, fuse around the 50% mark, then drift apart */
+.cloud {
+  animation-duration: 28s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.a { animation-name: merge-a; }
+.b { animation-name: merge-b; }
+.c { animation-name: merge-c; }
+
+@keyframes merge-a {
+  0%, 8% { transform: translate(0, 0) scale(1); }
+  46%, 56% { transform: translate(420px, -8px) scale(1.25); }
+  94%, 100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes merge-b {
+  0%, 8% { transform: translate(0, 0) scale(1); }
+  46%, 56% { transform: translate(-500px, 6px) scale(1.3); }
+  94%, 100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes merge-c {
+  0%, 8% { transform: translate(0, 0) scale(1); }
+  46%, 56% { transform: translate(0, 62px) scale(1.5); }
+  94%, 100% { transform: translate(0, 0) scale(1); }
+}
+
+/* rain only while merged */
+.rain {
+  opacity: 0;
+  animation: rain-window 28s ease-in-out infinite;
+}
+
+@keyframes rain-window {
+  0%, 46%, 64%, 100% { opacity: 0; }
+  52%, 58% { opacity: 1; }
+}
+
+.drop {
+  stroke: #2f6fd0;
+  stroke-width: 4;
+  stroke-linecap: round;
+  animation: fall 0.7s linear infinite;
+}
+
+@keyframes fall {
+  from { transform: translateY(-14px); opacity: 0; }
+  30% { opacity: 1; }
+  to { transform: translateY(30px); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill,
+  .base,
+  .lobe,
+  .cloud,
+  .rain,
+  .drop {
+    animation: none;
+  }
+}
