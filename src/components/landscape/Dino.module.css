@@ -1,0 +1,117 @@
+.root {
+  pointer-events: none;
+}
+
+/* one lap down the avenue, fading in and out at the ends */
+.walk {
+  animation: lap 34s linear infinite;
+  opacity: 0;
+}
+
+@keyframes lap {
+  0% { transform: translate(0, 0); opacity: 0; }
+  6% { opacity: 1; }
+  94% { opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)); opacity: 0; }
+}
+
+/* heavy footfalls */
+.bob {
+  animation: bob 0.62s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.legBack,
+.legFront {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: step 0.62s ease-in-out infinite;
+}
+
+.legFront {
+  animation-direction: reverse;
+}
+
+@keyframes step {
+  0%, 100% { transform: rotate(-16deg); }
+  50% { transform: rotate(16deg); }
+}
+
+/* fire */
+.fire {
+  transform-box: fill-box;
+}
+
+.flameA,
+.flameB,
+.flameC {
+  transform-box: fill-box;
+  transform-origin: 100% 50%;
+  animation: flicker 0.34s ease-in-out infinite alternate;
+}
+
+.flameB {
+  animation-duration: 0.27s;
+  animation-delay: -0.1s;
+}
+
+.flameC {
+  animation-duration: 0.21s;
+  animation-delay: -0.05s;
+}
+
+@keyframes flicker {
+  from { transform: scaleX(0.82) scaleY(1.1) skewY(-3deg); }
+  to { transform: scaleX(1.18) scaleY(0.86) skewY(4deg); }
+}
+
+.scrib {
+  animation: flicker 0.4s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: 100% 50%;
+}
+
+.ember {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ember 1.1s ease-out infinite;
+}
+
+@keyframes ember {
+  from { transform: translate(8px, 0) scale(1); opacity: 1; }
+  to { transform: translate(-46px, -18px) scale(0.3); opacity: 0; }
+}
+
+/* more fire when every project is lit */
+.body[data-roar='true'] .flameA,
+.body[data-roar='true'] .flameB,
+.body[data-roar='true'] .flameC {
+  animation-duration: 0.16s;
+}
+
+.body[data-roar='true'] .fire {
+  transform: scale(1.35);
+  transform-origin: 100% 50%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .walk,
+  .bob,
+  .legBack,
+  .legFront,
+  .flameA,
+  .flameB,
+  .flameC,
+  .scrib,
+  .ember {
+    animation: none;
+  }
+  .walk {
+    opacity: 1;
+    transform: translate(calc(var(--dx) * 0.5), calc(var(--dy) * 0.5));
+  }
+}

@@ -2,6 +2,7 @@
 
 import { motion, useTransform, type MotionValue } from 'framer-motion';
 import { cars, landmarks, links, ISO, ORIGIN, UNIT } from './landmarks';
+import { Dino } from './Dino';
 import { useScene } from './SceneContext';
 import styles from './CityOverlay.module.css';
 
@@ -71,6 +72,9 @@ export function CityOverlay({ progress }: { progress: MotionValue<number> }) {
           />
         ))}
       </g>
+
+      {/* the dinosaur crosses the avenue from the far end toward the viewer, 28 grid units long */}
+      <Dino x={P(16, 6).x} y={P(16, 6).y} dx={UNIT.x * 30} dy={UNIT.y * 30} roaring={active === 'all'} />
 
       <g fill="none" aria-hidden="true" filter="url(#wob)">
         {links.map((d, i) => {
