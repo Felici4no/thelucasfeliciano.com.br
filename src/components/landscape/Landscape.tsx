@@ -16,9 +16,9 @@ import styles from './Landscape.module.css';
 interface LandscapeProps {
   /** Brand and the three columns, fixed on the sky. */
   top: ReactNode;
-  /** Small links that sit in the sky above the hills. */
+  /** Small links, bottom right. */
   legal: ReactNode;
-  /** Copyright line that sits on the hills. */
+  /** Copyright line, bottom left. */
   copyright: ReactNode;
 }
 
@@ -55,7 +55,7 @@ export function Landscape({ top, legal, copyright }: LandscapeProps) {
   const pointer = useSpring(raw, { stiffness: 60, damping: 18, mass: 0.6 });
 
   // text that belongs to a layer travels with it
-  const hillsY = useTransform(scrollYProgress, [0, 1], ['0vh', '-3.5vh']);
+  const groundY = useTransform(scrollYProgress, [0, 1], ['0vh', '-3.5vh']);
 
   const layerProps = { progress: scrollYProgress, pointer, reduce };
 
@@ -93,12 +93,16 @@ export function Landscape({ top, legal, copyright }: LandscapeProps) {
           <Image src="/scene/cloud.webp" alt="" width={875} height={260} className={styles.cloudSmall} />
         </Layer>
 
-        <Layer rise={3.5} sway={14} {...layerProps}>
-          <Image src="/scene/hills.webp" alt="" width={735} height={269} priority className={styles.hills} />
+        {/* the city: a far row that fades into haze, then a nearer row */}
+        <Layer rise={2.5} sway={10} {...layerProps}>
+          <div className={styles.cityBack} />
+        </Layer>
+        <Layer rise={4} sway={14} {...layerProps}>
           <div className={styles.ground} />
+          <div className={styles.cityFront} />
         </Layer>
 
-        {/* trees stand in front of the hills and move the most */}
+        {/* trees stand in front of the city and move the most */}
         <Layer rise={6} sway={18} {...layerProps}>
           <Image src="/scene/tree.webp" alt="" width={699} height={1945} className={styles.treeFar} />
         </Layer>
@@ -111,10 +115,10 @@ export function Landscape({ top, legal, copyright }: LandscapeProps) {
         </svg>
 
         <div className={styles.content}>{top}</div>
-        <motion.div className={styles.legal} style={reduce ? undefined : { y: hillsY }}>
+        <motion.div className={styles.legal} style={reduce ? undefined : { y: groundY }}>
           {legal}
         </motion.div>
-        <motion.div className={styles.copy} style={reduce ? undefined : { y: hillsY }}>
+        <motion.div className={styles.copy} style={reduce ? undefined : { y: groundY }}>
           {copyright}
         </motion.div>
       </div>

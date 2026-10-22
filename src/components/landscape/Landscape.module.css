@@ -87,23 +87,39 @@
   opacity: 0.85;
 }
 
-/* ---- land ---- */
-.hills {
+/* ---- city (vector line drawing) ---- */
+.cityBack,
+.cityFront {
+  position: absolute;
   left: 50%;
-  bottom: 0;
+  /* the drawing runs 80 units below the screen, so it keeps going as the layer rises */
+  bottom: calc(max(108vw, 125vh) * -0.0385);
   width: max(108vw, 125vh);
-  height: auto;
+  aspect-ratio: 2000 / 780;
   transform: translateX(-50%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
-/* continues the dark foliage below the screen so nothing shows when the layer rises */
+.cityBack {
+  background-image: url('/scene/city-back.svg');
+  /* the far streets melt into the sky like haze */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 34%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 34%);
+}
+
+.cityFront {
+  background-image: url('/scene/city-front.svg');
+}
+
+/* paper below the drawing, so nothing shows when the layer rises */
 .ground {
   position: absolute;
   left: 0;
   right: 0;
   bottom: -60vh;
   height: calc(60vh + 4px);
-  background: #191b0a;
+  background: #fdfbf6;
 }
 
 .treeFar {
@@ -134,8 +150,11 @@
 }
 
 .legal {
-  --legal: #eaf0dc;
-  --legal-hover: #fff;
+  --legal: #3d434b;
+  --legal-hover: #000;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: rgba(253, 251, 246, 0.92);
   position: absolute;
   z-index: 2;
   right: clamp(20px, 5.2vw, 62px);
@@ -147,6 +166,9 @@
 .copy {
   position: absolute;
   z-index: 2;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: rgba(253, 251, 246, 0.92);
   left: clamp(20px, 11.7vw, 168px);
   bottom: 5%;
 }
@@ -177,8 +199,10 @@
     top: 38%;
     width: 150px;
   }
-  .hills {
+  .cityBack,
+  .cityFront {
     width: max(110vw, 150vh);
+    bottom: calc(max(110vw, 150vh) * -0.0385);
   }
   .copy {
     left: 20px;
