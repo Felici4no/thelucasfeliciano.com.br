@@ -43,7 +43,7 @@ export function HeroSection() {
           <a href="#selected" className={styles.secondary}>
             See projects <span aria-hidden="true">↓</span>
           </a>
-          <span className={styles.proof}>2× hackathon 1st place · Founder, Talent Hack</span>
+          <span className={styles.proof}>2× hackathon 1st place · 15k organic followers</span>
         </div>
       </motion.div>
 

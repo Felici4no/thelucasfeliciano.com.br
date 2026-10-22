@@ -214,7 +214,7 @@ export const projects: Project[] = [
       "Brazilians working remotely for US companies face complex corporate registration, compliance hurdles, and high financial spreads when converting USD to BRL.",
     whatIBuilt:
       "A custom client onboarding application, automated document processing pipeline, payment integrations, and tax preparation roadmaps.",
-    result: "Live, onboarding paying clients.",
+    result: "15k followers, 100% organic. Live and onboarding paying clients.",
     stack: ["Next.js", "React", "Tailwind CSS", "Node.js", "Stripe API"],
     tier: "selected",
     link: "/projects/dolarizando-se",

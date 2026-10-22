@@ -22,7 +22,7 @@ const services = [
     pitch: 'Next.js and React products taken from idea to live, payments and real users included.',
     deliverables: ['Deployed product', 'Payments and auth when needed', 'Source code you own'],
     proof: [
-      { label: 'Dolarizando-se · paying clients', href: '/projects/dolarizando-se' },
+      { label: 'Dolarizando-se · 15k organic followers', href: '/projects/dolarizando-se' },
       { label: 'GerarContrato · live', href: '/projects/gerar-contrato' },
       { label: 'APF Fonoaudiologia · live', href: '/projects/apf-fonoaudiologia' },
     ],

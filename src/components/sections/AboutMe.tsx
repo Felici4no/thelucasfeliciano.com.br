@@ -13,7 +13,7 @@ const hasPhoto = fs.existsSync(path.join(process.cwd(), 'public', PHOTO));
 const facts = [
   { value: '2×', label: 'Hackathon 1st place' },
   { value: '4', label: 'Hackathon podiums' },
-  { value: String(projects.length), label: 'Projects built' },
+  { value: '15k', label: 'Organic followers, Dolarizando-se' },
   { value: String(projects.filter((p) => /live/i.test(p.status)).length), label: 'Products live today' },
 ];
 
