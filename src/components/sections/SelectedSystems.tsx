@@ -13,7 +13,7 @@ export function SelectedSystems() {
       <section id="selected" className={styles.section} data-snap>
         <div className={styles.inner}>
           <SectionHead
-            index="02"
+            index="03"
             title="Selected Systems"
             aside={<Link href="/portfolio" className={styles.more}>Full index →</Link>}
           />
@@ -29,7 +29,7 @@ export function SelectedSystems() {
 
       <section id="other-works" className={styles.section} data-tint="true" data-snap>
         <div className={styles.inner}>
-          <SectionHead index="03" title="Other Works" aside={`${other.length} more`} />
+          <SectionHead index="04" title="Other Works" aside={`${other.length} more`} />
           <ol className={styles.grid}>
             {other.map((p, i) => (
               <li key={p.id}>

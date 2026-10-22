@@ -5,10 +5,23 @@ export const siteConfig = {
     "Software engineer and systems builder based in São Paulo. Interfaces, digital products, AI agents and MCP, Solana prototypes and coordination systems. Hackathon winner.",
   url: "https://thelucasfeliciano.com.br",
   ogImage: "https://thelucasfeliciano.com.br/og-image.png",
+  /** Shown in the header badge and hero. Set to undefined to hide it. */
+  availability: "Open to projects" as string | undefined,
+  /** Optional channels (linkedin, whatsapp, booking) only render once filled in. */
   links: {
     github: "https://github.com/Felici4no",
     instagram: "https://www.instagram.com/thelucasfeliciano/",
     email: "lucas.for.study.42@gmail.com",
+  } as {
+    github: string;
+    instagram: string;
+    email: string;
+    /** e.g. https://www.linkedin.com/in/your-handle */
+    linkedin?: string;
+    /** e.g. https://wa.me/5511999999999 */
+    whatsapp?: string;
+    /** e.g. a Calendly / Cal.com link; becomes the primary CTA when set */
+    booking?: string;
   },
   keywords: [
     "Lucas Feliciano",
@@ -35,6 +48,15 @@ export const jsonLdPerson = {
   "sameAs": [
     siteConfig.links.github,
     siteConfig.links.instagram,
+    siteConfig.links.linkedin,
+  ].filter(Boolean),
+  "knowsAbout": [
+    "AI agents",
+    "Model Context Protocol",
+    "Web product development",
+    "Next.js",
+    "Data visualization",
+    "Coordination systems",
   ],
   "description": siteConfig.description,
   "address": {

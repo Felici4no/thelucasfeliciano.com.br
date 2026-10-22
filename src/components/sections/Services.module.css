@@ -1,0 +1,129 @@
+.section {
+  min-height: var(--screen);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: var(--nb-border);
+  scroll-snap-align: start;
+}
+
+.inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(24px, 5vh, 56px) var(--pad-r) clamp(24px, 5vh, 56px) var(--pad-l);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background: var(--white);
+  border: var(--nb-border);
+  box-shadow: var(--nb-shadow);
+}
+
+.card:nth-child(1) { background: var(--yellow); }
+.card:nth-child(2) { background: var(--white); }
+.card:nth-child(3) { background: var(--paper-2); }
+
+.num {
+  align-self: flex-start;
+  padding: 4px 8px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.pitch {
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+.label {
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.list,
+.proof {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.875rem;
+}
+
+.list li::before {
+  content: '+ ';
+  font-weight: 900;
+}
+
+.proof a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+
+.proof a:hover,
+.proof a:focus-visible {
+  background: var(--pink);
+  outline: none;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 48px;
+  margin-top: auto;
+  padding: 0 16px;
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+.card > .proof + .cta {
+  margin-top: 16px;
+}
+
+.cta:hover,
+.cta:focus-visible {
+  background: var(--pink);
+  color: var(--ink);
+  outline: none;
+}

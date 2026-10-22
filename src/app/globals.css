@@ -26,7 +26,7 @@
   --t-display: clamp(2.75rem, 9vw, 6rem);
   --t-title: clamp(2rem, 6vw, 3.25rem);
   --t-index: clamp(1.4rem, 3.2vw, 2rem);
-  --t-meta: 0.6875rem;
+  --t-meta: 0.75rem;
 
   /* Rhythm */
   --maxw: 1100px;
@@ -80,8 +80,10 @@ html {
 }
 
 /* the home opts in to gentle full-screen snapping */
-html:has([data-snap]) {
-  scroll-snap-type: y proximity;
+@media (min-width: 900px) and (min-height: 700px) {
+  html:has([data-snap]) {
+    scroll-snap-type: y proximity;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

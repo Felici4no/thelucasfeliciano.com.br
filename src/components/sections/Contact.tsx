@@ -1,10 +1,18 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { SectionHead } from '@/components/ui/SectionHead';
+import { CtaLink } from '@/components/ui/CtaLink';
+import { primaryContactHref } from '@/lib/contact';
+import { siteConfig } from '@/lib/seo';
 import styles from './Contact.module.css';
-import { Mail } from 'lucide-react';
+
+const channels = [
+  siteConfig.links.linkedin && { id: 'linkedin', label: 'LinkedIn', href: siteConfig.links.linkedin, external: true },
+  siteConfig.links.whatsapp && { id: 'whatsapp', label: 'WhatsApp', href: siteConfig.links.whatsapp, external: true },
+  { id: 'github', label: 'GitHub', href: siteConfig.links.github, external: true },
+  { id: 'instagram', label: 'Instagram', href: siteConfig.links.instagram, external: true },
+].filter((c): c is { id: string; label: string; href: string; external: boolean } => Boolean(c));
 
 export function Contact() {
   const [mounted, setMounted] = useState(false);
@@ -17,21 +25,25 @@ export function Contact() {
   return (
     <footer id="contact" className={styles.footer} data-snap>
       <div className={styles.container}>
-        <SectionHead index="05" title="Let's build" invert aside="Contact / Connect" />
+        <SectionHead index="07" title="Let's build" invert aside={siteConfig.availability ?? 'Contact'} />
+
+        <p className={styles.lead}>
+          Have a product, an agent or a messy system that needs to work? Tell me what you&apos;re trying to do and I&apos;ll
+          reply with how I&apos;d approach it.
+        </p>
+
+        <CtaLink id="contact-primary" href={primaryContactHref} className={styles.primary}>
+          {siteConfig.links.booking ? 'Book a call' : 'Email me'} <span aria-hidden="true">→</span>
+        </CtaLink>
+        <span className={styles.address}>{siteConfig.links.email}</span>
 
         <div className={styles.linksGrid}>
-          <a href="https://github.com/Felici4no" className={styles.link} target="_blank" rel="noopener noreferrer">
-            <span className={styles.linkText}>GITHUB</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.28 1.15-.28 2.35 0 3.5-.73 1.02-1.08 2.25-1 3.5 0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-          </a>
-          <a href="mailto:lucas.for.study.42@gmail.com" className={styles.link}>
-            <span className={styles.linkText}>EMAIL</span>
-            <Mail size={20} />
-          </a>
-          <a href="https://www.instagram.com/thelucasfeliciano/" className={styles.link} target="_blank" rel="noopener noreferrer">
-            <span className={styles.linkText}>INSTAGRAM</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-          </a>
+          {channels.map((c) => (
+            <CtaLink key={c.id} id={`contact-${c.id}`} href={c.href} className={styles.link} external={c.external}>
+              <span className={styles.linkText}>{c.label}</span>
+              <span aria-hidden="true">↗</span>
+            </CtaLink>
+          ))}
         </div>
 
         <div className={styles.bottom}>

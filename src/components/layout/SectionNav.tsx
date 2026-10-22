@@ -8,14 +8,20 @@ interface NavItem {
   id: string;
   label: string;
   children?: NavItem[];
+  /** Mobile bar: label to use there; omit to leave the item off the bar. */
+  bar?: string;
+  /** Mobile bar: other section ids that should light up this item. */
+  also?: string[];
 }
 
 const items: NavItem[] = [
-  { id: 'intro', label: 'Intro' },
-  { id: 'evidence', label: 'Evidence' },
+  { id: 'intro', label: 'Intro', bar: 'Intro' },
+  { id: 'evidence', label: 'Evidence', also: ['intro'] },
+  { id: 'services', label: 'What I do', bar: 'Services' },
   {
     id: 'selected',
     label: 'Selected Systems',
+    bar: 'Work',
     children: [
       ...projects
         .filter((p) => p.tier === 'selected')
@@ -23,8 +29,9 @@ const items: NavItem[] = [
       { id: 'other-works', label: 'Other Works' },
     ],
   },
-  { id: 'learning', label: 'Learning' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'process', label: 'How I work', also: ['about'] },
+  { id: 'about', label: 'About', bar: 'About' },
+  { id: 'contact', label: 'Contact', bar: 'Contact' },
 ];
 
 /** Every target in document order, used to decide which one is active. */
@@ -99,14 +106,16 @@ export function SectionNav() {
     </a>
   );
 
-  const barLabels: Record<string, string> = { selected: 'Systems' };
-
   return (
     <>
     <nav className={styles.bar} aria-label="Page sections (mobile)">
       <ul className={styles.barList}>
-        {items.map((item) => {
-          const on = active === item.id || !!item.children?.some((c) => c.id === active);
+        {items.filter((item) => item.bar).map((item) => {
+          const absorbed = items.filter((o) => !o.bar && o.also?.includes(item.id)).map((o) => o.id);
+          const on =
+            active === item.id ||
+            absorbed.includes(active) ||
+            !!item.children?.some((c) => c.id === active);
           return (
             <li key={item.id} className={styles.barItem}>
               <a
@@ -119,7 +128,7 @@ export function SectionNav() {
                   scrollToId(item.id);
                 }}
               >
-                <span>{barLabels[item.id] ?? item.label}</span>
+                <span>{item.bar}</span>
               </a>
             </li>
           );

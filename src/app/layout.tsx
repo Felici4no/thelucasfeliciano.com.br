@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
 import { siteConfig, jsonLdPerson } from "@/lib/seo";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -62,6 +63,7 @@ export default function RootLayout({
         <LoadingProvider>
           {children}
         </LoadingProvider>
+        <Analytics />
       </body>
     </html>
   );
