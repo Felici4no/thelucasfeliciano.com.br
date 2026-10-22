@@ -8,28 +8,40 @@
   pointer-events: none;
 }
 
-/* ---- network ---- */
+/* ---- painted words on the road ---- */
+.roadText {
+  fill: #171414;
+  font-family: var(--font-marker), 'Marker Felt', 'Comic Sans MS', cursive;
+  letter-spacing: 0.06em;
+}
+
+.roadBack {
+  fill: #f6efe0;
+  font-family: var(--font-marker), 'Marker Felt', 'Comic Sans MS', cursive;
+  letter-spacing: 0.06em;
+}
+
+/* ---- network: red oil-stick lines ---- */
 .line {
-  stroke: #161616;
-  stroke-width: 1.6;
+  stroke: #e4543a;
+  stroke-width: 4;
   stroke-linecap: round;
-  stroke-dasharray: 1 7;
-  opacity: 0.55;
-  transition: opacity 0.25s ease;
+  stroke-dasharray: 1 11;
+  opacity: 0.9;
+  transition: stroke-width 0.2s ease;
 }
 
 .flow {
-  stroke: #161616;
-  stroke-width: 2.4;
+  stroke: #171414;
+  stroke-width: 4;
   stroke-linecap: round;
-  stroke-dasharray: 2 26;
+  stroke-dasharray: 3 30;
   opacity: 0;
   animation: flow 3.2s linear infinite;
 }
 
 .line[data-hot='true'] {
-  opacity: 1;
-  stroke-width: 2.2;
+  stroke-width: 6;
 }
 
 .flow[data-hot='true'] {
@@ -37,10 +49,10 @@
 }
 
 @keyframes flow {
-  to { stroke-dashoffset: -28; }
+  to { stroke-dashoffset: -33; }
 }
 
-/* ---- towers ---- */
+/* ---- towers wear crowns ---- */
 .mark {
   pointer-events: auto;
   cursor: pointer;
@@ -51,16 +63,39 @@
   fill: transparent;
 }
 
-.dot {
-  fill: #fdfbf6;
-  stroke: #161616;
-  stroke-width: 2;
+.crown {
+  fill: #f3c63c;
+  stroke: #171414;
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+
+.crownBack {
+  fill: #e4543a;
+}
+
+.crownLine {
+  fill: none;
+  stroke: #171414;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.crownBox {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transition: transform 0.2s ease;
+}
+
+.mark[data-hot='true'] .crownBox,
+.mark:focus-visible .crownBox {
+  transform: translateY(-6px) rotate(-6deg) scale(1.2);
 }
 
 .pulse {
   fill: none;
-  stroke: #fdfbf6;
-  stroke-width: 2;
+  stroke: #e4543a;
+  stroke-width: 4;
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
@@ -74,7 +109,23 @@
 
 @keyframes ping {
   from { transform: scale(1); opacity: 0.9; }
-  to { transform: scale(3.4); opacity: 0; }
+  to { transform: scale(3.6); opacity: 0; }
+}
+
+/* the word the painter would scrawl beside it, struck through */
+.scrawl text {
+  fill: #171414;
+  font: 22px var(--font-marker), 'Marker Felt', 'Comic Sans MS', cursive;
+  paint-order: stroke;
+  stroke: #f6efe0;
+  stroke-width: 5px;
+}
+
+.scrawl path {
+  stroke: #171414;
+  stroke-width: 4;
+  stroke-linecap: round;
+  fill: none;
 }
 
 .tag {
@@ -84,14 +135,14 @@
 }
 
 .tag rect {
-  fill: #fdfbf6;
-  stroke: #161616;
-  stroke-width: 1.2;
+  fill: #f3c63c;
+  stroke: #171414;
+  stroke-width: 3;
 }
 
 .tag text {
-  fill: #161616;
-  font: 600 14px var(--font-inter), -apple-system, sans-serif;
+  fill: #171414;
+  font: 17px var(--font-marker), 'Marker Felt', 'Comic Sans MS', cursive;
 }
 
 .mark[data-hot='true'] .tag,

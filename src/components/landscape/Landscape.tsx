@@ -89,21 +89,21 @@ export function Landscape({ top, legal, copyright }: LandscapeProps) {
 
           {/* sun and moon sink slowly toward the middle as you go down */}
           <Layer rise={-4} sway={3} slide={5} {...common}>
-            <Image src="/scene/sun.webp" alt="" width={560} height={560} priority className={styles.sun} />
+            <Image src="/scene/sun.svg" alt="" width={400} height={400} priority className={styles.sun} />
           </Layer>
           <Layer rise={-4} sway={3} slide={-5} {...common}>
-            <Image src="/scene/moon.webp" alt="" width={520} height={519} priority className={styles.moon} />
+            <Image src="/scene/moon.svg" alt="" width={400} height={400} priority className={styles.moon} />
           </Layer>
 
           {/* clouds drift sideways at their own paces */}
-          <Layer rise={2} sway={6} slide={-9} {...common}>
-            <Image src="/scene/cloud.webp" alt="" width={875} height={260} className={styles.cloudRight} />
+          <Layer rise={4} sway={6} slide={-9} {...common}>
+            <Image src="/scene/cloud.svg" alt="" width={420} height={240} className={styles.cloudRight} />
           </Layer>
-          <Layer rise={3.5} sway={10} slide={7} {...common}>
-            <Image src="/scene/cloud.webp" alt="" width={875} height={260} className={styles.cloudLeft} />
+          <Layer rise={6} sway={10} slide={7} {...common}>
+            <Image src="/scene/cloud.svg" alt="" width={420} height={240} className={styles.cloudLeft} />
           </Layer>
-          <Layer rise={4.5} sway={12} slide={11} {...common}>
-            <Image src="/scene/cloud.webp" alt="" width={875} height={260} className={styles.cloudSmall} />
+          <Layer rise={8} sway={12} slide={11} {...common}>
+            <Image src="/scene/cloud.svg" alt="" width={420} height={240} className={styles.cloudSmall} />
           </Layer>
 
           {/* a distant district, slow and faint, so the city has depth behind it */}

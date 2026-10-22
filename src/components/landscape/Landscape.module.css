@@ -14,7 +14,7 @@
   top: 0;
   height: 100svh;
   overflow: hidden;
-  background: linear-gradient(to bottom, #5d92d6 0%, #7fadde 45%, #b4d0ea 100%);
+  background: linear-gradient(to bottom, #3f72cf 0%, #6a9be0 50%, #a9c8ee 100%);
   color: #2c3138;
 }
 
@@ -46,7 +46,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.08;
+  opacity: 0.16;
   mix-blend-mode: multiply;
   pointer-events: none;
 }
@@ -68,28 +68,24 @@
 }
 
 .cloudLeft {
-  left: -4%;
-  top: 46%;
-  width: clamp(240px, 40vw, 620px);
+  left: 6%;
+  top: 24%;
+  width: clamp(150px, 17vw, 260px);
   height: auto;
-  opacity: 0.96;
 }
 
 .cloudRight {
-  right: -3%;
-  top: 38%;
-  width: clamp(180px, 27vw, 420px);
+  right: 6%;
+  top: 22%;
+  width: clamp(140px, 16vw, 250px);
   height: auto;
-  transform: scaleX(-1);
-  opacity: 0.9;
 }
 
 .cloudSmall {
-  left: 52%;
-  top: 50%;
-  width: clamp(120px, 16vw, 250px);
+  left: 30%;
+  top: 3%;
+  width: clamp(110px, 13vw, 210px);
   height: auto;
-  opacity: 0.85;
 }
 
 /* ---- city (vector line drawing) ---- */
@@ -126,7 +122,7 @@
   height: calc(var(--tile) * 0.39);
   bottom: calc(100svh * 0.36);
   background: url('/scene/city-far.svg') center bottom / var(--tile) 100% repeat-x;
-  opacity: 0.34;
+  opacity: 0.22;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 40%, #000 70%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, #000 40%, #000 70%, transparent 100%);
 }
@@ -138,7 +134,7 @@
   right: 0;
   bottom: -60vh;
   height: calc(60vh + 4px);
-  background: #e9e7df;
+  background: #e6b23a;
 }
 
 .treeFar,
@@ -154,7 +150,7 @@
   left: 80%;
   bottom: -2vh;
   height: 52vh;
-  background-image: url('/scene/tree-line-b.svg');
+  background-image: url('/scene/tree-b.svg');
   transform: scaleX(-1);
 }
 
@@ -162,7 +158,7 @@
   left: 3%;
   bottom: -3vh;
   height: 66vh;
-  background-image: url('/scene/tree-line-a.svg');
+  background-image: url('/scene/tree-a.svg');
 }
 
 /* ---- text ---- */
