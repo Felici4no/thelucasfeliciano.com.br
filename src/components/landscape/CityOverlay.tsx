@@ -14,10 +14,10 @@ const P = (gx: number, gy: number) => ({
 
 /** A word written beside each tower, crossed out the way the painter did. */
 const scrawl: Record<string, { word: string; dx: number; dy: number; rot: number }> = {
-  upay3food: { word: 'FOOD', dx: 46, dy: -6, rot: -6 },
-  voculos: { word: 'EYES', dx: 46, dy: -10, rot: 5 },
-  'dolarizando-se': { word: '$ USD', dx: 48, dy: -4, rot: -4 },
-  bvm12: { word: 'GREEN', dx: 50, dy: -8, rot: 6 },
+  projects: { word: 'WORK', dx: 50, dy: -6, rot: -6 },
+  about: { word: 'ME', dx: 40, dy: -10, rot: 5 },
+  logbook: { word: 'NOTES', dx: 52, dy: -4, rot: -4 },
+  contact: { word: 'HELLO', dx: 54, dy: -8, rot: 6 },
 };
 
 /** Writing on the asphalt, laid along the avenue like paint on the road. */
@@ -39,7 +39,7 @@ export function CityOverlay({ progress }: { progress: MotionValue<number> }) {
   const drawn = useTransform(progress, [0, 0.55], [0.3, 1]);
 
   return (
-    <svg className={styles.overlay} viewBox="0 0 2000 780" preserveAspectRatio="xMidYMax slice" aria-label="Project map">
+    <svg className={styles.overlay} viewBox="0 0 2000 780" preserveAspectRatio="xMidYMax slice" aria-label="Site map">
       <defs>
         <filter id="wob" x="-5%" y="-5%" width="110%" height="110%">
           <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n" />
@@ -74,12 +74,12 @@ export function CityOverlay({ progress }: { progress: MotionValue<number> }) {
       </g>
 
       {/* the dinosaur crosses the avenue from the far end toward the viewer, 28 grid units long */}
-      <Dino x={P(16, 6).x} y={P(16, 6).y} dx={UNIT.x * 30} dy={UNIT.y * 30} roaring={active === 'all'} />
+      <Dino x={P(16, 6).x} y={P(16, 6).y} dx={UNIT.x * 30} dy={UNIT.y * 30} roaring={active !== null} />
 
       <g fill="none" aria-hidden="true" filter="url(#wob)">
         {links.map((d, i) => {
           const hot =
-            active === 'all' || active === landmarks[i].id || active === landmarks[i + 1]?.id;
+            active === landmarks[i].id || active === landmarks[i + 1]?.id;
           return (
             <g key={i}>
               <motion.path d={d} className={styles.line} data-hot={hot ? 'true' : undefined} style={{ pathLength: drawn }} />
@@ -90,18 +90,20 @@ export function CityOverlay({ progress }: { progress: MotionValue<number> }) {
       </g>
 
       {landmarks.map((m) => {
-        const hot = active === m.id || active === 'all';
+        const hot = active === m.id;
+        const external = m.href.startsWith('http');
         return (
           <a
             key={m.id}
-            href={`/projects/${m.id}`}
+            href={m.href}
+            {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             className={styles.mark}
             data-hot={hot ? 'true' : undefined}
             onMouseEnter={() => setActive(m.id)}
             onMouseLeave={() => setActive(null)}
             onFocus={() => setActive(m.id)}
             onBlur={() => setActive(null)}
-            aria-label={`${m.name}, open project`}
+            aria-label={`${m.name}, open page`}
           >
             <circle className={styles.hit} cx={m.x} cy={m.y - 14} r="40" />
             <circle className={styles.pulse} cx={m.x} cy={m.y} r="12" />

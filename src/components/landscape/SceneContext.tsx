@@ -1,10 +1,9 @@
 "use client";
 
-import Link from 'next/link';
 import { createContext, useContext, useMemo, useState, type ReactNode } from 'react';
 
 interface SceneState {
-  /** A project id, "all", or null. The menu and the city both read and write it. */
+  /** The id of the tower being hovered or focused, or null. */
   active: string | null;
   setActive: (id: string | null) => void;
 }
@@ -18,30 +17,3 @@ export function SceneProvider({ children }: { children: ReactNode }) {
 }
 
 export const useScene = () => useContext(SceneContext);
-
-/** A menu link that lights up its tower in the city while hovered or focused. */
-export function ProjectLink({
-  id,
-  href,
-  className,
-  children,
-}: {
-  id: string;
-  href: string;
-  className?: string;
-  children: ReactNode;
-}) {
-  const { setActive } = useScene();
-  return (
-    <Link
-      href={href}
-      className={className}
-      onMouseEnter={() => setActive(id)}
-      onMouseLeave={() => setActive(null)}
-      onFocus={() => setActive(id)}
-      onBlur={() => setActive(null)}
-    >
-      {children}
-    </Link>
-  );
-}
