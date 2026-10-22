@@ -83,19 +83,6 @@
   outline: none;
 }
 
-.legalLink {
-  font-size: 0.875rem;
-  color: var(--legal, #4a4f57);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.legalLink:hover,
-.legalLink:focus-visible {
-  color: var(--legal-hover, #000);
-  outline: none;
-}
-
 .copyText {
   padding: 6px 12px;
   border-radius: 6px;

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { CtaLink } from '@/components/ui/CtaLink';
 import { mailtoHref } from '@/lib/contact';
 import styles from './SceneText.module.css';
@@ -33,15 +32,6 @@ export function SceneTop() {
           .
         </p>
       </section>
-    </>
-  );
-}
-
-export function SceneLegal() {
-  return (
-    <>
-      <Link href="/portfolio" className={styles.legalLink}>Project index</Link>
-      <Link href="/logbook" className={styles.legalLink}>Logbook</Link>
     </>
   );
 }

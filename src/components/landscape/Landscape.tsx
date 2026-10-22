@@ -18,8 +18,6 @@ import styles from './Landscape.module.css';
 interface LandscapeProps {
   /** Brand and the three columns, centred on the sky. */
   top: ReactNode;
-  /** Small links, bottom right. */
-  legal: ReactNode;
   /** Copyright line, bottom left. */
   copyright: ReactNode;
 }
@@ -57,7 +55,7 @@ function Layer({ rise, sway, slide = 0, zoom = 1, progress, pointer, reduce, chi
   );
 }
 
-export function Landscape({ top, legal, copyright }: LandscapeProps) {
+export function Landscape({ top, copyright }: LandscapeProps) {
   const trackRef = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: trackRef, offset: ['start start', 'end end'] });
@@ -133,9 +131,6 @@ export function Landscape({ top, legal, copyright }: LandscapeProps) {
           </svg>
 
           <div className={styles.content}>{top}</div>
-          <motion.div className={styles.legal} style={reduce ? undefined : { y: groundY }}>
-            {legal}
-          </motion.div>
           <motion.div className={styles.copy} style={reduce ? undefined : { y: groundY }}>
             {copyright}
           </motion.div>
