@@ -14,6 +14,7 @@ export const siteConfig = {
     github: "https://github.com/Felici4no",
     instagram: "https://www.instagram.com/thelucasfeliciano/",
     email: "lucas.for.study.42@gmail.com",
+    whatsapp: "https://wa.me/5511954471933",
   } as {
     github: string;
     instagram: string;

@@ -1,5 +1,5 @@
 import { CtaLink } from '@/components/ui/CtaLink';
-import { mailtoHref } from '@/lib/contact';
+import { whatsappHref } from '@/lib/contact';
 import styles from './SceneText.module.css';
 
 /** Name, tagline and a short text card, centred on the sky. */
@@ -20,17 +20,12 @@ export function SceneTop() {
       </div>
 
       <section className={styles.card} aria-label="About">
-        <p>
-          Builds AI agents, web products and coordination systems, from hackathon prototypes to platforms in
-          production. First place at the ElevenLabs Worldwide Hackathon São Paulo and at Devs de Impacto Rio.
-        </p>
-        <p>
-          Open to projects.{' '}
-          <CtaLink id="scene-email" href={mailtoHref('Project inquiry', 'Hi Lucas,\n\n')} className={styles.cardLink}>
-            Say hello
-          </CtaLink>
-          .
-        </p>
+        <p>I turn ideas into working solutions through code, from early prototypes to platforms in production.</p>
+        <p>First-place winner at the ElevenLabs Worldwide Hackathon in São Paulo, with top placements in other competitions.</p>
+        <p className={styles.ask}>Have a project in mind?</p>
+        <CtaLink id="scene-whatsapp" href={whatsappHref} className={styles.button} external>
+          Let&rsquo;s build it
+        </CtaLink>
       </section>
     </>
   );

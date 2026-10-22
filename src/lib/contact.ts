@@ -13,3 +13,8 @@ export const primaryContactHref =
   siteConfig.links.booking ?? mailtoHref('Project inquiry', defaultBody);
 
 export const primaryContactLabel = siteConfig.links.booking ? 'Book a call' : 'Talk to me';
+
+/** WhatsApp chat with a first line already typed, so the message opens with context. */
+export const whatsappHref = `${siteConfig.links.whatsapp}?text=${encodeURIComponent(
+  "Hi Lucas, I have a project in mind and I'd like to talk about it.",
+)}`;
