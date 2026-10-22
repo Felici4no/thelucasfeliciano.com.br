@@ -6,6 +6,8 @@ export const siteConfig = {
   url: "https://thelucasfeliciano.com.br",
   ogImage: "https://thelucasfeliciano.com.br/og-image.png",
   /** Shown in the header badge and hero. Set to undefined to hide it. */
+  /** Dolarizando-se audience, shown as proof in the hero and About. */
+  dolarizandoInstagram: "https://www.instagram.com/dolarizandose/",
   availability: "Open to projects" as string | undefined,
   /** Optional channels (linkedin, whatsapp, booking) only render once filled in. */
   links: {

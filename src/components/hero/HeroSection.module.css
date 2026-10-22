@@ -151,6 +151,18 @@
   color: var(--ink-2);
 }
 
+.proofLink {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.proofLink:hover,
+.proofLink:focus-visible {
+  background: var(--pink);
+  outline: none;
+}
+
 /* marquee band */
 .ticker {
   overflow: hidden;
