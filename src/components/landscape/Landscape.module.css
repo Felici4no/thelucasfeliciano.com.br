@@ -228,3 +228,75 @@
     left: -6%;
   }
 }
+
+/* ---- life in the sky ---- */
+/* the sun turns slowly and pulses, like a hand-drawn loop redrawn a little differently each time */
+.sun {
+  animation: sun-spin 46s linear infinite, sun-pulse 3.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 18px rgba(243, 198, 60, 0.55));
+}
+
+@keyframes sun-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes sun-pulse {
+  0%, 100% { scale: 1; }
+  50% { scale: 1.07; }
+}
+
+/* the moon rocks gently and its glow breathes */
+.moon {
+  transform-origin: 50% 0;
+  animation: moon-rock 7s ease-in-out infinite, moon-glow 5s ease-in-out infinite;
+}
+
+@keyframes moon-rock {
+  0%, 100% { transform: rotate(-5deg) translateY(0); }
+  50% { transform: rotate(5deg) translateY(6px); }
+}
+
+@keyframes moon-glow {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(246, 239, 224, 0.35)); }
+  50% { filter: drop-shadow(0 0 22px rgba(246, 239, 224, 0.85)); }
+}
+
+/* clouds drift sideways and bob, each at its own pace and phase */
+.cloudLeft {
+  animation: cloud-drift-a 26s ease-in-out infinite alternate;
+}
+
+.cloudRight {
+  animation: cloud-drift-b 32s ease-in-out infinite alternate;
+}
+
+.cloudSmall {
+  animation: cloud-drift-c 21s ease-in-out infinite alternate;
+}
+
+@keyframes cloud-drift-a {
+  from { transform: translate(-40px, 0); }
+  50% { transform: translate(10px, -9px); }
+  to { transform: translate(70px, 4px); }
+}
+
+@keyframes cloud-drift-b {
+  from { transform: translate(60px, 4px); }
+  50% { transform: translate(-6px, -10px); }
+  to { transform: translate(-80px, 2px); }
+}
+
+@keyframes cloud-drift-c {
+  from { transform: translate(-30px, -4px); }
+  to { transform: translate(50px, 8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sun,
+  .moon,
+  .cloudLeft,
+  .cloudRight,
+  .cloudSmall {
+    animation: none;
+  }
+}
