@@ -104,10 +104,10 @@ export function Landscape({ top, legal, copyright }: LandscapeProps) {
 
         {/* trees stand in front of the city and move the most */}
         <Layer rise={6} sway={18} {...layerProps}>
-          <Image src="/scene/tree.webp" alt="" width={699} height={1945} className={styles.treeFar} />
+          <div className={styles.treeFar} />
         </Layer>
         <Layer rise={8} sway={24} {...layerProps}>
-          <Image src="/scene/tree.webp" alt="" width={699} height={1945} className={styles.treeNear} />
+          <div className={styles.treeNear} />
         </Layer>
 
         <svg className={styles.grain} aria-hidden="true" focusable="false">
