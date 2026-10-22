@@ -244,12 +244,12 @@ export const projects: Project[] = [
   {
     id: "escola-da-cidade",
     name: "Escola da Cidade Education System",
-    subtitle: "Educational system of Escola da Cidade, built by its development team.",
+    subtitle: "Educational system that helps university students follow their subjects, assignments and grades.",
     type: "Education / Platform",
     status: "Professional work / Active",
     role: "Software Engineer",
     description:
-      "Software engineer on the development team of the educational system of Escola da Cidade, in São Paulo, designing the architecture together with the team and developing the system.",
+      "Educational system of Escola da Cidade, in São Paulo, that helps university students follow their subjects, assignments and grades. Built by a development team in which Feliciano is a software engineer, designing the architecture together with the team and developing the system.",
     result: "Designs the architecture with the team and develops the school's educational system.",
     stack: ["PHP", "SQL", "JavaScript", "CSS"],
     tier: "selected",

@@ -31,7 +31,8 @@ export function Background() {
       <p>
         Professionally, Feliciano worked as a software engineer on the platform of{' '}
         <Link href="/projects/bvm12">BVM12</Link>, using Java, Docker, SQL, JavaScript and TypeScript, and is a software engineer on the development team of the educational system
-        of Escola da Cidade, in São Paulo, where the work combines architecture, designed together with the team, and
+        of Escola da Cidade, in São Paulo, which helps students follow their subjects, assignments and
+        grades, and where the work combines architecture, designed together with the team, and
         development in PHP, SQL, JavaScript and CSS.
       </p>
 
