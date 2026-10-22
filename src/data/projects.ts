@@ -247,10 +247,10 @@ export const projects: Project[] = [
     subtitle: "Educational system of Escola da Cidade, built by its development team.",
     type: "Education / Platform",
     status: "Professional work / Active",
-    role: "Development team member",
+    role: "Software Engineer",
     description:
-      "Member of the development team of the educational system of Escola da Cidade, in São Paulo.",
-    result: "Part of the team that develops the school's educational system.",
+      "Software engineer on the development team of the educational system of Escola da Cidade, in São Paulo, designing the architecture together with the team and developing the system.",
+    result: "Designs the architecture with the team and develops the school's educational system.",
     stack: ["PHP", "SQL", "JavaScript", "CSS"],
     tier: "selected",
     link: "/projects/escola-da-cidade",
