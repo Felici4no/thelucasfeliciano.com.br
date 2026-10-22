@@ -1,7 +1,7 @@
 /* One tall track; the stage inside it stays pinned while the layers slide. */
 .track {
   position: relative;
-  height: 180vh;
+  height: 260vh;
   background: #6c9fdc;
 }
 
@@ -14,7 +14,7 @@
   top: 0;
   height: 100svh;
   overflow: hidden;
-  background: linear-gradient(to bottom, #5d92d6 0%, #7fadde 55%, #a3c6e9 100%);
+  background: linear-gradient(to bottom, #5d92d6 0%, #7fadde 45%, #b4d0ea 100%);
   color: #2c3138;
 }
 
@@ -27,6 +27,12 @@
   inset: 0;
   will-change: transform;
   pointer-events: none;
+}
+
+.swayer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
 }
 
 .layer img {
@@ -87,38 +93,52 @@
 }
 
 /* ---- city (vector line drawing) ---- */
-.cityBack,
-.cityFront {
+.cityBox,
+.farCity {
+  --w: max(108vw, 125vh);
   position: absolute;
   left: 50%;
-  /* the drawing runs 80 units below the screen, so it keeps going as the layer rises */
-  bottom: calc(max(108vw, 125vh) * -0.0385);
-  width: max(108vw, 125vh);
-  aspect-ratio: 2000 / 780;
   transform: translateX(-50%);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
 }
 
-.cityBack {
-  background-image: url('/scene/city-back.svg');
-  /* the far streets melt into the sky like haze */
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 34%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 34%);
+.cityBox {
+  width: var(--w);
+  aspect-ratio: 2000 / 780;
 }
 
-.cityFront {
-  background-image: url('/scene/city-front.svg');
+/* the drawing runs 80 units below the screen, so it keeps going as the layer rises */
+.cityBox {
+  bottom: calc(var(--w) * -0.04);
 }
 
-/* paper below the drawing, so nothing shows when the layer rises */
+.city {
+  position: absolute;
+  inset: 0;
+  background: url('/scene/city.svg') center / 100% 100% no-repeat;
+  /* the far end of the avenue melts into the sky like haze */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 30%);
+}
+
+.farCity {
+  --tile: max(62vw, 72vh);
+  width: 240vw;
+  height: calc(var(--tile) * 0.39);
+  bottom: calc(100svh * 0.36);
+  background: url('/scene/city-far.svg') center bottom / var(--tile) 100% repeat-x;
+  opacity: 0.34;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 40%, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 40%, #000 70%, transparent 100%);
+}
+
+/* tinted ground below the drawing, so nothing shows when the layer rises */
 .ground {
   position: absolute;
   left: 0;
   right: 0;
   bottom: -60vh;
   height: calc(60vh + 4px);
-  background: #fdfbf6;
+  background: #e9e7df;
 }
 
 .treeFar,
@@ -131,7 +151,7 @@
 }
 
 .treeFar {
-  left: 62%;
+  left: 80%;
   bottom: -2vh;
   height: 52vh;
   background-image: url('/scene/tree-line-b.svg');
@@ -185,6 +205,12 @@
 }
 
 @media (max-width: 719px) {
+  .cityBox {
+    --w: max(110vw, 150vh);
+  }
+  .farCity {
+    --tile: max(70vw, 84vh);
+  }
   .content {
     top: 38%;
   }
@@ -210,21 +236,16 @@
     top: 38%;
     width: 150px;
   }
-  .cityBack,
-  .cityFront {
-    width: max(110vw, 150vh);
-    bottom: calc(max(110vw, 150vh) * -0.0385);
-  }
   .copy {
     left: 20px;
     bottom: 4%;
   }
   .treeFar {
-    left: 70%;
-    height: 34vh;
+    left: 78%;
+    height: 24vh;
   }
   .treeNear {
-    height: 44vh;
-    left: -2%;
+    height: 32vh;
+    left: -6%;
   }
 }

@@ -9,7 +9,7 @@ Built with Next.js (App Router), React, TypeScript and Framer Motion.
 | What | File |
 |---|---|
 | Projects (home list, `/portfolio` index and `/projects/[id]` dossiers) | `src/data/projects.ts` |
-| Home: single illustrated page with parallax (layers, texts and the three link columns) | `src/components/landscape/Landscape.tsx`, `SceneText.tsx`; images and the vector city in `public/scene/` |
+| Home: single illustrated page with parallax (layers, texts and the three link columns) | `src/components/landscape/Landscape.tsx`, `SceneText.tsx`, `CityOverlay.tsx` (towers, network, cars; coordinates in `landmarks.ts`); images and the vector city in `public/scene/` |
 | About page (the Wikipedia-style article) | `src/app/about/page.tsx` |
 | Article layout (Wikipedia-style), shared typography | `src/components/wiki/wiki.module.css`, `src/app/page.tsx` |
 | Title, notice, infobox and lead | `src/components/wiki/ArticleTop.tsx`, `Infobox.tsx` (portrait goes in `public/about/lucas.jpg`) |

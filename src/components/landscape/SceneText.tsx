@@ -2,17 +2,18 @@ import Link from 'next/link';
 import { CtaLink } from '@/components/ui/CtaLink';
 import { mailtoHref } from '@/lib/contact';
 import { siteConfig } from '@/lib/seo';
+import { ProjectLink } from './SceneContext';
 import styles from './SceneText.module.css';
 
 const columns = [
   {
     title: 'Work',
     links: [
-      { label: 'UPAY3FOOD', href: '/projects/upay3food' },
-      { label: 'VOCULOS', href: '/projects/voculos' },
-      { label: 'Dolarizando-se', href: '/projects/dolarizando-se' },
-      { label: 'BVM12', href: '/projects/bvm12' },
-      { label: 'All projects', href: '/portfolio' },
+      { label: 'UPAY3FOOD', href: '/projects/upay3food', scene: 'upay3food' },
+      { label: 'VOCULOS', href: '/projects/voculos', scene: 'voculos' },
+      { label: 'Dolarizando-se', href: '/projects/dolarizando-se', scene: 'dolarizando-se' },
+      { label: 'BVM12', href: '/projects/bvm12', scene: 'bvm12' },
+      { label: 'All projects', href: '/portfolio', scene: 'all' },
     ],
   },
   {
@@ -40,7 +41,6 @@ export function SceneTop() {
     <>
       <div className={styles.brand}>
         <div className={styles.mark}>
-          <span className={styles.logo} aria-hidden="true">LF</span>
           <h1 className={styles.name}>Lucas Feliciano</h1>
         </div>
         <p className={styles.about}>
@@ -55,7 +55,11 @@ export function SceneTop() {
             <ul>
               {col.links.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className={styles.link}>{l.label}</Link>
+                  {'scene' in l ? (
+                    <ProjectLink id={l.scene} href={l.href} className={styles.link}>{l.label}</ProjectLink>
+                  ) : (
+                    <Link href={l.href} className={styles.link}>{l.label}</Link>
+                  )}
                 </li>
               ))}
             </ul>
