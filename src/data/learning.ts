@@ -9,7 +9,7 @@ export const events: LearningEntry[] = [
   { when: "2025", title: "XCONF Brasil 2025", detail: "Thoughtworks · agentic AI, engineering, design" },
   { when: "2025", title: "ETHLatam", detail: "Vitalik Buterin on privacy by default" },
   { when: "2025", title: "FIAP Community Meetup", detail: "Serverless on AWS with Step Functions" },
-  { when: "2024", title: "TDC 2024 · Quantum Computing Forum", detail: "8 hours, São Paulo" },
+  { when: "2024", title: "TDC 2024 · Quantum Computing Forum", detail: "invited, 8 hours, São Paulo" },
 ];
 
 /** Newest first. `when` is the issue date; `detail` is the issuer. */

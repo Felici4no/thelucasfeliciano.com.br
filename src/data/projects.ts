@@ -137,7 +137,7 @@ export const projects: Project[] = [
       "Sustainable mobility feels abstract when it lives only in reports and numbers.",
     whatIBuilt:
       "A telemetry rig reading live race data into a dashboard, turning performance into electric-vs-combustion CO₂ comparison.",
-    result: "Won the Tech Mahindra challenge and was invited by the Latam Mobility organization to exhibit at Latam Mobility 2025.",
+    result: "Won the Tech Mahindra challenge and, after the win, was invited by the Latam Mobility organization to exhibit at Latam Mobility 2025.",
     stack: ["Telemetry", "Data Visualization", "Dashboard", "Mobility", "Sustainability"],
     tier: "selected",
     link: "/projects/ecosimulator",
@@ -155,7 +155,7 @@ export const projects: Project[] = [
       {
         src: "/projects/ecosimulator/latam-booth.jpg",
         alt: "EcoSimulator rig at the Latam Mobility 2025 exhibition booth",
-        caption: "Exhibiting at Latam Mobility 2025, by invitation of the organization",
+        caption: "Exhibiting at Latam Mobility 2025, invited by the organization after the Tech Mahindra win",
       },
       {
         src: "/projects/ecosimulator/latam-visit.jpg",

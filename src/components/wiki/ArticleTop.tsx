@@ -56,8 +56,9 @@ export function ArticleTop() {
         <sup className={w.ref}>
           <a href="#references">[1]</a>
         </sup>{' '}
-        <Link href="/projects/ecosimulator">EcoSimulator 1.0</Link>, a telemetry rig, won the Tech Mahindra challenge and
-        was invited by the Latam Mobility organization to exhibit at Latam Mobility 2025.{' '}
+        <Link href="/projects/ecosimulator">EcoSimulator 1.0</Link>, a telemetry rig, won the Tech Mahindra challenge and,
+        after the win, was invited by the Latam Mobility organization to exhibit at Latam Mobility 2025. Feliciano was also
+        invited to the Quantum Computing Forum at TDC 2024.{' '}
         The work focuses on problems where technology meets public interest: health, financial inclusion,
         accessibility and education.
       </p>

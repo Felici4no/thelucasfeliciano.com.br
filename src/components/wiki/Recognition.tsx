@@ -7,7 +7,8 @@ const rows = [
   { result: '1st place', event: 'ElevenLabs Worldwide Hackathon SP', project: 'VOCULOS', id: 'voculos' },
   { result: '1st place', event: 'Devs de Impacto Rio', project: 'Alimapa', id: 'alimapa' },
   { result: 'Winner', event: 'Tech Mahindra Challenge', project: 'EcoSimulator 1.0', id: 'ecosimulator' },
-  { result: 'Invited exhibitor', event: 'Latam Mobility 2025, invited by the organization', project: 'EcoSimulator 1.0', id: 'ecosimulator' },
+  { result: 'Invited exhibitor', event: 'Latam Mobility 2025, invited by the organization after the Tech Mahindra win', project: 'EcoSimulator 1.0', id: 'ecosimulator' },
+  { result: 'Invited', event: 'Quantum Computing Forum · TDC 2024', project: null, id: null },
   { result: '3rd place', event: 'AfroCapital Hack · Feira Preta', project: 'ABIAS', id: 'abias' },
   { result: 'Competing', event: "Colosseum Crypto World's Fair (results pending)", project: 'UPAY3FOOD', id: 'upay3food' },
   { result: 'Founder', event: 'Talent Hack (partnerships and pilot in progress)', project: 'Talent Hack', id: 'talent-hack' },
@@ -16,7 +17,7 @@ const rows = [
 export function Recognition() {
   return (
     <WikiSection id="recognition" title="Recognition">
-      <p>Results from hackathons and challenges, each linked to the project it came from.</p>
+      <p>Results and invitations from hackathons, challenges and events, linked to the project they came from.</p>
       <div className={w.tableWrap}>
         <table className={w.table}>
           <thead>
@@ -32,9 +33,13 @@ export function Recognition() {
                 <th scope="row">{r.result}</th>
                 <td>{r.event}</td>
                 <td>
-                  <Link href={`/projects/${r.id}`} title={projects.find((p) => p.id === r.id)?.subtitle}>
-                    {r.project}
-                  </Link>
+                  {r.id ? (
+                    <Link href={`/projects/${r.id}`} title={projects.find((p) => p.id === r.id)?.subtitle}>
+                      {r.project}
+                    </Link>
+                  ) : (
+                    '—'
+                  )}
                 </td>
               </tr>
             ))}
