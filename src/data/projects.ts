@@ -223,17 +223,23 @@ export const projects: Project[] = [
   {
     id: "bvm12",
     name: "BVM12",
-    subtitle: "Platform of a Rio de Janeiro fintech startup that connects impact companies and investors.",
-    type: "FinTech / Platform / Impact Investing",
+    subtitle: "Market data, news and indices of the green economy, from Manaus.",
+    type: "Market Data / Media / Green Economy",
     year: "—",
-    status: "Professional work",
+    status: "Professional work / Live",
     role: "Software Engineer",
     description:
-      "Software engineering work on the platform of BVM12, a financial services startup based in Rio de Janeiro that links socially impactful companies with purpose-driven investors.",
+      "Software engineering work on the BVM12 platform, which brings market quotes, news and indices of the green economy from Manaus, with editorial sections, an index page and a client area.",
     result: "Worked as a software engineer on the company platform.",
     stack: ["Java", "Docker", "SQL", "JavaScript", "TypeScript"],
     tier: "selected",
     link: "/projects/bvm12",
+    demo: "https://bvm12.com.br/",
+    image: {
+      src: "/projects/bvm12/cover.jpg",
+      alt: "BVM12 home page with the headline \"Futuro sustentável não é discurso. É classe de ativo.\", a market ticker and a green index chart",
+      caption: "Home page of the live platform",
+    },
   },
   {
     id: "gerar-contrato",

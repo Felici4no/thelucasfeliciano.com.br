@@ -28,7 +28,7 @@ const services = [
       { label: 'Dolarizando-se', href: '/projects/dolarizando-se' },
       { label: 'GerarContrato', href: '/projects/gerar-contrato' },
       { label: 'APF Fonoaudiologia', href: '/projects/apf-fonoaudiologia' },
-      { label: 'BVM12', href: '/projects/bvm12' },
+      { label: 'BVM12 · live', href: '/projects/bvm12' },
     ],
   },
   {

@@ -9,6 +9,7 @@ const picks: { project: string; file?: string }[] = [
   { project: 'alimapa', file: 'event.jpg' },
   { project: 'talent-hack', file: 'judging.jpg' },
   { project: 'upay3food' },
+  { project: 'bvm12' },
 ];
 
 /** A <gallery> of project photos with captions. */
