@@ -47,17 +47,16 @@
 
 /* ---- sky ---- */
 .sun {
-  left: 50%;
-  top: 11%;
-  width: clamp(130px, 15vw, 250px);
+  left: clamp(16px, 3vw, 48px);
+  top: clamp(16px, 4vh, 40px);
+  width: clamp(110px, 13vw, 210px);
   height: auto;
-  transform: translateX(-50%);
 }
 
 .moon {
-  left: 36%;
-  top: 22%;
-  width: clamp(54px, 6vw, 100px);
+  right: clamp(16px, 3vw, 48px);
+  top: clamp(16px, 4vh, 40px);
+  width: clamp(80px, 9vw, 150px);
   height: auto;
   opacity: 0.92;
 }
@@ -72,7 +71,7 @@
 
 .cloudRight {
   right: -3%;
-  top: 31%;
+  top: 38%;
   width: clamp(180px, 27vw, 420px);
   height: auto;
   transform: scaleX(-1);
@@ -148,12 +147,17 @@
 
 /* ---- text ---- */
 .content {
-  position: relative;
+  position: absolute;
   z-index: 2;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  width: min(92vw, 640px);
   display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  padding: clamp(24px, 6vh, 56px) clamp(20px, 5.2vw, 62px) 0;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(22px, 4vh, 40px);
+  text-align: center;
 }
 
 .legal {
@@ -182,21 +186,21 @@
 
 @media (max-width: 719px) {
   .content {
-    flex-direction: column;
-    gap: 28px;
+    top: 38%;
   }
   .legal {
     bottom: 10%;
     right: 20px;
   }
-  .moon,
   .cloudSmall {
     display: none;
   }
   .sun {
-    left: 74%;
-    top: 40%;
-    width: 92px;
+    width: 84px;
+  }
+  .moon {
+    display: block;
+    width: 64px;
   }
   .cloudLeft {
     top: 47%;

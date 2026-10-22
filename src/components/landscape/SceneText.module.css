@@ -1,12 +1,14 @@
 .brand {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 14px;
-  max-width: 420px;
+  max-width: 440px;
 }
 
 .mark {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 12px;
 }
@@ -41,7 +43,15 @@
 
 .nav {
   display: flex;
+  justify-content: center;
   gap: clamp(28px, 4vw, 56px);
+  padding: 18px clamp(22px, 3vw, 40px);
+  text-align: center;
+  border-radius: 14px;
+  background: rgba(253, 251, 246, 0.9);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 1px 2px rgba(10, 10, 10, 0.06), 0 10px 28px rgba(10, 10, 10, 0.08);
 }
 
 .col h2 {
@@ -56,6 +66,7 @@
 .col ul {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 4px;
 }
 
@@ -96,6 +107,7 @@
 @media (max-width: 719px) {
   .nav {
     gap: 18px;
+    padding: 14px 18px;
   }
   .col h2 {
     font-size: 0.9375rem;
