@@ -19,7 +19,7 @@ export function HeroSection() {
       >
         <div className={styles.eyebrow}>
           {siteConfig.availability && (
-            <span className={`${styles.tag} ${styles.live}`}>
+            <span className={styles.tag}>
               <i className={styles.pulse} aria-hidden="true" />
               {siteConfig.availability}
             </span>

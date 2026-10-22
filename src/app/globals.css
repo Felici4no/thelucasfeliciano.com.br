@@ -34,15 +34,17 @@
   --space-section: clamp(72px, 12vw, 168px);
   --radius: 0;
 
-  /* Neo-brutalist system (home) */
-  --pink: #ff1493;
-  --yellow: #ffe94a;
-  --white: #ffffff;
-  --bw: 3px;                              /* border weight */
-  --nb-border: var(--bw) solid var(--ink);
-  --nb-shadow: 6px 6px 0 var(--ink);
-  --nb-shadow-lg: 10px 10px 0 var(--ink);
-  --font-display: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Clean system (home): quiet surfaces, hairline borders, soft shadows */
+  --accent: #E6DFD0;                       /* sand, used for highlights and fills */
+  --tint: #F0ECE2;                         /* lighter sand, hover and secondary fills */
+  --white: #FFFFFF;
+  --line: rgba(10, 10, 10, 0.14);
+  --line-strong: rgba(10, 10, 10, 0.32);
+  --radius-card: 14px;
+  --nb-shadow: 0 1px 2px rgba(10, 10, 10, 0.04), 0 8px 24px rgba(10, 10, 10, 0.05);
+  --nb-shadow-lg: 0 2px 4px rgba(10, 10, 10, 0.05), 0 14px 34px rgba(10, 10, 10, 0.09);
+  --nb-border: 1px solid var(--line);
+  --font-display: var(--font-instrument), "Georgia", serif;
 
   --header-h: 52px;
   --screen: calc(100svh - var(--header-h));  /* one full viewport under the sticky header */

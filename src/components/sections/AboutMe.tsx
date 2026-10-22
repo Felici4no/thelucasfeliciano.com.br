@@ -14,7 +14,7 @@ const hasPhoto = fs.existsSync(path.join(process.cwd(), 'public', PHOTO));
 const facts: { value: string; label: string; href?: string }[] = [
   { value: '2×', label: 'Hackathon 1st place' },
   { value: '4', label: 'Hackathon podiums' },
-  { value: '15k', label: 'Instagram followers, 100% organic (Dolarizando-se) ↗', href: siteConfig.dolarizandoInstagram },
+  { value: '15k', label: 'Organic Instagram followers ↗', href: siteConfig.dolarizandoInstagram },
   { value: String(projects.filter((p) => /live/i.test(p.status)).length), label: 'Products live today' },
 ];
 

@@ -25,7 +25,7 @@ export function Contact() {
   return (
     <footer id="contact" className={styles.footer} data-snap>
       <div className={styles.container}>
-        <SectionHead index="07" title="Let's build" invert aside={siteConfig.availability ?? 'Contact'} />
+        <SectionHead index="07" title="Let's build" aside={siteConfig.availability ?? 'Contact'} />
 
         <p className={styles.lead}>
           Have a product, an agent or a messy system that needs to work? Tell me what you&apos;re trying to do and I&apos;ll

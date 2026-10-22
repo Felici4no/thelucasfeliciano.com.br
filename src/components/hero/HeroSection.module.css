@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: clamp(16px, 3.4vh, 36px);
+  gap: clamp(18px, 3.6vh, 36px);
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -20,83 +20,69 @@
 .eyebrow {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
 }
 
 .tag {
-  padding: 6px 10px;
-  border: var(--nb-border);
-  background: var(--white);
-  font-family: var(--font-mono);
-  font-size: var(--t-meta);
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-
-.live {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--yellow);
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
 }
 
 .pulse {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--ink);
-  animation: pulse 1.6s ease-in-out infinite;
+  background: #2F8F5B;
+  animation: pulse 2s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  50% { opacity: 0.25; }
+  50% { opacity: 0.35; }
 }
 
 .name {
   display: flex;
   flex-direction: column;
   font-family: var(--font-display);
-  font-size: clamp(3rem, 11.5vw, 9.5rem);
-  font-weight: 900;
-  line-height: 0.84;
-  letter-spacing: -0.06em;
-  text-transform: uppercase;
+  font-size: clamp(3.25rem, 12vw, 9.5rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.025em;
   color: var(--ink);
 }
 
 .surname {
   align-self: flex-start;
-  margin-top: 0.04em;
-  padding: 0 0.08em;
-  background: var(--ink);
-  color: var(--paper);
 }
 
-
 .pitch {
-  max-width: 34ch;
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 2.6vw, 2rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  max-width: 36ch;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  line-height: 1.35;
+  color: var(--ink-2);
 }
 
 .pitch mark {
-  background: var(--pink);
+  background: linear-gradient(transparent 62%, var(--accent) 62%);
   color: var(--ink);
-  padding: 0 0.15em;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
+  font-weight: 500;
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
+  gap: 12px 14px;
 }
 
 .primary,
@@ -104,77 +90,70 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  min-height: 52px;
+  min-height: 50px;
   padding: 0 22px;
-  border: var(--nb-border);
-  box-shadow: var(--nb-shadow);
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 900;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  transition: transform 0.14s ease, box-shadow 0.14s ease, background-color 0.14s ease;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .primary {
-  background: var(--pink);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .secondary {
-  background: var(--white);
+  background: transparent;
   color: var(--ink);
+  border-color: var(--line-strong);
 }
 
 .primary:hover,
-.primary:focus-visible,
-.secondary:hover,
-.secondary:focus-visible {
-  background: var(--yellow);
-  transform: translate(-3px, -3px);
+.primary:focus-visible {
+  transform: translateY(-2px);
   box-shadow: var(--nb-shadow-lg);
   outline: none;
 }
 
-.primary:active,
-.secondary:active {
-  transform: translate(3px, 3px);
-  box-shadow: 2px 2px 0 var(--ink);
+.secondary:hover,
+.secondary:focus-visible {
+  background: var(--white);
+  border-color: var(--ink);
+  outline: none;
 }
 
 .proof {
-  font-family: var(--font-mono);
-  font-size: var(--t-meta);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-2);
+  margin-left: 6px;
+  font-size: 0.8125rem;
+  color: var(--ink-muted);
 }
 
 .proofLink {
+  color: var(--ink);
   text-decoration: underline;
-  text-decoration-thickness: 2px;
+  text-decoration-color: var(--line-strong);
   text-underline-offset: 3px;
 }
 
 .proofLink:hover,
 .proofLink:focus-visible {
-  background: var(--pink);
+  text-decoration-color: var(--ink);
   outline: none;
 }
 
-/* marquee band */
+/* quiet marquee */
 .ticker {
   overflow: hidden;
-  background: var(--ink);
-  color: var(--paper);
-  border-top: var(--nb-border);
+  border-top: 1px solid var(--line);
+  color: var(--ink-muted);
 }
 
 .track {
   display: flex;
   width: max-content;
-  animation: slide 28s linear infinite;
+  animation: slide 40s linear infinite;
 }
 
 .group {
@@ -183,18 +162,17 @@
 }
 
 .item {
-  padding: 14px 28px;
+  padding: 16px 28px;
   font-family: var(--font-display);
-  font-size: clamp(1rem, 2.2vw, 1.5rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-style: italic;
   white-space: nowrap;
 }
 
 .item b {
   margin-left: 28px;
-  color: var(--pink);
+  font-style: normal;
+  color: var(--line-strong);
 }
 
 @keyframes slide {
@@ -207,11 +185,14 @@
 
 @media (max-width: 600px) {
   .name {
-    font-size: 17vw;
+    font-size: 18vw;
   }
   .primary,
   .secondary {
     flex: 1 1 100%;
     justify-content: center;
+  }
+  .proof {
+    margin-left: 0;
   }
 }

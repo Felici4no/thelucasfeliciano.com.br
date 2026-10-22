@@ -4,28 +4,29 @@
   gap: clamp(12px, 2vw, 24px);
   padding-bottom: 16px;
   margin-bottom: clamp(20px, 4vh, 40px);
-  border-bottom: var(--nb-border);
+  border-bottom: 1px solid var(--line);
 }
 
 .index {
   flex: none;
   align-self: flex-start;
   padding: 6px 10px;
-  background: var(--ink);
-  color: var(--paper);
+  background: transparent;
+  color: var(--ink-muted);
+  border: 1px solid var(--line);
+  border-radius: 6px;
   font-family: var(--font-mono);
   font-size: var(--t-meta);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.14em;
 }
 
 .title {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 6vw, 4.75rem);
-  font-weight: 900;
-  line-height: 0.88;
-  letter-spacing: -0.045em;
-  text-transform: uppercase;
+  font-size: clamp(2.5rem, 6.5vw, 5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
   color: var(--ink);
 }
 
@@ -33,7 +34,7 @@
   margin-left: auto;
   font-family: var(--font-mono);
   font-size: var(--t-meta);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -44,7 +45,7 @@
 }
 
 .head[data-invert='true'] .index {
-  background: var(--pink);
+  background: var(--accent);
   color: var(--ink);
 }
 
@@ -53,11 +54,11 @@
   color: var(--paper);
 }
 
-@media (max-width: 600px) {
-  .head {
+@media (max-width: 600px) {.head {
     flex-wrap: wrap;
   }
-  .aside {
+
+.aside {
     margin-left: 0;
     width: 100%;
   }
