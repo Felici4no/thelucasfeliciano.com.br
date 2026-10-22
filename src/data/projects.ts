@@ -129,7 +129,7 @@ export const projects: Project[] = [
     subtitle: "Formula E telemetry, dashboard and CO₂ comparison.",
     type: "Data / Mobility / Sustainability",
     year: "2024",
-    status: "Awarded / Exhibited",
+    status: "Awarded / Invited exhibitor",
     role: "Developer / Data & Interface",
     description:
       "A Formula E cockpit experiment designed to capture real-time game data, display telemetry in an interactive dashboard and compare electric mobility with combustion vehicle CO₂ emissions.",
@@ -137,7 +137,7 @@ export const projects: Project[] = [
       "Sustainable mobility feels abstract when it lives only in reports and numbers.",
     whatIBuilt:
       "A telemetry rig reading live race data into a dashboard, turning performance into electric-vs-combustion CO₂ comparison.",
-    result: "Won the Tech Mahindra challenge; later exhibited at Latam Mobility 2025.",
+    result: "Won the Tech Mahindra challenge and was invited by the Latam Mobility organization to exhibit at Latam Mobility 2025.",
     stack: ["Telemetry", "Data Visualization", "Dashboard", "Mobility", "Sustainability"],
     tier: "selected",
     link: "/projects/ecosimulator",
@@ -155,7 +155,7 @@ export const projects: Project[] = [
       {
         src: "/projects/ecosimulator/latam-booth.jpg",
         alt: "EcoSimulator rig at the Latam Mobility 2025 exhibition booth",
-        caption: "Exhibited at Latam Mobility 2025",
+        caption: "Exhibiting at Latam Mobility 2025, by invitation of the organization",
       },
       {
         src: "/projects/ecosimulator/latam-visit.jpg",

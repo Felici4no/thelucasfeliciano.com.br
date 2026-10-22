@@ -56,6 +56,8 @@ export function ArticleTop() {
         <sup className={w.ref}>
           <a href="#references">[1]</a>
         </sup>{' '}
+        <Link href="/projects/ecosimulator">EcoSimulator 1.0</Link>, a telemetry rig, won the Tech Mahindra challenge and
+        was invited by the Latam Mobility organization to exhibit at Latam Mobility 2025.{' '}
         The work focuses on problems where technology meets public interest: health, financial inclusion,
         accessibility and education.
       </p>

@@ -6,7 +6,8 @@ import w from './wiki.module.css';
 const rows = [
   { result: '1st place', event: 'ElevenLabs Worldwide Hackathon SP', project: 'VOCULOS', id: 'voculos' },
   { result: '1st place', event: 'Devs de Impacto Rio', project: 'Alimapa', id: 'alimapa' },
-  { result: 'Winner', event: 'Tech Mahindra Challenge, later exhibited at Latam Mobility 2025', project: 'EcoSimulator 1.0', id: 'ecosimulator' },
+  { result: 'Winner', event: 'Tech Mahindra Challenge', project: 'EcoSimulator 1.0', id: 'ecosimulator' },
+  { result: 'Invited exhibitor', event: 'Latam Mobility 2025, invited by the organization', project: 'EcoSimulator 1.0', id: 'ecosimulator' },
   { result: '3rd place', event: 'AfroCapital Hack · Feira Preta', project: 'ABIAS', id: 'abias' },
   { result: 'Competing', event: "Colosseum Crypto World's Fair (results pending)", project: 'UPAY3FOOD', id: 'upay3food' },
   { result: 'Founder', event: 'Talent Hack (partnerships and pilot in progress)', project: 'Talent Hack', id: 'talent-hack' },
