@@ -10,16 +10,19 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
   gap: clamp(18px, 3.6vh, 36px);
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: clamp(24px, 5vh, 56px) var(--pad-r) clamp(24px, 5vh, 56px) var(--pad-l);
+  padding: clamp(24px, 5vh, 56px) var(--gutter);
 }
 
 .eyebrow {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -53,6 +56,7 @@
 .name {
   display: flex;
   flex-direction: column;
+  align-items: center;
   font-family: var(--font-sans);
   font-size: clamp(3rem, 10.5vw, 8.25rem);
   font-weight: 600;
@@ -62,11 +66,12 @@
 }
 
 .surname {
-  align-self: flex-start;
+  align-self: center;
 }
 
 .pitch {
   max-width: 36ch;
+  margin-inline: auto;
   font-size: clamp(1.1rem, 2vw, 1.5rem);
   line-height: 1.35;
   color: var(--ink-2);
@@ -82,6 +87,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 12px 14px;
 }
 
@@ -125,7 +131,8 @@
 }
 
 .proof {
-  margin-left: 6px;
+  flex-basis: 100%;
+  margin-top: 6px;
   font-size: 0.8125rem;
   color: var(--ink-muted);
 }
@@ -193,8 +200,5 @@
   .secondary {
     flex: 1 1 100%;
     justify-content: center;
-  }
-  .proof {
-    margin-left: 0;
   }
 }
