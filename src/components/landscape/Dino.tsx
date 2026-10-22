@@ -12,9 +12,11 @@ interface DinoProps {
 }
 
 const INK = '#171414';
+const stroke = { stroke: INK, strokeLinecap: 'round', strokeLinejoin: 'round', fill: 'none' } as const;
 
 /**
- * A dinosaur in a scrawled, painted hand, walking down the avenue toward the viewer and breathing fire.
+ * A skeletal, scrawled dinosaur: exposed ribs and spine, a blocky skull with big square teeth,
+ * bone legs, flat colour printed off-register under thick black line, and a word crossed out on its side.
  * Drawn facing left in a 300x180 box with its feet on y=172; the outer group places it.
  */
 export function Dino({ x, y, dx, dy, roaring }: DinoProps) {
@@ -25,68 +27,84 @@ export function Dino({ x, y, dx, dy, roaring }: DinoProps) {
         style={{ ['--dx' as string]: `${dx}px`, ['--dy' as string]: `${dy}px` }}
       >
         <g className={styles.bob} filter="url(#wob)">
-          <g transform="translate(-135 -165) scale(0.96)" data-roar={roaring ? 'true' : undefined} className={styles.body}>
-            {/* tail */}
-            <path d="M205 92Q252 98 292 66Q272 114 214 130Z" fill="#2a7d4b" stroke={INK} strokeWidth="6" strokeLinejoin="round" />
-            <path d="M232 100q16 -2 30 -14M246 108q14 -4 26 -16" fill="none" stroke={INK} strokeWidth="4" strokeLinecap="round" />
+          <g transform="translate(-140 -172) scale(1.02)" data-roar={roaring ? 'true' : undefined} className={styles.body}>
+            {/* flat colour, shifted off the line like a misregistered print */}
+            <path d="M44 62L96 46L140 34L196 46L248 74L292 60L250 98L196 126L130 122L78 102Z" fill="#f6efe0" transform="translate(7 6)" />
+            <path d="M150 52L196 52L204 96L160 104Z" fill="#2f6fd0" transform="translate(-4 4)" opacity=".9" />
+            <path d="M100 70L128 66L132 100L106 104Z" fill="#f3c63c" transform="translate(5 3)" />
+            <path d="M18 70L34 52L64 38L96 44L100 68L82 90L42 90L20 80Z" fill="#e4543a" transform="translate(-5 6)" />
+            <path d="M214 84L292 60L270 98L226 112Z" fill="#e4543a" transform="translate(5 5)" />
 
-            {/* far legs, darker */}
-            <g className={styles.legBack} style={{ animationDelay: '-0.3s' }}>
-              <path d="M150 118Q148 150 140 160L120 164L122 172L168 172L172 150Q186 140 186 118Z" fill="#1f5c38" stroke={INK} strokeWidth="6" strokeLinejoin="round" />
+            {/* far legs: thin bones */}
+            <g className={styles.legBack} style={{ animationDelay: '-0.31s' }}>
+              <path d="M150 120L142 148L122 160L112 172M122 160L134 172" {...stroke} strokeWidth="8" opacity=".7" />
             </g>
-            <g className={styles.legFront} style={{ animationDelay: '-0.3s' }}>
-              <path d="M88 118Q86 150 78 160L60 164L62 172L106 172L110 150Q122 140 122 118Z" fill="#1f5c38" stroke={INK} strokeWidth="6" strokeLinejoin="round" />
+            <g className={styles.legFront} style={{ animationDelay: '-0.31s' }}>
+              <path d="M96 112L92 142L72 158L62 172M72 158L84 172" {...stroke} strokeWidth="8" opacity=".7" />
             </g>
 
-            {/* body */}
-            <path d="M70 80Q90 38 152 36Q220 40 228 92Q224 138 162 142Q100 144 74 118Z" fill="#2a7d4b" stroke={INK} strokeWidth="7" strokeLinejoin="round" />
-            <ellipse cx="124" cy="114" rx="44" ry="22" fill="#f3c63c" opacity=".9" />
-            <path d="M92 108h66M96 118h62M104 128h48" fill="none" stroke={INK} strokeWidth="3.5" strokeLinecap="round" />
-            <path d="M96 58q10 12 8 26M122 52q10 14 6 30M150 50q12 14 8 30M180 54q10 14 6 30" fill="none" stroke={INK} strokeWidth="4.5" strokeLinecap="round" />
+            {/* tail with vertebrae */}
+            <path d="M232 70L270 62L296 40L284 70L252 98L214 112" {...stroke} strokeWidth="7" />
+            <path d="M240 72l4 -10M254 70l5 -11M268 64l5 -11M222 90l9 5M238 98l8 5M254 88l8 6" {...stroke} strokeWidth="3.5" />
 
-            {/* spikes */}
-            <path d="M98 44L108 18L118 42M124 38L134 10L144 38M152 36L163 8L173 36M181 40L192 14L200 44M210 54L222 32L226 62" fill="#e4543a" stroke={INK} strokeWidth="5" strokeLinejoin="round" />
+            {/* spine and back, ragged */}
+            <path d="M62 40L92 44L112 26L128 44L150 22L168 46L192 28L208 52L236 70" {...stroke} strokeWidth="7" />
+            <path d="M104 44l4 12M132 44l2 12M160 46l-2 12M190 50l-6 10M216 58l-8 8" {...stroke} strokeWidth="3.5" />
+            {/* belly */}
+            <path d="M52 92L84 108L128 124L176 128L214 112" {...stroke} strokeWidth="7" />
 
-            {/* near legs */}
+            {/* ribs */}
+            <path d="M118 46Q100 78 112 116M138 44Q122 80 134 124M158 48Q144 84 156 128M178 52Q166 84 176 126M198 60Q192 88 198 118" {...stroke} strokeWidth="4.5" />
+            <path d="M118 62Q132 60 140 66M116 80Q134 80 146 84M118 98Q136 98 150 104" {...stroke} strokeWidth="2.5" opacity=".7" />
+
+            {/* near legs: bone, knee, claw */}
             <g className={styles.legBack}>
-              <path d="M162 118Q160 150 152 160L132 164L134 172L180 172L184 150Q198 140 198 118Z" fill="#2a7d4b" stroke={INK} strokeWidth="7" strokeLinejoin="round" />
-              <path d="M142 168l-4 -8M152 168l-2 -8M162 168l0 -8" stroke={INK} strokeWidth="3.5" strokeLinecap="round" />
+              <path d="M170 124L182 150L160 164L152 172M160 164L174 172M182 150L196 158" {...stroke} strokeWidth="11" />
+              <circle cx="182" cy="150" r="6" fill="#f6efe0" stroke={INK} strokeWidth="3.5" />
+              <path d="M146 170l-5 -6M156 172l-2 -8M166 172l1 -8" {...stroke} strokeWidth="3.5" />
             </g>
             <g className={styles.legFront}>
-              <path d="M98 118Q96 150 88 160L70 164L72 172L116 172L120 150Q132 140 132 118Z" fill="#2a7d4b" stroke={INK} strokeWidth="7" strokeLinejoin="round" />
-              <path d="M78 168l-4 -8M88 168l-2 -8M98 168l0 -8" stroke={INK} strokeWidth="3.5" strokeLinecap="round" />
+              <path d="M104 114L108 144L86 158L76 172M86 158L98 172M108 144L122 150" {...stroke} strokeWidth="11" />
+              <circle cx="108" cy="144" r="6" fill="#f6efe0" stroke={INK} strokeWidth="3.5" />
+              <path d="M70 170l-5 -6M80 172l-2 -8M90 172l1 -8" {...stroke} strokeWidth="3.5" />
             </g>
 
-            {/* tiny arm */}
-            <path d="M80 98l-22 12l10 7" fill="none" stroke={INK} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+            {/* tiny clawed arm */}
+            <path d="M84 98L64 108L72 118M64 108L56 104" {...stroke} strokeWidth="6" />
 
-            {/* head: upper jaw, open mouth, lower jaw */}
-            <path d="M70 86Q56 66 46 54L40 74L82 88Z" fill="#2a7d4b" stroke={INK} strokeWidth="6" strokeLinejoin="round" />
-            <path d="M26 70L86 80L82 92Q54 92 28 82Z" fill="#8f1d14" stroke={INK} strokeWidth="6" strokeLinejoin="round" />
-            <path d="M22 82L84 94L80 108Q50 106 24 90Z" fill="#1f5c38" stroke={INK} strokeWidth="6" strokeLinejoin="round" />
-            <path d="M16 60L62 32Q86 28 94 52L90 80L28 70Z" fill="#2a7d4b" stroke={INK} strokeWidth="7" strokeLinejoin="round" />
-            <path d="M32 70l5 12l5 -10l5 12l5 -9l5 11l5 -9M30 84l4 -9l5 8l5 -9l5 9" fill="#f6efe0" stroke={INK} strokeWidth="2.6" strokeLinejoin="round" />
-            <circle cx="68" cy="50" r="7.5" fill="#f6efe0" stroke={INK} strokeWidth="4" />
-            <path d="M64 46l8 8M72 46l-8 8" stroke={INK} strokeWidth="3" strokeLinecap="round" />
-            <path d="M40 54q8 -4 14 0" fill="none" stroke={INK} strokeWidth="3.5" strokeLinecap="round" />
+            {/* skull: blocky, jaw hanging open, big square teeth */}
+            <path d="M14 66L30 50L64 36L96 42L102 68L82 90L40 90L18 80Z" fill="none" stroke={INK} strokeWidth="8" strokeLinejoin="round" />
+            <path d="M16 76L96 70L84 94L36 92Z" fill="#8f1d14" stroke={INK} strokeWidth="6" strokeLinejoin="round" />
+            <path d="M18 70h10v14h-10zM30 70h10v16h-10zM42 70h10v14h-10zM54 70h10v16h-10zM66 70h10v14h-10zM78 70h10v16h-10z" fill="#f6efe0" stroke={INK} strokeWidth="2.6" strokeLinejoin="round" />
+            <path d="M22 92h10v-12h-10zM34 94h10v-14h-10zM46 94h10v-12h-10zM58 92h10v-12h-10zM70 92h10v-12h-10z" fill="#f6efe0" stroke={INK} strokeWidth="2.6" strokeLinejoin="round" />
+            <circle cx="66" cy="52" r="10" fill="#f6efe0" stroke={INK} strokeWidth="5" />
+            <path d="M60 52q6 -8 12 0q-6 8 -12 0M58 46L74 58M74 46L58 58" fill="none" stroke={INK} strokeWidth="3" strokeLinecap="round" />
+            <path d="M32 56l10 -3M30 64l8 -2" {...stroke} strokeWidth="3.5" />
 
             {/* crown */}
-            <g transform="translate(60 30) rotate(-12)">
-              <path d="M-16 2L-16 -18L-7 -9L0 -26L7 -9L16 -18L16 2Z" fill="#f3c63c" stroke={INK} strokeWidth="4" strokeLinejoin="round" />
+            <g transform="translate(56 30) rotate(-12)">
+              <path d="M-16 2L-16 -18L-7 -9L0 -26L7 -9L16 -18L16 2Z" fill="#f3c63c" stroke={INK} strokeWidth="4.5" strokeLinejoin="round" />
+              <path d="M-12 -2H12" {...stroke} strokeWidth="2.5" />
             </g>
 
-            {/* fire */}
-            <g transform="translate(24 76) scale(1.55) translate(-24 -76)">
-            <g className={styles.fire}>
-              <path className={styles.flameA} d="M22 74Q-6 40 -66 62Q-26 72 -76 90Q-12 98 24 82Z" fill="#e4543a" stroke={INK} strokeWidth="4" strokeLinejoin="round" />
-              <path className={styles.flameB} d="M24 76Q2 54 -40 68Q-14 76 -50 88Q0 92 26 82Z" fill="#f08a2a" />
-              <path className={styles.flameC} d="M26 78Q10 66 -14 74Q4 80 -18 86Q12 88 28 82Z" fill="#f3c63c" />
-              <path className={styles.scrib} d="M0 66q-14 -10 -30 -2q16 8 -4 16M-24 84q-12 4 -26 -2" fill="none" stroke={INK} strokeWidth="3" strokeLinecap="round" />
-              <circle className={styles.ember} style={{ animationDelay: '0s' }} cx="-30" cy="60" r="4" fill="#f3c63c" stroke={INK} strokeWidth="2" />
-              <circle className={styles.ember} style={{ animationDelay: '-0.45s' }} cx="-52" cy="76" r="3.5" fill="#e4543a" stroke={INK} strokeWidth="2" />
-              <circle className={styles.ember} style={{ animationDelay: '-0.9s' }} cx="-74" cy="66" r="3" fill="#f08a2a" stroke={INK} strokeWidth="2" />
-              <circle className={styles.ember} style={{ animationDelay: '-0.2s' }} cx="-62" cy="92" r="3" fill="#f3c63c" stroke={INK} strokeWidth="2" />
+            {/* a word written on its side, struck through */}
+            <g transform="translate(150 94) rotate(-5)" className={styles.word}>
+              <text textAnchor="middle">DINO</text>
+              <path d="M-38 -6L38 -12" {...stroke} strokeWidth="4" />
             </g>
+
+            {/* fire: jagged, painted */}
+            <g transform="translate(18 76) scale(1.5) translate(-18 -76)">
+              <g className={styles.fire}>
+                <path className={styles.flameA} d="M18 74L-8 54L-14 66L-40 46L-42 62L-72 50L-60 72L-86 74L-58 84L-80 100L-44 94L-52 110L-22 96L-4 100L20 84Z" fill="#e4543a" stroke={INK} strokeWidth="4.5" strokeLinejoin="round" />
+                <path className={styles.flameB} d="M18 76L-4 64L-10 72L-30 60L-34 72L-56 66L-42 80L-60 88L-30 86L-34 96L-8 88L20 82Z" fill="#f08a2a" />
+                <path className={styles.flameC} d="M18 78L2 72L-6 78L-20 72L-16 82L-30 86L-6 86L20 82Z" fill="#f3c63c" />
+                <path className={styles.scrib} d="M-8 62l-14 -8l10 -2l-12 -10M-34 100l-14 4l12 6M-60 66l-12 -6" {...stroke} strokeWidth="3.5" />
+                <circle className={styles.ember} style={{ animationDelay: '0s' }} cx="-30" cy="58" r="4" fill="#f3c63c" stroke={INK} strokeWidth="2" />
+                <circle className={styles.ember} style={{ animationDelay: '-0.45s' }} cx="-52" cy="78" r="3.5" fill="#e4543a" stroke={INK} strokeWidth="2" />
+                <circle className={styles.ember} style={{ animationDelay: '-0.9s' }} cx="-74" cy="66" r="3" fill="#f08a2a" stroke={INK} strokeWidth="2" />
+                <circle className={styles.ember} style={{ animationDelay: '-0.2s' }} cx="-62" cy="96" r="3" fill="#f3c63c" stroke={INK} strokeWidth="2" />
+              </g>
             </g>
           </g>
         </g>

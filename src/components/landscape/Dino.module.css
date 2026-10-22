@@ -115,3 +115,12 @@
     transform: translate(calc(var(--dx) * 0.5), calc(var(--dy) * 0.5));
   }
 }
+
+.word text {
+  fill: #171414;
+  font: 26px var(--font-marker), 'Marker Felt', 'Comic Sans MS', cursive;
+  paint-order: stroke;
+  stroke: #f6efe0;
+  stroke-width: 5px;
+  letter-spacing: 0.06em;
+}
