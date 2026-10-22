@@ -251,7 +251,7 @@ export const projects: Project[] = [
     description:
       "Member of the development team of the educational system of Escola da Cidade, in São Paulo.",
     result: "Part of the team that develops the school's educational system.",
-    stack: [],
+    stack: ["PHP", "SQL", "JavaScript", "CSS"],
     tier: "selected",
     link: "/projects/escola-da-cidade",
   },
