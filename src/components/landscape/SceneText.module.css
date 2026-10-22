@@ -77,20 +77,20 @@
 
 .legalLink {
   font-size: 0.875rem;
-  color: #4a4f57;
+  color: var(--legal, #4a4f57);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .legalLink:hover,
 .legalLink:focus-visible {
-  color: #000;
+  color: var(--legal-hover, #000);
   outline: none;
 }
 
 .copyText {
   font-size: 0.8125rem;
-  color: #3d4435;
+  color: #eaf0dc;
 }
 
 @media (max-width: 719px) {

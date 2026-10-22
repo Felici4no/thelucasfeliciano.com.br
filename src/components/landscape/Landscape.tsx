@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, type ReactNode } from 'react';
+import Image from 'next/image';
 import {
   motion,
   useMotionValue,
@@ -10,26 +11,18 @@ import {
   useTransform,
   type MotionValue,
 } from 'framer-motion';
-import { art } from './art';
 import styles from './Landscape.module.css';
-
-const COLORS = {
-  cream: '#fcefdd',
-  orange: '#f68656',
-  green: '#a9b46f',
-  blue: '#6c9fdc',
-};
 
 interface LandscapeProps {
   /** Brand and the three columns, fixed on the sky. */
   top: ReactNode;
-  /** Small links that sit on the cloud bank. */
+  /** Small links that sit in the sky above the hills. */
   legal: ReactNode;
-  /** Copyright line that sits in the field. */
+  /** Copyright line that sits on the hills. */
   copyright: ReactNode;
 }
 
-/** One layer of the scene: slides up with the scroll at its own pace and sways with the pointer. */
+/** One depth of the scene: slides up with the scroll at its own pace and sways with the pointer. */
 function Layer({
   rise,
   sway,
@@ -49,15 +42,7 @@ function Layer({
   const x = useTransform(pointer, (v) => v * sway);
   return (
     <motion.div className={styles.layer} style={reduce ? undefined : { y, x }}>
-      <svg
-        className={styles.svg}
-        viewBox="0 0 1200 705"
-        preserveAspectRatio="xMinYMax slice"
-        aria-hidden="true"
-        focusable="false"
-      >
-        {children}
-      </svg>
+      {children}
     </motion.div>
   );
 }
@@ -70,8 +55,9 @@ export function Landscape({ top, legal, copyright }: LandscapeProps) {
   const pointer = useSpring(raw, { stiffness: 60, damping: 18, mass: 0.6 });
 
   // text that belongs to a layer travels with it
-  const bankY = useTransform(scrollYProgress, [0, 1], ['0vh', '-3.5vh']);
-  const fieldY = useTransform(scrollYProgress, [0, 1], ['0vh', '-10vh']);
+  const hillsY = useTransform(scrollYProgress, [0, 1], ['0vh', '-3.5vh']);
+
+  const layerProps = { progress: scrollYProgress, pointer, reduce };
 
   return (
     <main
@@ -83,12 +69,6 @@ export function Landscape({ top, legal, copyright }: LandscapeProps) {
       <div className={styles.stage}>
         <svg className={styles.defs} width="0" height="0" aria-hidden="true" focusable="false">
           <defs>
-            {/* hand-cut wobble on every edge */}
-            <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4" result="n" />
-              <feDisplacementMap in="SourceGraphic" in2="n" scale="5" />
-            </filter>
-            {/* print grain */}
             <filter id="grain" x="0" y="0" width="100%" height="100%">
               <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="9" />
               <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.4 1.1" />
@@ -96,49 +76,34 @@ export function Landscape({ top, legal, copyright }: LandscapeProps) {
           </defs>
         </svg>
 
-        <Layer rise={2} sway={5} progress={scrollYProgress} pointer={pointer} reduce={reduce}>
-          <g filter="url(#rough)" fill={COLORS.cream}>
-            {art.far.map((d, i) => (
-              <path key={i} d={d} />
-            ))}
-          </g>
+        {/* sun and moon: far away, barely move */}
+        <Layer rise={1} sway={3} {...layerProps}>
+          <Image src="/scene/sun.webp" alt="" width={560} height={560} priority className={styles.sun} />
+          <Image src="/scene/moon.webp" alt="" width={520} height={519} priority className={styles.moon} />
         </Layer>
 
-        <Layer rise={3.5} sway={9} progress={scrollYProgress} pointer={pointer} reduce={reduce}>
-          <g filter="url(#rough)">
-            <path d={art.bank} fill={COLORS.cream} />
-            <g fill={COLORS.blue}>
-              {art.slits.map((d, i) => (
-                <path key={i} d={d} />
-              ))}
-            </g>
-          </g>
+        {/* clouds drift at their own paces */}
+        <Layer rise={2} sway={6} {...layerProps}>
+          <Image src="/scene/cloud.webp" alt="" width={875} height={260} className={styles.cloudRight} />
+        </Layer>
+        <Layer rise={3.5} sway={10} {...layerProps}>
+          <Image src="/scene/cloud.webp" alt="" width={875} height={260} className={styles.cloudLeft} />
+        </Layer>
+        <Layer rise={4.5} sway={12} {...layerProps}>
+          <Image src="/scene/cloud.webp" alt="" width={875} height={260} className={styles.cloudSmall} />
         </Layer>
 
-        <Layer rise={5.5} sway={14} progress={scrollYProgress} pointer={pointer} reduce={reduce}>
-          <g filter="url(#rough)" fill={COLORS.blue}>
-            <path d={art.foliage} />
-            <path d={art.trunk} />
-          </g>
+        <Layer rise={3.5} sway={14} {...layerProps}>
+          <Image src="/scene/hills.webp" alt="" width={735} height={269} priority className={styles.hills} />
+          <div className={styles.ground} />
         </Layer>
 
-        <Layer rise={7} sway={18} progress={scrollYProgress} pointer={pointer} reduce={reduce}>
-          <g filter="url(#rough)" fill={COLORS.orange}>
-            <path d={art.shrubRight} />
-            <path d={art.shrubLeftA} />
-            <path d={art.shrubLeftB} />
-          </g>
+        {/* trees stand in front of the hills and move the most */}
+        <Layer rise={6} sway={18} {...layerProps}>
+          <Image src="/scene/tree.webp" alt="" width={699} height={1945} className={styles.treeFar} />
         </Layer>
-
-        <Layer rise={10} sway={24} progress={scrollYProgress} pointer={pointer} reduce={reduce}>
-          <g filter="url(#rough)">
-            <path d={art.field} fill={COLORS.green} />
-            <g fill={COLORS.cream}>
-              {art.streaks.map((d, i) => (
-                <path key={i} d={d} />
-              ))}
-            </g>
-          </g>
+        <Layer rise={8} sway={24} {...layerProps}>
+          <Image src="/scene/tree.webp" alt="" width={699} height={1945} className={styles.treeNear} />
         </Layer>
 
         <svg className={styles.grain} aria-hidden="true" focusable="false">
@@ -146,10 +111,10 @@ export function Landscape({ top, legal, copyright }: LandscapeProps) {
         </svg>
 
         <div className={styles.content}>{top}</div>
-        <motion.div className={styles.legal} style={reduce ? undefined : { y: bankY }}>
+        <motion.div className={styles.legal} style={reduce ? undefined : { y: hillsY }}>
           {legal}
         </motion.div>
-        <motion.div className={styles.copy} style={reduce ? undefined : { y: fieldY }}>
+        <motion.div className={styles.copy} style={reduce ? undefined : { y: hillsY }}>
           {copyright}
         </motion.div>
       </div>

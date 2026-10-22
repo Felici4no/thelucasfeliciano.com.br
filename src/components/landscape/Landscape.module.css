@@ -1,7 +1,7 @@
 /* One tall track; the stage inside it stays pinned while the layers slide. */
 .track {
   position: relative;
-  height: 200vh;
+  height: 180vh;
   background: #6c9fdc;
 }
 
@@ -14,8 +14,8 @@
   top: 0;
   height: 100svh;
   overflow: hidden;
-  background: #6c9fdc;
-  color: #343a41;
+  background: linear-gradient(to bottom, #5d92d6 0%, #7fadde 55%, #a3c6e9 100%);
+  color: #2c3138;
 }
 
 .defs {
@@ -26,14 +26,13 @@
   position: absolute;
   inset: 0;
   will-change: transform;
+  pointer-events: none;
 }
 
-.svg {
+.layer img {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
+  max-width: none;
+  user-select: none;
 }
 
 .grain {
@@ -41,9 +40,87 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.12;
+  opacity: 0.08;
   mix-blend-mode: multiply;
   pointer-events: none;
+}
+
+/* ---- sky ---- */
+.sun {
+  left: 50%;
+  top: 11%;
+  width: clamp(130px, 15vw, 250px);
+  height: auto;
+  transform: translateX(-50%);
+}
+
+.moon {
+  left: 36%;
+  top: 22%;
+  width: clamp(54px, 6vw, 100px);
+  height: auto;
+  opacity: 0.92;
+}
+
+.cloudLeft {
+  left: -4%;
+  top: 46%;
+  width: clamp(240px, 40vw, 620px);
+  height: auto;
+  opacity: 0.96;
+}
+
+.cloudRight {
+  right: -3%;
+  top: 31%;
+  width: clamp(180px, 27vw, 420px);
+  height: auto;
+  transform: scaleX(-1);
+  opacity: 0.9;
+}
+
+.cloudSmall {
+  left: 52%;
+  top: 50%;
+  width: clamp(120px, 16vw, 250px);
+  height: auto;
+  opacity: 0.85;
+}
+
+/* ---- land ---- */
+.hills {
+  left: 50%;
+  bottom: 0;
+  width: max(108vw, 125vh);
+  height: auto;
+  transform: translateX(-50%);
+}
+
+/* continues the dark foliage below the screen so nothing shows when the layer rises */
+.ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -60vh;
+  height: calc(60vh + 4px);
+  background: #191b0a;
+}
+
+.treeFar {
+  left: 62%;
+  bottom: -10vh;
+  height: 54vh;
+  width: auto;
+  transform: scaleX(-1);
+  filter: saturate(0.8) brightness(1.04);
+  opacity: 0.94;
+}
+
+.treeNear {
+  left: 3%;
+  bottom: -12vh;
+  height: 76vh;
+  width: auto;
 }
 
 /* ---- text ---- */
@@ -57,10 +134,12 @@
 }
 
 .legal {
+  --legal: #eaf0dc;
+  --legal-hover: #fff;
   position: absolute;
   z-index: 2;
-  right: clamp(20px, 7vw, 90px);
-  top: 68%;
+  right: clamp(20px, 5.2vw, 62px);
+  bottom: 5%;
   display: flex;
   gap: clamp(20px, 3vw, 42px);
 }
@@ -68,7 +147,7 @@
 .copy {
   position: absolute;
   z-index: 2;
-  left: clamp(20px, 11.7vw, 140px);
+  left: clamp(20px, 11.7vw, 168px);
   bottom: 5%;
 }
 
@@ -78,11 +157,34 @@
     gap: 28px;
   }
   .legal {
-    top: 58%;
+    bottom: 10%;
     right: 20px;
+  }
+  .moon,
+  .cloudSmall {
+    display: none;
+  }
+  .sun {
+    left: 74%;
+    top: 40%;
+    width: 92px;
+  }
+  .cloudLeft {
+    top: 47%;
+    width: 220px;
+  }
+  .cloudRight {
+    top: 38%;
+    width: 150px;
+  }
+  .hills {
+    width: max(110vw, 150vh);
   }
   .copy {
     left: 20px;
     bottom: 4%;
+  }
+  .treeFar {
+    left: 70%;
   }
 }
