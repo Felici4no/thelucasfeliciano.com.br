@@ -1,95 +1,48 @@
+/* Editorial system — one grotesk family, paper and ink, heavy rules. */
 :root {
-  /* Editorial black-on-white palette */
-  --paper: #F7F5EF;       /* warm light background */
-  --paper-2: #ECE8DE;     /* subtle surface (image loading bg) */
-  --ink: #0A0A0A;         /* primary text / single black block */
-  --ink-2: #444444;       /* strong secondary */
-  --ink-muted: #6B6B6B;   /* secondary text */
-  --ink-faint: #9A9A9A;   /* metadata */
-  --numeral: #C9C2B3;     /* faded serif index numerals */
-  --hairline: rgba(10, 10, 10, 0.16);
-  --hairline-soft: rgba(10, 10, 10, 0.10);
+  --paper: #f4f1ec;
+  --paper-2: #e7e2d9;
+  --ink: #0e0e0e;
+  --ink-2: #4a4845;
+  --rule: 2px solid var(--ink);
+  --hair: 1px solid rgba(14, 14, 14, 0.18);
 
-  /* Legacy aliases kept so untouched pages (/portfolio, /logbook) don't break */
-  --bg: var(--paper);
-  --fg: var(--ink);
-  --fg-muted: var(--ink-muted);
-  --border: var(--ink);
-  --accent: var(--paper-2);
-  --grid-line: var(--hairline-soft);
+  --font: var(--font-grotesk), "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--font-instrument), "Georgia", serif;
-  --font-mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  --maxw: 1280px;
+  --gutter: clamp(20px, 4vw, 48px);
 
-  /* Fluid type scale */
-  --t-display: clamp(2.75rem, 9vw, 6rem);
-  --t-title: clamp(2rem, 6vw, 3.25rem);
-  --t-index: clamp(1.4rem, 3.2vw, 2rem);
-  --t-meta: 0.75rem;
-
-  /* Rhythm */
-  --maxw: 1100px;
-  --gutter: clamp(20px, 5vw, 64px);
-  --space-section: clamp(72px, 12vw, 168px);
-  --radius: 0;
-
-  /* Clean system (home): quiet surfaces, hairline borders, soft shadows */
-  --accent: #E6DFD0;                       /* sand, used for highlights and fills */
-  --tint: #F0ECE2;                         /* lighter sand, hover and secondary fills */
-  --white: #FFFFFF;
-  --line: rgba(10, 10, 10, 0.14);
-  --line-strong: rgba(10, 10, 10, 0.32);
-  --radius-card: 14px;
-  --nb-shadow: 0 1px 2px rgba(10, 10, 10, 0.04), 0 8px 24px rgba(10, 10, 10, 0.05);
-  --nb-shadow-lg: 0 2px 4px rgba(10, 10, 10, 0.05), 0 14px 34px rgba(10, 10, 10, 0.09);
-  --nb-border: 1px solid var(--line);
-  --font-display: var(--font-instrument), "Georgia", serif;
-
-  --header-h: 52px;
-  --screen: calc(100svh - var(--header-h));  /* one full viewport under the sticky header */
-  --nav-reserve: 0px;                        /* room kept for the floating section map */
-  --pad-l: calc(var(--gutter) + var(--nav-reserve));
-  --pad-r: var(--gutter);
+  /* Type scale */
+  --t-display: clamp(3.6rem, 15.5vw, 12.5rem);
+  --t-section: clamp(2.4rem, 8vw, 6.5rem);
+  --t-row: clamp(1.8rem, 4.4vw, 4rem);
+  --t-lead: clamp(1.25rem, 2.3vw, 2rem);
+  --t-body: clamp(1.0625rem, 1.25vw, 1.1875rem);
+  --t-meta: 0.8125rem;
 }
 
-@media (min-width: 1180px) {
-  :root { --nav-reserve: 64px; }
-}
-
-@media (min-width: 1560px) {
-  :root { --nav-reserve: 188px; }
-}
-
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
-  background-color: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-sans);
-  overflow-x: clip; /* clip, not hidden: hidden would break position: sticky */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
 }
 
-html {
-  scroll-padding-top: var(--header-h);
-}
-
-/* the home opts in to gentle full-screen snapping */
-@media (min-width: 900px) and (min-height: 700px) {
-  html:has([data-snap]) {
-    scroll-snap-type: y proximity;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; scroll-snap-type: none !important; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--t-body);
+  line-height: 1.5;
+  overflow-x: hidden;
 }
 
 a {
@@ -97,19 +50,31 @@ a {
   text-decoration: none;
 }
 
-ul, ol {
-  list-style: none;
-}
-
-h1, h2, h3, h4 {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  line-height: 1.05;
+img {
+  display: block;
+  max-width: 100%;
 }
 
 button {
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-family: inherit;
+  font: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
 }

@@ -1,37 +1,40 @@
-import Link from 'next/link';
-import styles from './page.module.css';
+import type { Metadata } from 'next';
+import { Masthead } from '@/components/editorial/Masthead';
+import { RuleRow } from '@/components/editorial/RuleRow';
+import s from '@/components/editorial/editorial.module.css';
 
-export const metadata = {
-  title: 'Logbook | Lucas Feliciano',
-  description: 'Manifestos and ideas.',
+export const metadata: Metadata = {
+  title: 'Logbook',
+  description: 'Manifestos, notes and essays by Lucas Feliciano.',
 };
+
+const entries = [
+  {
+    href: '/logbook/escolas-publicas-vivas',
+    title: 'Escolas Públicas Vivas',
+    excerpt:
+      'Por um concurso nacional de arquitetura para escolas públicas. A escola pública não deve parecer um lugar de contenção.',
+    date: ['May. 11', '2026'],
+    tag: 'Manifesto',
+  },
+];
 
 export default function LogbookPage() {
   return (
-    <main className={styles.main}>
-      <div className={styles.content}>
-        <header className={styles.header}>
-          <h1 className={styles.title}>Logbook</h1>
-          <p className={styles.description}>
-            A collection of manifestos, notes, and technical essays.
-          </p>
-        </header>
-
-        <div className={styles.entries}>
-          <Link href="/logbook/escolas-publicas-vivas" className={styles.entryLink} style={{ textDecoration: 'none' }}>
-            <article className={styles.entry}>
-              <div className={styles.entryMeta}>
-                <span className={styles.entryDate}>2026-05-10</span>
-                <span className={styles.entryTag}>MANIFESTO</span>
-              </div>
-              <h2 className={styles.entryTitle}>Escolas Públicas Vivas</h2>
-              <p className={styles.entryExcerpt}>
-                Por um concurso nacional de arquitetura para escolas públicas. A escola pública não deve parecer um lugar de contenção. Deve parecer um lugar onde o país decidiu investir no futuro.
-              </p>
-            </article>
-          </Link>
-        </div>
-      </div>
+    <main className={s.page}>
+      <Masthead lines={['Logbook']} lede="Manifestos, notes and essays." />
+      <ul className={s.list}>
+        {entries.map((e) => (
+          <RuleRow
+            key={e.href}
+            href={e.href}
+            title={e.title}
+            description={e.excerpt}
+            meta={[e.tag, ...e.date]}
+            fallback="01"
+          />
+        ))}
+      </ul>
     </main>
   );
 }

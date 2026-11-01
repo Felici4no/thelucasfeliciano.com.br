@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif, Permanent_Marker } from "next/font/google";
+import localFont from "next/font/local";
 import { siteConfig, jsonLdPerson } from "@/lib/seo";
 import { Analytics } from "@vercel/analytics/next";
+import { SiteHeader } from "@/components/editorial/SiteHeader";
+import { SiteFooter } from "@/components/editorial/SiteFooter";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const marker = Permanent_Marker({ weight: "400", subsets: ["latin"], variable: "--font-marker" });
-const instrumentSerif = Instrument_Serif({ 
-  weight: "400", 
-  subsets: ["latin"], 
-  variable: "--font-instrument" 
+/* Inter Tight, self-hosted (variable weight 100–900). */
+const grotesk = localFont({
+  src: "./fonts/InterTight-Variable.woff2",
+  weight: "100 900",
+  variable: "--font-grotesk",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.title,
     template: `%s | ${siteConfig.name}`,
@@ -36,24 +39,15 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: siteConfig.url,
-  },
+  robots: { index: true, follow: true },
+  alternates: { canonical: siteConfig.url },
 };
-
-import { LoadingProvider } from "@/components/layout/LoadingProvider";
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable} ${marker.variable}`} suppressHydrationWarning>
+    <html lang="en" className={grotesk.variable}>
       <head>
         <script
           type="application/ld+json"
@@ -61,9 +55,9 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <LoadingProvider>
-          {children}
-        </LoadingProvider>
+        <SiteHeader />
+        {children}
+        <SiteFooter />
         <Analytics />
       </body>
     </html>
