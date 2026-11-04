@@ -32,6 +32,53 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "felisidian",
+    name: "Felisidian",
+    subtitle: "A visual library for Obsidian: connect what you read with the ideas you develop from it.",
+    type: "Knowledge Tools / Interface Design / Open Source",
+    year: "2026",
+    status: "Early development / v0.1.0",
+    role: "Creator / Developer",
+    description:
+      "An open-source Obsidian plugin that turns a local vault into a visual library of sources, reading notes, ideas and quick captures. Subject colors, cards and filtered views help readers organize their material and develop their own thinking.",
+    problem:
+      "A collection of notes needs more than folders: readers need to distinguish source material from their own writing, follow reading progress and find connections across subjects without losing their place.",
+    whatIBuilt:
+      "A card-based library with a subject tree and combinable filters; a reading view that restores filters and scroll on return; passage highlights and linked reading notes; and a keyboard-friendly idea editor. The interface supports Portuguese and English, light and dark themes, and drag-to-reorder cards.",
+    result:
+      "An early-development plugin, version 0.1.0, with source code available under the MIT license. It operates locally without network requests or data collection. The narrow layout has been checked in phone emulation; real-phone touch and keyboard validation remain pending.",
+    stack: ["TypeScript", "Obsidian API", "CSS", "esbuild"],
+    tier: "selected",
+    link: "/projects/felisidian",
+    github: "https://github.com/Felici4no/Felisidian",
+    image: {
+      src: "/projects/felisidian/library-overview.jpg",
+      alt: "Felisidian library in Obsidian with colored cards, a subject tree and reading filters",
+      caption: "Visual library · subjects, content types and reading progress",
+      fit: "contain",
+    },
+    gallery: [
+      {
+        src: "/projects/felisidian/source-page.jpg",
+        alt: "Felisidian source reading page",
+        caption: "Source page · reading and annotation",
+        fit: "contain",
+      },
+      {
+        src: "/projects/felisidian/reading-note.jpg",
+        alt: "Felisidian reading note separating a source passage from the reader's own writing",
+        caption: "Reading note · source passage and personal reflection",
+        fit: "contain",
+      },
+      {
+        src: "/projects/felisidian/idea-window.jpg",
+        alt: "Felisidian idea editor with space for an argument and links to related notes",
+        caption: "Idea editor · developing an argument and connecting notes",
+        fit: "contain",
+      },
+    ],
+  },
+  {
     id: "upay3food",
     name: "UPAY3FOOD",
     subtitle: "Unit pricing for food delivery: the food, the fees and the difference to the cheapest option.",
