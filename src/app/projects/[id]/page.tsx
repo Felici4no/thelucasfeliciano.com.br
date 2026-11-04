@@ -93,7 +93,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
       {project.image && (
         <figure className={s.figure}>
           <div className={s.frame}>
-            <Image src={project.image.src} alt={project.image.alt} fill priority className={s.cover} sizes="(max-width: 1280px) 100vw, 1200px" />
+            <Image src={project.image.src} alt={project.image.alt} fill priority className={s.cover} style={{ objectFit: project.image.fit }} sizes="(max-width: 1280px) 100vw, 1200px" />
           </div>
           {project.image.caption && (
             <figcaption className={`${s.caption} ${s.meta}`}>Fig. 01 — {project.image.caption}</figcaption>
@@ -115,7 +115,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           {project.gallery.map((g, i) => (
             <figure key={g.src} className={s.figure}>
               <div className={`${s.frame} ${s.frameTall}`}>
-                <Image src={g.src} alt={g.alt} fill className={s.cover} sizes="(max-width: 700px) 100vw, 50vw" />
+                <Image src={g.src} alt={g.alt} fill className={s.cover} style={{ objectFit: g.fit }} sizes="(max-width: 700px) 100vw, 50vw" />
               </div>
               {g.caption && (
                 <figcaption className={`${s.caption} ${s.meta}`}>

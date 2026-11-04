@@ -2,6 +2,8 @@ export interface ProjectImage {
   src: string;
   alt: string;
   caption?: string;
+  /** Preserve the full interface when displaying screenshots. */
+  fit?: "cover" | "contain";
 }
 
 export interface Project {
@@ -29,6 +31,53 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: "felisidian",
+    name: "Felisidian",
+    subtitle: "A visual library for Obsidian: connect what you read with the ideas you develop from it.",
+    type: "Knowledge Tools / Interface Design / Open Source",
+    year: "2026",
+    status: "Early development / v0.1.0",
+    role: "Creator / Developer",
+    description:
+      "An open-source Obsidian plugin that turns a local vault into a visual library of sources, reading notes, ideas and quick captures. Subject colors, cards and filtered views help readers organize their material and develop their own thinking.",
+    problem:
+      "A collection of notes needs more than folders: readers need to distinguish source material from their own writing, follow reading progress and find connections across subjects without losing their place.",
+    whatIBuilt:
+      "A card-based library with a subject tree and combinable filters; a reading view that restores filters and scroll on return; passage highlights and linked reading notes; and a keyboard-friendly idea editor. The interface supports Portuguese and English, light and dark themes, and drag-to-reorder cards.",
+    result:
+      "An early-development plugin, version 0.1.0, with source code available under the MIT license. It operates locally without network requests or data collection. The narrow layout has been checked in phone emulation; real-phone touch and keyboard validation remain pending.",
+    stack: ["TypeScript", "Obsidian API", "CSS", "esbuild"],
+    tier: "selected",
+    link: "/projects/felisidian",
+    github: "https://github.com/Felici4no/Felisidian",
+    image: {
+      src: "/projects/felisidian/library-overview.jpg",
+      alt: "Felisidian library in Obsidian with colored cards, a subject tree and reading filters",
+      caption: "Visual library · subjects, content types and reading progress",
+      fit: "contain",
+    },
+    gallery: [
+      {
+        src: "/projects/felisidian/source-page.jpg",
+        alt: "Felisidian source reading page",
+        caption: "Source page · reading and annotation",
+        fit: "contain",
+      },
+      {
+        src: "/projects/felisidian/reading-note.jpg",
+        alt: "Felisidian reading note separating a source passage from the reader's own writing",
+        caption: "Reading note · source passage and personal reflection",
+        fit: "contain",
+      },
+      {
+        src: "/projects/felisidian/idea-window.jpg",
+        alt: "Felisidian idea editor with space for an argument and links to related notes",
+        caption: "Idea editor · developing an argument and connecting notes",
+        fit: "contain",
+      },
+    ],
+  },
   {
     id: "upay3food",
     name: "UPAY3FOOD",
@@ -243,17 +292,97 @@ export const projects: Project[] = [
   },
   {
     id: "escola-da-cidade",
-    name: "Escola da Cidade Education System",
-    subtitle: "Educational system that helps university students follow their subjects, assignments and grades.",
-    type: "Education / Platform",
-    status: "Professional work / Active",
+    name: "Canteiro Acadêmico",
+    subtitle: "A student platform for Escola da Cidade: classes, deadlines, assignments and academic progress in one place.",
+    type: "Education / Student Platform",
+    year: "2026",
+    status: "Professional work / In development",
     role: "Software Engineer",
     description:
-      "Educational system of Escola da Cidade, in São Paulo, that helps university students follow their subjects, assignments and grades. Built by a development team in which Feliciano is a software engineer, designing the architecture together with the team and developing the system.",
-    result: "Designs the architecture with the team and develops the school's educational system.",
+      "I study Architecture and Urbanism at Escola da Cidade in São Paulo and was hired by the school to develop Canteiro Acadêmico, its student platform. I work with the development team on the system architecture and implementation, bringing my experience as a student to the design of the academic routine on mobile.",
+    problem:
+      "Students need a clear view of what is happening today, what they need to submit next and how they are progressing in each subject. The project brings these tasks together to make the academic routine easier to navigate.",
+    whatIBuilt:
+      "The interface in development brings together a daily dashboard, weekly and monthly calendars, assignment submission and tracking, subject-level grades and materials, profile settings and a digital student card.",
+    result:
+      "Development is ongoing. The screenshots show the mobile demonstration version with sample student data; they document the current interface rather than a completed rollout.",
     stack: ["PHP", "SQL", "JavaScript", "CSS"],
     tier: "selected",
     link: "/projects/escola-da-cidade",
+    image: {
+      src: "/projects/escola-da-cidade/celular-02-inicio.jpg",
+      alt: "Canteiro Acadêmico mobile home with an upcoming assignment, the next class and today's schedule",
+      caption: "Daily dashboard · mobile demonstration with sample data",
+      fit: "contain",
+    },
+    gallery: [
+      {
+        src: "/projects/escola-da-cidade/celular-01-login.jpg",
+        alt: "Login with student registration number and CPF",
+        caption: "Student sign-in",
+        fit: "contain",
+      },
+      {
+        src: "/projects/escola-da-cidade/celular-03-atividades-pendentes.jpg",
+        alt: "Pending assignments grouped by deadline",
+        caption: "Assignments · upcoming deadlines",
+        fit: "contain",
+      },
+      {
+        src: "/projects/escola-da-cidade/celular-04-atividades-enviadas.jpg",
+        alt: "Submitted assignments showing review status and grades",
+        caption: "Assignments · submissions and feedback",
+        fit: "contain",
+      },
+      {
+        src: "/projects/escola-da-cidade/celular-05-atividade-em-correcao.jpg",
+        alt: "Assignment details with instructions and review status",
+        caption: "Assignment detail · instructions and submission",
+        fit: "contain",
+      },
+      {
+        src: "/projects/escola-da-cidade/celular-06-agenda-semana.jpg",
+        alt: "Weekly agenda showing classes and assignment deadlines",
+        caption: "Agenda · week view",
+        fit: "contain",
+      },
+      {
+        src: "/projects/escola-da-cidade/celular-07-agenda-mes.jpg",
+        alt: "Monthly calendar showing classes and deadlines",
+        caption: "Agenda · month view",
+        fit: "contain",
+      },
+      {
+        src: "/projects/escola-da-cidade/celular-08-agenda-dia.jpg",
+        alt: "Daily agenda panel with classes and a deadline",
+        caption: "Agenda · day detail",
+        fit: "contain",
+      },
+      {
+        src: "/projects/escola-da-cidade/celular-09-disciplina.jpg",
+        alt: "Subject page showing accumulated points and progress toward the passing grade",
+        caption: "Subject · academic progress",
+        fit: "contain",
+      },
+      {
+        src: "/projects/escola-da-cidade/celular-10-perfil.jpg",
+        alt: "Student profile with account details and notification settings",
+        caption: "Profile · account and notifications",
+        fit: "contain",
+      },
+      {
+        src: "/projects/escola-da-cidade/celular-11-carteirinha.jpg",
+        alt: "Digital student card with sample identification and QR code",
+        caption: "Digital student card · demonstration",
+        fit: "contain",
+      },
+      {
+        src: "/projects/escola-da-cidade/celular-12-sobre.jpg",
+        alt: "About page describing the platform and its sections",
+        caption: "About Canteiro Acadêmico",
+        fit: "contain",
+      },
+    ],
   },
   {
     id: "gerar-contrato",
