@@ -87,6 +87,10 @@ export default function About() {
 
       <div className={s.prose} style={{ marginTop: 'clamp(28px, 4vw, 48px)' }}>
         <p>
+          My creative practice includes theatre, original music, and instrumental performance. I spent a year in a theatre group,
+          performed on violin in a concert in Guarulhos, and placed second in the Conservatório de Guarulhos competition for piano studies.
+        </p>
+        <p>
           First place at the <Link href="/projects/voculos">ElevenLabs Worldwide Hackathon São Paulo</Link> and at{' '}
           <Link href="/projects/alimapa">Devs de Impacto Rio</Link>; tech lead of{' '}
           <Link href="/projects/dolarizando-se">Dolarizando-se</Link>, a platform with 15,000 organic followers.{' '}

@@ -22,11 +22,7 @@ export default function Home() {
 
   return (
     <main className={s.page}>
-      <header className={a.hero}>
-        <div className={a.heroMeta}>
-          <p className={a.eyebrow}>São Paulo, Brasil</p>
-          <p className={a.eyebrow}>Personal archive / Independent practice</p>
-        </div>
+      <div className={a.hero}>
         <h1 className={a.identity} aria-label="Lucas Feliciano">
           <span className={a.firstName}>Lucas</span>
           <Image
@@ -41,40 +37,27 @@ export default function Home() {
           <span className={a.lastName}>Feliciano</span>
         </h1>
         <div className={a.heroStatement}>
-          <p className={a.eyebrow}>Sound / Space / Body / Code</p>
-          <p className={a.intro}>I work across music, architecture, performance and software, exploring how we make sense of the spaces we inhabit.</p>
+          <div className={a.identityNote}>
+            <span className={a.stamp} aria-hidden="true">✳</span>
+            <div><p className={a.eyebrow}>Creative practice</p><p className={a.location}>São Paulo, Brasil</p></div>
+          </div>
+          <p className={a.intro}>I explore ideas through architecture, visual expression, music and technology. Different tools, one curiosity.</p>
         </div>
-      </header>
+      </div>
       <nav className={a.disciplines} aria-label="Fields of practice">
         {[
-          ['01', 'Sound', '#sound'],
-          ['02', 'Space', '#space'],
-          ['03', 'Body', '#body'],
-          ['04', 'Code', '#selected'],
-        ].map(([n, label, href]) => <a key={n} href={href}><span>/{n}</span>{label}<span aria-hidden="true">↘</span></a>)}
+          ['01', 'Space', '#space', '⌑'],
+          ['02', 'Expression', '#body', '✳'],
+          ['03', 'Sound', '#sound', '♪'],
+          ['04', 'Technology', '#selected', '↗'],
+        ].map(([n, label, href, mark]) => (
+          <a key={n} href={href}><span className={a.navIndex}>/{n}</span><span className={a.navMark} aria-hidden="true">{mark}</span><span className={a.navLabel}>{label}</span><span className={a.navArrow} aria-hidden="true">↘</span></a>
+        ))}
       </nav>
-
-      <section id="sound" className={a.chapter}>
-        <div className={a.chapterHead}>
-          <p className={a.eyebrow}>01 / Sound</p>
-          <h2>Listening<br/><i>back.</i></h2>
-          <p>Original music, recorded and released under different names. An archive of experiments, compositions and ideas through sound.</p>
-        </div>
-        <div className={a.recordings}>
-          {recordings.map((record, i) => (
-            <a className={a.record} key={record.url} href={record.url} target="_blank" rel="noopener noreferrer">
-              <span className={a.recordNumber}>{String(i + 1).padStart(2, '0')}</span>
-              <span className={a.recordDisc} aria-hidden="true"><span/></span>
-              <span className={a.recordDetail}><strong>{record.title}</strong><small>{record.platform} / Archive</small></span>
-              <span aria-hidden="true">↗</span>
-            </a>
-          ))}
-        </div>
-      </section>
 
       <section id="space" className={a.chapter}>
         <div className={a.chapterHead}>
-          <p className={a.eyebrow}>02 / Space</p>
+          <p className={a.eyebrow}>01 / Space</p>
           <h2>Ways of<br/><i>inhabiting.</i></h2>
           <p>Architecture and urbanism at Escola da Cidade. A practice of reading the city, its territories and the relationships that shape everyday life.</p>
         </div>
@@ -102,9 +85,9 @@ export default function Home() {
 
       <section id="body" className={a.chapter}>
         <div className={a.chapterHead}>
-          <p className={a.eyebrow}>03 / Body</p>
+          <p className={a.eyebrow}>02 / Expression</p>
           <h2>Gesture<br/><i>and presence.</i></h2>
-          <p>Theatre, performance and piano: experiences that shaped how I listen, collaborate and create.</p>
+          <p>Theatre, visual expression and performance: ways of exploring the body, imagination and collective creation.</p>
         </div>
         <figure className={a.photoFeature}>
           <Image src="/practice/body-art.webp" alt="Blue and turquoise body painting resembling branching lines and stars on a person's back" width={854} height={1000} unoptimized className={a.bodyPhoto}/>
@@ -112,19 +95,42 @@ export default function Home() {
         </figure>
         <div className={a.bodyRows}>
           <article><p className={a.eyebrow}>Collective practice</p><h3>Theatre</h3><p>One year in a theatre group, rehearsing and performing with others.</p></article>
+          <article><p className={a.eyebrow}>Creative exploration</p><h3>Visual expression</h3><p>Colour, gesture and the relationship between the body and its surroundings.</p></article>
+        </div>
+      </section>
+
+      <section id="sound" className={a.chapter}>
+        <div className={a.chapterHead}>
+          <p className={a.eyebrow}>03 / Sound</p>
+          <h2>Listening<br/><i>back.</i></h2>
+          <p>Musical performance and original compositions. An archive of experiments, recordings and ideas through sound.</p>
+        </div>
+        <div className={a.bodyRows}>
+          <article><p className={a.eyebrow}>Musical formation</p><h3>Violin</h3><p>Performed on violin in a concert in Guarulhos.</p></article>
           <article><p className={a.eyebrow}>Musical formation</p><h3>Piano</h3><p>Second place in the Conservatório de Guarulhos competition for piano studies.</p></article>
+        </div>
+        <p className={a.archiveLabel}>Recorded work / Music archive</p>
+        <div className={a.recordings}>
+          {recordings.map((record, i) => (
+            <a className={a.record} key={record.url} href={record.url} target="_blank" rel="noopener noreferrer">
+              <span className={a.recordNumber}>{String(i + 1).padStart(2, '0')}</span>
+              <span className={a.recordDisc} aria-hidden="true"><span/></span>
+              <span className={a.recordDetail}><strong>{record.title}</strong><small>{record.platform} / Archive</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          ))}
         </div>
       </section>
 
       <section className={a.chapter} id="selected">
         <div className={a.chapterHead}>
-          <p className={a.eyebrow}>04 / Code</p>
+          <p className={a.eyebrow}>04 / Technology</p>
           <h2>Building<br/><i>systems.</i></h2>
           <p>Software engineering, digital products and technological experiments. Selected work from my practice.</p>
         </div>
         <figure className={a.photoFeature}>
           <Image src="/practice/electronics.webp" alt="Electronics workbench with Arduino boards, wires and breadboards" width={753} height={1000} unoptimized className={a.codePhoto}/>
-          <figcaption><span className={a.eyebrow}>Code / Process archive</span><strong>Making things work.</strong><span>Electronics, prototypes and experimentation.</span></figcaption>
+          <figcaption><span className={a.eyebrow}>Technology / Process archive</span><strong>Making things work.</strong><span>Electronics, prototypes and experimentation.</span></figcaption>
         </figure>
         <ul className={s.list}>
           {selected.map((p, i) => (

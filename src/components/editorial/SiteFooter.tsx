@@ -8,7 +8,7 @@ const channels = [
   siteConfig.links.whatsapp && { id: 'whatsapp', label: 'WhatsApp', meta: 'Message', href: whatsappHref, external: true },
   siteConfig.links.linkedin && { id: 'linkedin', label: 'LinkedIn', meta: 'Profile', href: siteConfig.links.linkedin, external: true },
   { id: 'github', label: 'GitHub', meta: 'Felici4no', href: siteConfig.links.github, external: true },
-  { id: 'instagram', label: 'Instagram', meta: '@thelucasfeliciano', href: siteConfig.links.instagram, external: true },
+  { id: 'instagram', label: 'Instagram', meta: '@ofelicianico', href: siteConfig.links.instagram, external: true },
 ].filter((c): c is { id: string; label: string; meta: string; href: string; external: boolean } => Boolean(c));
 
 export function SiteFooter() {

@@ -1,5 +1,5 @@
 .hero {
-  padding: clamp(30px, 4.7vw, 72px) 0 36px;
+  padding: clamp(12px, 2.8vw, 42px) 0 38px;
 }
 
 .eyebrow {
@@ -8,15 +8,6 @@
   letter-spacing: .08em;
   font-weight: 500;
 }
-
-.heroMeta {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  border-top: var(--hair);
-  padding-top: 12px;
-}
-.heroMeta .eyebrow:first-child { color: var(--accent); }
 
 .identity {
   display: grid;
@@ -27,7 +18,7 @@
   font-weight: 800;
   letter-spacing: -.085em;
   line-height: .92;
-  margin: clamp(50px, 6vw, 85px) 0;
+  margin: clamp(22px, 4.5vw, 64px) 0 clamp(35px, 4.5vw, 64px);
 }
 .firstName { text-align: right; }
 .lastName { text-align: left; }
@@ -44,16 +35,32 @@
   align-items: end;
 }
 .heroStatement .eyebrow { color: var(--accent); }
+.identityNote { display: flex; gap: 16px; align-items: center; }
+.stamp { color: var(--accent); font-size: clamp(2.6rem, 5vw, 4.5rem); line-height: .9; transform: rotate(-12deg); }
+.location { font-size: var(--t-meta); letter-spacing: .035em; margin-top: 3px; }
+.archiveLabel { margin: 36px 0 10px; text-transform: uppercase; font-size: var(--t-meta); letter-spacing: .07em; color: var(--ink-2); }
 .intro { max-width: 42ch; font-size: var(--t-lead); line-height: 1.22; }
 .chapterHead h2 i { color: var(--accent); font-style: normal; }
 
 .disciplines { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: var(--rule); border-bottom: var(--rule); }
-.disciplines a { display: flex; align-items: baseline; gap: 12px; padding: 18px 15px; font-size: clamp(1.25rem, 2.8vw, 2.1rem); line-height: 1.1; }
+.disciplines a {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  gap: 10px;
+  padding: clamp(14px, 2vw, 26px);
+  min-height: clamp(126px, 14vw, 188px);
+  line-height: 1.1;
+  transition: background 180ms, color 180ms;
+}
 .disciplines a:first-child { padding-left: 0; }
 .disciplines a + a { border-left: var(--hair); }
-.disciplines a span:first-child { font-size: var(--t-meta); color: var(--ink-2); }
-.disciplines a span:last-child { margin-left: auto; font-size: var(--t-meta); }
-.disciplines a:hover { color: var(--accent); }
+.navIndex { font-size: var(--t-meta); color: var(--ink-2); }
+.navMark { grid-column: 1 / -1; color: var(--accent); font-size: clamp(2rem, 4.4vw, 4rem); line-height: 1; transform: rotate(-8deg); transform-origin: left center; justify-self: start; }
+.navLabel { font-size: clamp(1.2rem, 2.45vw, 2rem); font-weight: 500; letter-spacing: -.04em; align-self: end; }
+.navArrow { font-size: var(--t-meta); align-self: end; justify-self: end; }
+.disciplines a:hover { color: var(--accent); background: #fff4f3; }
+.disciplines a:last-child .navMark { color: var(--ink); background: #c5e632; padding: 2px 13px 5px; transform: rotate(-7deg); clip-path: polygon(0 8%, 19% 0, 38% 6%, 56% 2%, 78% 7%, 100% 0, 96% 89%, 71% 100%, 45% 94%, 19% 100%, 3% 92%); }
 
 .chapter { padding-top: clamp(90px, 11vw, 160px); scroll-margin-top: 26px; }
 .chapterHead { display: grid; grid-template-columns: 1fr minmax(0, 1fr); gap: 18px clamp(30px, 7vw, 120px); align-items: end; margin-bottom: 30px; }
@@ -120,7 +127,7 @@
   .firstName, .lastName { text-align: center; }
   .portrait { width: min(76%, 350px); margin: -4px 0; }
   .heroStatement { grid-template-columns: 1fr; gap: 10px; }
-  .heroMeta { flex-wrap: wrap; }
+  .heroStatement { align-items: start; }
   .photoFeature { grid-template-columns: 1fr; }
   .photoFeature figcaption { padding: 20px 0 8px; }
   .bodyPhoto, .codePhoto { max-height: 540px; }
@@ -131,9 +138,9 @@
   .featureGraphic { border-right: none; border-bottom: var(--hair); padding-right: 0; }
   .featureContent { padding-left: 0; }
 }
-@media (max-width: 480px) {
+@media (max-width: 680px) {
   .disciplines { grid-template-columns: 1fr 1fr; }
-  .disciplines a { padding: 14px 10px; }
+  .disciplines a { padding: 14px 10px; min-height: 130px; }
   .disciplines a:nth-child(3) { border-left: none; padding-left: 0; }
   .disciplines a:nth-child(n+3) { border-top: var(--hair); }
   .bodyRows { grid-template-columns: 1fr; }

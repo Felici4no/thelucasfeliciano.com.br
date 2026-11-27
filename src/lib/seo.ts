@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Lucas Feliciano",
-  title: "Lucas Feliciano — Sound, Space & Systems",
+  title: "Lucas Feliciano — Creative Practice",
   description:
-    "Multidisciplinary creator in São Paulo, working across music, architecture, performance and software. An archive of creative practice and selected projects.",
+    "Multidisciplinary creator in São Paulo, working across architecture, visual expression, music and technology. An archive of creative practice and selected projects.",
   url: "https://thelucasfeliciano.com.br",
   ogImage: "https://thelucasfeliciano.com.br/og-image.png",
   /** Shown in the header badge and hero. Set to undefined to hide it. */
@@ -12,8 +12,8 @@ export const siteConfig = {
   /** Optional channels (linkedin, whatsapp, booking) only render once filled in. */
   links: {
     github: "https://github.com/Felici4no",
-    instagram: "https://www.instagram.com/thelucasfeliciano/",
-    email: "lucas.for.study.42@gmail.com",
+    instagram: "https://www.instagram.com/ofelicianico/",
+    email: "me@thelucasfeliciano.com.br",
     whatsapp: "https://wa.me/5511954471933",
   } as {
     github: string;
