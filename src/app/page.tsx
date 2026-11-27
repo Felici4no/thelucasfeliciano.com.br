@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { projects } from '@/data/projects';
 import { RuleRow } from '@/components/editorial/RuleRow';
 import { indexLabel, projectMeta } from '@/lib/projectMeta';
@@ -15,33 +16,6 @@ const recordings = [
   { title: 'YouTube archive', url: 'https://www.youtube.com/channel/UCfK1n53Tq9pkhQJdpSblkbQ', platform: 'YouTube' },
 ];
 
-function PracticeArt() {
-  return (
-    <figure className={a.artwork}>
-      <svg viewBox="0 0 400 400" role="img" aria-label="Abstract diagram of sound waves, intersecting circles, and architectural coordinates">
-        <defs>
-          <pattern id="paper-grid" width="25" height="25" patternUnits="userSpaceOnUse">
-            <path d="M25 0H0V25" fill="none" stroke="currentColor" strokeOpacity=".15" strokeWidth=".6"/>
-          </pattern>
-        </defs>
-        <rect width="400" height="400" fill="url(#paper-grid)"/>
-        <g stroke="currentColor" fill="none" strokeWidth="1.2">
-          {Array.from({ length: 11 }, (_, i) => <circle key={i} cx={200} cy={200} r={38 + i * 13}/>)}
-          <path d="M20 200H380M200 20V380M58 58 342 342M342 58 58 342" strokeDasharray="3 5"/>
-          <path d="M60 310V102H172V61H337V310Z M60 156H337M60 258H337M172 61V310M250 61V310" strokeWidth="1.5"/>
-        </g>
-        <path d="M22 200 Q55 200 68 162T104 240T140 151T177 260T213 140T250 247T287 171T322 222T378 200" fill="none" stroke="#be3d24" strokeWidth="5"/>
-        <circle cx="200" cy="200" r="9" fill="#be3d24"/>
-        <g fill="currentColor" fontSize="10" fontFamily="monospace">
-          <text x="20" y="25">FIG. 01</text><text x="310" y="25">SP / BR</text>
-          <text x="20" y="382">SOUND / SPACE</text><text x="287" y="382">BODY / CODE</text>
-        </g>
-      </svg>
-      <figcaption>Study 01 — intersections</figcaption>
-    </figure>
-  );
-}
-
 export default function Home() {
   const selected = projects.filter((p) => p.tier === 'selected');
   const other = projects.filter((p) => p.tier !== 'selected');
@@ -49,12 +23,27 @@ export default function Home() {
   return (
     <main className={s.page}>
       <header className={a.hero}>
-        <div className={a.heroText}>
-          <p className={a.eyebrow}>São Paulo, Brazil / Independent practice</p>
-          <h1 className={a.title}>Sound.<br/>Space.<br/><i>Systems.</i></h1>
+        <div className={a.heroMeta}>
+          <p className={a.eyebrow}>São Paulo, Brasil</p>
+          <p className={a.eyebrow}>Personal archive / Independent practice</p>
+        </div>
+        <h1 className={a.identity} aria-label="Lucas Feliciano">
+          <span className={a.firstName}>Lucas</span>
+          <Image
+            className={a.portrait}
+            src="/practice/portrait.webp"
+            alt=""
+            width={900}
+            height={900}
+            unoptimized
+            preload
+          />
+          <span className={a.lastName}>Feliciano</span>
+        </h1>
+        <div className={a.heroStatement}>
+          <p className={a.eyebrow}>Sound / Space / Body / Code</p>
           <p className={a.intro}>I work across music, architecture, performance and software, exploring how we make sense of the spaces we inhabit.</p>
         </div>
-        <PracticeArt/>
       </header>
       <nav className={a.disciplines} aria-label="Fields of practice">
         {[
@@ -98,7 +87,7 @@ export default function Home() {
                 <path d="M45 160V76H165V35H286V115H355V160Z" fill="var(--paper)" strokeWidth="2"/>
                 <path d="M165 35V160M286 115H165M45 115H165M230 35V115"/>
               </g>
-              <circle cx="165" cy="115" r="30" fill="#be3d24"/>
+              <circle cx="165" cy="115" r="30" fill="var(--accent)"/>
             </svg>
             <span>Conceptual graphic — not a project drawing</span>
           </div>
@@ -117,6 +106,10 @@ export default function Home() {
           <h2>Gesture<br/><i>and presence.</i></h2>
           <p>Theatre, performance and piano: experiences that shaped how I listen, collaborate and create.</p>
         </div>
+        <figure className={a.photoFeature}>
+          <Image src="/practice/body-art.webp" alt="Blue and turquoise body painting resembling branching lines and stars on a person's back" width={854} height={1000} unoptimized className={a.bodyPhoto}/>
+          <figcaption><span className={a.eyebrow}>Body / Visual archive</span><strong>The body as a surface.</strong><span>Colour, gesture and expression.</span></figcaption>
+        </figure>
         <div className={a.bodyRows}>
           <article><p className={a.eyebrow}>Collective practice</p><h3>Theatre</h3><p>One year in a theatre group, rehearsing and performing with others.</p></article>
           <article><p className={a.eyebrow}>Musical formation</p><h3>Piano</h3><p>Second place in the Conservatório de Guarulhos competition for piano studies.</p></article>
@@ -129,12 +122,16 @@ export default function Home() {
           <h2>Building<br/><i>systems.</i></h2>
           <p>Software engineering, digital products and technological experiments. Selected work from my practice.</p>
         </div>
+        <figure className={a.photoFeature}>
+          <Image src="/practice/electronics.webp" alt="Electronics workbench with Arduino boards, wires and breadboards" width={753} height={1000} unoptimized className={a.codePhoto}/>
+          <figcaption><span className={a.eyebrow}>Code / Process archive</span><strong>Making things work.</strong><span>Electronics, prototypes and experimentation.</span></figcaption>
+        </figure>
         <ul className={s.list}>
           {selected.map((p, i) => (
             <RuleRow key={p.id} href={p.link} title={p.name} meta={projectMeta(p)} description={p.subtitle} descWideOnly image={p.image} fallback={indexLabel(i)}/>
           ))}
         </ul>
-        {other.length > 0 && <Link className={a.indexLink} href="/portfolio">View all software projects <span aria-hidden="true">↗</span></Link>}
+        {other.length > 0 ? <Link className={a.indexLink} href="/portfolio">View all software projects <span aria-hidden="true">↗</span></Link> : null}
       </section>
     </main>
   );

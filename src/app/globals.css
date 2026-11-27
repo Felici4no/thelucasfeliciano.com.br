@@ -1,7 +1,8 @@
 /* Editorial system — one grotesk family, paper and ink, heavy rules. */
 :root {
-  --paper: #f4f1ec;
-  --paper-2: #e7e2d9;
+  --paper: #ffffff;
+  --paper-2: #f5f3f3;
+  --accent: #cf0000;
   --ink: #0e0e0e;
   --ink-2: #4a4845;
   --rule: 2px solid var(--ink);
@@ -61,7 +62,7 @@ button {
 }
 
 ::selection {
-  background: var(--ink);
+  background: var(--accent);
   color: var(--paper);
 }
 
