@@ -20,7 +20,7 @@ export function SiteFooter() {
       </h2>
       {siteConfig.availability && (
         <p className={s.lede} style={{ marginTop: 0, marginBottom: 32 }}>
-          {siteConfig.availability}. Products, AI agents and systems that need to work.
+          {siteConfig.availability}. Artistic collaborations, architecture, digital products and systems.
         </p>
       )}
       <ul className={s.list}>

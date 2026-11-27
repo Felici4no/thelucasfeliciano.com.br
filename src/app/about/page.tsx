@@ -5,13 +5,12 @@ import { projects } from '@/data/projects';
 import { events, certifications } from '@/data/learning';
 import { Masthead } from '@/components/editorial/Masthead';
 import { RuleRow } from '@/components/editorial/RuleRow';
-import { siteConfig } from '@/lib/seo';
 import s from '@/components/editorial/editorial.module.css';
 
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Lucas Feliciano is a software engineer and systems builder from São Paulo: recognition, services, working method and background.',
+    'Lucas Feliciano is a multidisciplinary creator from São Paulo, working across architecture, music, performance and software.',
 };
 
 const recognition = [
@@ -65,13 +64,11 @@ export default function About() {
           <div className={s.rowLink}>
             <div className={s.rowText}>
               <p className={s.lead}>
-                Software engineer and systems builder from São Paulo. I build AI agents, web products and
-                coordination systems — mostly in small teams, often under hackathon pressure — and keep working on
-                what wins until people can really use it.
+                Multidisciplinary creator from the East Zone of São Paulo. I study architecture and urbanism at Escola da Cidade, produce original music, and build digital systems. My practice brings together sound, space, performance and technology.
               </p>
               <p className={s.meta}>
                 <span>São Paulo, Brasil</span>
-                <span>{siteConfig.availability ?? 'Software Engineering, FIAP'}</span>
+                <span>{'Architecture and Urbanism · Escola da Cidade'}</span>
               </p>
             </div>
             <div className={s.thumb}>

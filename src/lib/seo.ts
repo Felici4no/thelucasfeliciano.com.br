@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Lucas Feliciano",
-  title: "Lucas Feliciano — Software Engineer / Systems Builder",
+  title: "Lucas Feliciano — Sound, Space & Systems",
   description:
-    "Software engineer and systems builder based in São Paulo. Interfaces, digital products, AI agents and MCP, Solana prototypes and coordination systems. Hackathon winner.",
+    "Multidisciplinary creator in São Paulo, working across music, architecture, performance and software. An archive of creative practice and selected projects.",
   url: "https://thelucasfeliciano.com.br",
   ogImage: "https://thelucasfeliciano.com.br/og-image.png",
   /** Shown in the header badge and hero. Set to undefined to hide it. */
@@ -28,6 +28,9 @@ export const siteConfig = {
   },
   keywords: [
     "Lucas Feliciano",
+    "Architecture and Urbanism",
+    "Music Production",
+    "Multidisciplinary Creator",
     "Software Engineer",
     "Systems Builder",
     "Digital Products",

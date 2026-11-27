@@ -6,8 +6,8 @@ import { primaryContactHref } from '@/lib/contact';
 import s from './editorial.module.css';
 
 const items = [
-  { href: '/', label: 'Work', match: (p: string) => p === '/' || p.startsWith('/projects') },
-  { href: '/portfolio', label: 'Index', match: (p: string) => p.startsWith('/portfolio') },
+  { href: '/', label: 'Practice', match: (p: string) => p === '/' || p.startsWith('/projects') },
+  { href: '/portfolio', label: 'Software index', match: (p: string) => p.startsWith('/portfolio') },
   { href: '/about', label: 'About', match: (p: string) => p.startsWith('/about') },
   { href: '/logbook', label: 'Logbook', match: (p: string) => p.startsWith('/logbook') },
 ];
