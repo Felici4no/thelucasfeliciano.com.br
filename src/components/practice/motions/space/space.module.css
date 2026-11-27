@@ -1,0 +1,9 @@
+:global([data-motion-playing="true"]) .planGrid { animation: grid-reveal .8s ease-out both; }
+:global([data-motion-playing="true"]) .blocks { animation: build-in 1.8s cubic-bezier(.15,.85,.25,1) .25s both; transform-origin: 50% 70%; }
+:global([data-motion-playing="true"]) .traces { animation: trace-in 1.7s ease-out .7s both; }
+:global([data-motion-playing="true"]) .spacePoint { animation: point-bounce 1.5s ease-out 1.3s both; transform-box: fill-box; transform-origin: center; }
+
+@keyframes grid-reveal { from { opacity: 0; } to { opacity: .6; } }
+@keyframes build-in { from { transform: translateY(60px) scale(.65); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+@keyframes trace-in { from { stroke-dashoffset: 160; opacity: 0; } to { stroke-dashoffset: 0; opacity: 1; } }
+@keyframes point-bounce { 0% { transform: scale(.2); opacity: 0; } 60% { transform: scale(1.8); opacity: 1; } 100% { transform: scale(1); } }

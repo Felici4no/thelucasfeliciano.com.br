@@ -1,0 +1,9 @@
+:global([data-motion-playing="true"]) .circuit { animation: circuit-in 2.3s ease-out both; stroke-dasharray: 1200; }
+:global([data-motion-playing="true"]) .chip { animation: chip-in 1.3s cubic-bezier(.15,.75,.25,1) .7s both; transform-origin: 450px 160px; }
+:global([data-motion-playing="true"]) .node { animation: node-pulse 1.15s ease-in-out 2 alternate both; transform-box: fill-box; transform-origin: center; }
+:global([data-motion-playing="true"]) .signal { animation: travel 2.5s linear .5s both; }
+
+@keyframes circuit-in { from { stroke-dashoffset: 1200; opacity: .2; } to { stroke-dashoffset: 0; opacity: 1; } }
+@keyframes chip-in { from { transform: scale(.3) rotate(-15deg); opacity: 0; } to { transform: scale(1) rotate(0); opacity: 1; } }
+@keyframes node-pulse { from { transform: scale(.75); opacity: .75; } to { transform: scale(1.3); opacity: 1; } }
+@keyframes travel { 0% { transform: translate(0,0); opacity: 0; } 5% { opacity: 1; } 35% { transform: translate(138px,0); } 48% { transform: translate(180px,42px); } 65% { transform: translate(260px,42px); } 80% { transform: translate(305px,-3px); } 100% { transform: translate(450px,-3px); } }

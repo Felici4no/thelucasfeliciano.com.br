@@ -1,0 +1,7 @@
+:global([data-motion-playing="true"]) .record { animation: revolve 3.7s cubic-bezier(.15,.75,.35,1) both; }
+:global([data-motion-playing="true"]) .wave { animation: wave-in 2.6s ease-out both; stroke-dasharray: 1800; }
+:global([data-motion-playing="true"]) .bar { animation: beat .72s ease-in-out 4 alternate both; transform-box: view-box; }
+
+@keyframes revolve { from { transform: rotate(-540deg); } to { transform: rotate(0deg); } }
+@keyframes wave-in { from { stroke-dashoffset: 1800; } to { stroke-dashoffset: 0; } }
+@keyframes beat { from { transform: scaleY(.25); } to { transform: scaleY(1); } }

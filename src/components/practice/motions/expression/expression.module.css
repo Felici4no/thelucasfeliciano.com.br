@@ -1,0 +1,7 @@
+:global([data-motion-playing="true"]) .gesture { animation: gesture-reveal 2.6s ease-in-out both; stroke-dasharray: 1100; }
+:global([data-motion-playing="true"]) .cutout { animation: unfold 2.4s cubic-bezier(.13,.75,.19,1) both; transform-origin: 495px 160px; }
+:global([data-motion-playing="true"]) .sketch { animation: sketch-in 1.9s ease-out .65s both; transform-origin: 495px 160px; }
+
+@keyframes gesture-reveal { from { stroke-dashoffset: 1100; opacity: .4; } to { stroke-dashoffset: 0; opacity: 1; } }
+@keyframes unfold { 0% { transform: rotate(-40deg) scale(.35); opacity: 0; } 70% { transform: rotate(5deg) scale(1.04); opacity: 1; } 100% { transform: rotate(0) scale(1); opacity: 1; } }
+@keyframes sketch-in { from { transform: rotate(18deg) scale(.8); opacity: 0; } to { transform: rotate(0) scale(1); opacity: 1; } }
