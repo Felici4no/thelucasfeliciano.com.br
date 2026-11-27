@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { projects } from '@/data/projects';
 import { RuleRow } from '@/components/editorial/RuleRow';
+import { MotionPlate } from '@/components/practice/MotionPlate';
 import { indexLabel, projectMeta } from '@/lib/projectMeta';
 import s from '@/components/editorial/editorial.module.css';
 import a from './practice.module.css';
@@ -61,6 +62,7 @@ export default function Home() {
           <h2>Ways of<br/><i>inhabiting.</i></h2>
           <p>Architecture and urbanism at Escola da Cidade. A practice of reading the city, its territories and the relationships that shape everyday life.</p>
         </div>
+        <MotionPlate kind="space"/>
         <article className={a.feature}>
           <div className={a.featureGraphic} aria-hidden="true">
             <svg viewBox="0 0 400 190" fill="none">
@@ -89,6 +91,7 @@ export default function Home() {
           <h2>Gesture<br/><i>and presence.</i></h2>
           <p>Theatre, visual expression and performance: ways of exploring the body, imagination and collective creation.</p>
         </div>
+        <MotionPlate kind="expression"/>
         <figure className={a.photoFeature}>
           <Image src="/practice/body-art.webp" alt="Blue and turquoise body painting resembling branching lines and stars on a person's back" width={854} height={1000} unoptimized className={a.bodyPhoto}/>
           <figcaption><span className={a.eyebrow}>Body / Visual archive</span><strong>The body as a surface.</strong><span>Colour, gesture and expression.</span></figcaption>
@@ -105,6 +108,7 @@ export default function Home() {
           <h2>Listening<br/><i>back.</i></h2>
           <p>Musical performance and original compositions. An archive of experiments, recordings and ideas through sound.</p>
         </div>
+        <MotionPlate kind="sound"/>
         <div className={a.bodyRows}>
           <article><p className={a.eyebrow}>Musical formation</p><h3>Violin</h3><p>Performed on violin in a concert in Guarulhos.</p></article>
           <article><p className={a.eyebrow}>Musical formation</p><h3>Piano</h3><p>Second place in the Conservatório de Guarulhos competition for piano studies.</p></article>
@@ -128,6 +132,7 @@ export default function Home() {
           <h2>Building<br/><i>systems.</i></h2>
           <p>Software engineering, digital products and technological experiments. Selected work from my practice.</p>
         </div>
+        <MotionPlate kind="technology"/>
         <figure className={a.photoFeature}>
           <Image src="/practice/electronics.webp" alt="Electronics workbench with Arduino boards, wires and breadboards" width={753} height={1000} unoptimized className={a.codePhoto}/>
           <figcaption><span className={a.eyebrow}>Technology / Process archive</span><strong>Making things work.</strong><span>Electronics, prototypes and experimentation.</span></figcaption>
